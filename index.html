@@ -126,6 +126,52 @@ footer{max-width:1120px;margin:0 auto;padding:0 24px 28px;display:flex;justify-c
  footer{padding:0 15px 22px;flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+/* Persisted quiz: viewport-fit layout and larger answer labels */
+body.quiz-active{height:100dvh;overflow:hidden}
+body.quiz-active .topbar{height:58px;min-height:58px}
+body.quiz-active main{height:calc(100dvh - 58px);min-height:0;overflow:hidden;padding:10px 24px 12px;display:flex;flex-direction:column}
+body.quiz-active footer{display:none}
+body.quiz-active #quizView{display:flex!important;flex:1;min-height:0;flex-direction:column}
+body.quiz-active .quiz-toolbar{flex:0 0 auto;margin:0 0 8px;min-height:29px}
+body.quiz-active .quiz-card{flex:1;min-height:0;height:100%;overflow:hidden;display:flex;flex-direction:column;padding:clamp(14px,2.2vh,23px) clamp(18px,3vw,32px)}
+body.quiz-active .question-meta{gap:7px;margin-bottom:clamp(8px,1.5vh,16px)}
+body.quiz-active .question-title{font-size:clamp(22px,2.15vw,27px);line-height:1.25;margin:8px 0 clamp(10px,1.8vh,18px);max-width:940px}
+body.quiz-active .options{flex:0 0 auto;gap:10px}
+body.quiz-active .option{min-height:58px;align-items:center;padding:12px 14px;gap:12px}
+body.quiz-active .option-key{width:31px;height:31px;font-size:13px;border-radius:9px}
+body.quiz-active .option-copy{font-size:16px;line-height:1.35;padding-top:0}
+body.quiz-active .feedback{margin-top:10px;padding:10px 13px;font-size:13px;max-height:96px;overflow:auto}
+body.quiz-active .quiz-actions{flex:0 0 auto;margin-top:auto;padding-top:12px;gap:10px}
+body.quiz-active .action-hint{font-size:12px}
+body.quiz-active .quiz-actions .btn{padding:10px 15px}
+@media(max-width:760px){
+ body.quiz-active .topbar{height:54px;min-height:54px;padding:0 13px}
+ body.quiz-active main{height:calc(100dvh - 54px);padding:7px 10px 10px}
+ body.quiz-active .quiz-toolbar{margin-bottom:6px;min-height:27px;gap:8px}
+ body.quiz-active .progress-wrap{gap:8px}
+ body.quiz-active .quiz-card{padding:13px 12px;border-radius:15px}
+ body.quiz-active .question-meta{margin-bottom:7px;gap:5px}
+ body.quiz-active .chapter-label{font-size:10px;padding:5px 7px}
+ body.quiz-active .book-label{font-size:10px}
+ body.quiz-active .question-title{font-size:clamp(18px,5vw,22px);line-height:1.24;margin:6px 0 10px}
+ body.quiz-active .options{grid-template-columns:1fr;gap:7px}
+ body.quiz-active .option{min-height:49px;padding:9px 10px;gap:9px;border-radius:10px}
+ body.quiz-active .option-key{width:27px;height:27px;font-size:12px}
+ body.quiz-active .option-copy{font-size:15px;line-height:1.27}
+ body.quiz-active .feedback{margin-top:7px;padding:8px 10px;font-size:12px;max-height:84px}
+ body.quiz-active .quiz-actions{padding-top:8px;gap:7px}
+ body.quiz-active .quiz-actions .btn{padding:9px 10px;font-size:12px}
+ body.quiz-active .action-hint{display:none}
+ body.quiz-active .quiz-actions-left,body.quiz-active .quiz-actions-right{gap:6px}
+}
+@media(max-height:650px) and (min-width:761px){
+ body.quiz-active .question-meta{margin-bottom:5px}
+ body.quiz-active .question-title{font-size:21px;margin:5px 0 8px}
+ body.quiz-active .option{min-height:48px;padding:8px 11px}
+ body.quiz-active .option-copy{font-size:15px}
+ body.quiz-active .feedback{max-height:70px;padding:7px 10px}
+ body.quiz-active .quiz-actions{padding-top:6px}
+}
 </style>
 </head>
 <body>
@@ -142,7 +188,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 24px 28px;display:flex;justify-c
     <span class="eyebrow">LATIHAN MANDIRI</span>
     <h1>Seberapa jauh kamu memahami IPA?</h1>
     <p>Latihan 100 soal dari materi IPA kelas 7, 8, dan 9. Urutan soal diacak untuk setiap sesi, dan setiap soal dilengkapi pembahasan singkat setelah jawaban diperiksa.</p>
-    <div class="hero-actions"><button class="btn btn-primary" id="startBtn" onclick="startQuiz('all')">Mulai 100 soal <span aria-hidden="true">→</span></button><button class="btn btn-secondary" onclick="scrollToMaterials()">Lihat cakupan materi</button></div>
+    <div class="hero-actions"><button class="btn btn-primary" id="startBtn" onclick="startQuiz('all')">Mulai 100 soal <span aria-hidden="true">→</span></button><button class="btn btn-primary hidden" id="resumeBtn" onclick="resumeSession()">Lanjutkan sesi ↗</button><button class="btn btn-secondary" onclick="scrollToMaterials()">Lihat cakupan materi</button></div>
    </div>
    <div class="hero-stats">
     <div class="stats-heading">Ringkasan kuis</div>
@@ -310,7 +356,12 @@ const chapterInfo=[];
 materials.forEach(function(m){chapterInfo.push({name:m.chapter,grade:m.grade,book:m.book,count:m.items.length})});
 const questionBank=[];
 materials.forEach(function(m,mi){m.items.forEach(function(q,qi){questionBank.push({id:"m"+mi+"q"+qi,grade:m.grade,book:m.book,chapter:m.chapter,question:q.q,options:q.options,answer:q.answer,explanation:q.explanation})})});
+const SESSION_KEY="kuis_ipa_smp_session_v1";
 const state={view:"home",deck:[],index:0,reviewMode:false,results:[]};
+function saveSession(){try{localStorage.setItem(SESSION_KEY,JSON.stringify({version:1,view:state.view,deck:state.deck,index:state.index,reviewMode:state.reviewMode,results:state.results,savedAt:Date.now()}))}catch(e){console.warn("Sesi tidak dapat disimpan ke localStorage.",e)}}
+function syncResumeButton(){const button=document.getElementById("resumeBtn");if(!button)return;button.classList.toggle("hidden",!(state.deck.length>0&&state.view==="home"))}
+function restoreSession(){try{const raw=localStorage.getItem(SESSION_KEY);if(!raw){syncResumeButton();return}const saved=JSON.parse(raw);if(!saved||saved.version!==1||!Array.isArray(saved.deck)||!saved.deck.every(e=>e&&e.question&&Array.isArray(e.options))){localStorage.removeItem(SESSION_KEY);syncResumeButton();return}state.view=["home","quiz","result","reviewResult"].includes(saved.view)?saved.view:"home";state.deck=saved.deck;state.index=Math.max(0,Math.min(Number(saved.index)||0,Math.max(0,state.deck.length-1)));state.reviewMode=!!saved.reviewMode;state.results=Array.isArray(saved.results)?saved.results:[];document.getElementById("homeView").style.display=state.view==="home"?"block":"none";document.getElementById("quizView").style.display=state.view==="quiz"?"flex":"none";document.getElementById("resultView").style.display=["result","reviewResult"].includes(state.view)?"block":"none";document.body.classList.toggle("quiz-active",state.view==="quiz");if(state.view==="quiz"&&state.deck.length){renderQuestion()}else if(state.view==="result"){renderResults()}else if(state.view==="reviewResult"){showHomeAfterReview()}syncResumeButton()}catch(e){console.warn("Sesi tersimpan tidak dapat dipulihkan.",e);syncResumeButton()}}
+function resumeSession(){if(!state.deck.length)return;state.view="quiz";document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="flex";document.body.classList.add("quiz-active");saveSession();syncResumeButton();renderQuestion();window.scrollTo(0,0)}
 function shuffle(list){const out=list.slice();for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const temp=out[i];out[i]=out[j];out[j]=temp}return out}
 function gradeClass(grade){return grade===7?"g7":grade===8?"g8":"g9"}
 function gradeName(grade){return "Kelas "+grade}
@@ -321,9 +372,9 @@ function startQuiz(mode){
  if(state.reviewMode){chosen=state.results.filter(function(r){return !r.isCorrect}).map(function(r){return r.question})}
  if(!chosen.length){alert("Belum ada soal yang salah untuk diulang. Kerjakan kuis lengkap terlebih dahulu.");return}
  state.deck=shuffle(chosen).map(function(q){const opts=shuffle(q.options.map(function(text,i){return {text:text,correct:i===q.answer}}));return {question:q,options:opts,selected:null,checked:false}});
- state.index=0;state.view="quiz";
- document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="block";
- renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+ state.index=0;state.view="quiz";if(!state.reviewMode)state.results=[];
+ document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="flex";document.body.classList.add("quiz-active");
+ saveSession();syncResumeButton();renderQuestion();window.scrollTo(0,0);
 }
 function renderQuestion(){
  const entry=state.deck[state.index],q=entry.question,total=state.deck.length,number=state.index+1;
@@ -359,8 +410,8 @@ function renderQuestion(){
  document.getElementById("actionHint").textContent=entry.checked?"Jawaban telah diperiksa.": "Pilih jawaban terbaik.";
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
-function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;renderQuestion()}
-function checkAnswer(){const e=state.deck[state.index];if(e.selected===null)return;e.checked=true;renderQuestion()}
+function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;saveSession();renderQuestion()}
+function checkAnswer(){const e=state.deck[state.index];if(e.selected===null)return;e.checked=true;saveSession();renderQuestion()}
 function moveQuestion(delta){
  const next=state.index+delta;
  if(next<0)return;
@@ -368,11 +419,11 @@ function moveQuestion(delta){
    if(state.reviewMode){showHomeAfterReview();return}
    finishQuiz();return;
  }
- state.index=next;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+ state.index=next;saveSession();renderQuestion();window.scrollTo(0,0);
 }
 function finishQuiz(){
  state.view="result";
- state.results=state.deck.map(function(e){return {question:e.question,options:e.options,selected:e.selected,isCorrect:!!(e.selected!==null&&e.options[e.selected].correct)}});
+ state.results=state.deck.map(function(e){return {question:e.question,options:e.options,selected:e.selected,isCorrect:!!(e.selected!==null&&e.options[e.selected].correct)}});saveSession();document.body.classList.remove("quiz-active");
  document.getElementById("quizView").style.display="none";
  document.getElementById("resultView").style.display="block";
  renderResults();window.scrollTo({top:0,behavior:"smooth"});
@@ -387,19 +438,19 @@ function renderResults(){
  document.getElementById("resultContent").innerHTML='<div class="result-head"><div class="score-ring" style="--score-angle:'+(percent*3.6)+'deg"><div class="score-inner"><strong>'+percent+'%</strong><small>skor</small></div></div><div><span class="eyebrow">LATIHAN SELESAI</span><h1 class="result-title">'+(percent>=85?"Kerja bagus!":percent>=65?"Terus tingkatkan!":"Jadikan bahan belajar berikutnya.")+'</h1><p class="result-sub">Jawaban benar '+correct+' dari '+total+' soal. '+(state.reviewMode?"Ini adalah hasil sesi ulasan soal salah.":"Urutan soal pada sesi berikutnya akan diacak kembali.")+'</p></div></div><div class="result-grades">'+gradeHTML+'</div><div class="result-section"><h3>Hasil per bab</h3><table class="result-table"><thead><tr><th>Bab / kelas</th><th>Benar</th></tr></thead><tbody>'+chapterHTML+'</tbody></table></div><div class="result-actions"><button class="btn btn-primary" onclick="startQuiz(\'all\')">Ulangi 100 soal ↻</button>'+(wrong>0&&!state.reviewMode?'<button class="btn btn-secondary" onclick="startQuiz(\'wrong\')">Ulangi '+wrong+' soal yang salah</button>':'')+'<button class="btn btn-secondary" onclick="goHome()">Kembali ke beranda</button></div>';
 }
 function showHomeAfterReview(){
- document.getElementById("resultView").style.display="block";
+ state.view="reviewResult";saveSession();document.body.classList.remove("quiz-active");document.getElementById("resultView").style.display="block";
  document.getElementById("quizView").style.display="none";
  document.getElementById("resultContent").innerHTML='<div class="result-head"><div><span class="eyebrow">ULASAN SELESAI</span><h1 class="result-title">Ulasan soal salah selesai.</h1><p class="result-sub">Gunakan penjelasan yang baru dibaca untuk memperkuat materi.</p></div></div><div class="result-actions"><button class="btn btn-primary" onclick="startQuiz(\'all\')">Ulangi 100 soal ↻</button><button class="btn btn-secondary" onclick="goHome()">Kembali ke beranda</button></div>';
 }
-function confirmHome(){if(state.index>0&&!confirm("Keluar dari kuis? Progres sesi ini akan diakhiri."))return;goHome()}
-function goHome(event){if(event&&event.preventDefault)event.preventDefault();state.view="home";document.getElementById("homeView").style.display="block";document.getElementById("quizView").style.display="none";document.getElementById("resultView").style.display="none";window.scrollTo({top:0,behavior:"smooth"})}
+function confirmHome(){if(state.index>0&&!confirm("Kembali ke beranda? Progres sesi akan disimpan dan bisa dilanjutkan."))return;goHome()}
+function goHome(event){if(event&&event.preventDefault)event.preventDefault();state.view="home";saveSession();document.body.classList.remove("quiz-active");document.getElementById("homeView").style.display="block";document.getElementById("quizView").style.display="none";document.getElementById("resultView").style.display="none";syncResumeButton();window.scrollTo(0,0)}
 function scrollToMaterials(){document.getElementById("materialsPanel").scrollIntoView({behavior:"smooth",block:"start"})}
 function validateQuestionBank(){
  const expected=100;
  if(questionBank.length!==expected)throw new Error("Jumlah soal harus tepat 100, saat ini: "+questionBank.length);
  questionBank.forEach(function(q,i){if(q.options.length!==4||q.answer<0||q.answer>3)throw new Error("Format soal bermasalah pada "+q.id)});
 }
-buildMaterials();validateQuestionBank();
+buildMaterials();validateQuestionBank();restoreSession();
 </script>
 </body>
 </html>
