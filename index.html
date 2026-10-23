@@ -100,6 +100,23 @@ h1{font-size:clamp(31px,4.6vw,48px);line-height:1.1;letter-spacing:-1.7px;margin
 .result-table td:last-child,.result-table th:last-child{text-align:right}
 .result-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:27px}
 footer{max-width:1120px;margin:0 auto;padding:0 24px 28px;display:flex;justify-content:space-between;gap:12px;color:#8b96a8;font-size:11px}
+
+/* Full-screen roast feedback */
+.roast-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;overflow:auto;padding:clamp(14px,3vw,42px);color:#fff;background:#151a2d}
+.roast-overlay.good{background:radial-gradient(ellipse at top,#164e43 0%,#102b2b 55%,#101827 100%)}
+.roast-overlay.bad{background:radial-gradient(ellipse at top,#772c35 0%,#351820 55%,#171320 100%)}
+.roast-content{position:relative;width:min(1320px,100%);max-height:100%;overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.2vh,24px);padding:clamp(30px,4vw,58px) clamp(8px,2vw,24px);text-align:center}
+.roast-kicker{font-size:clamp(12px,1.5vw,17px);font-weight:950;letter-spacing:.18em;text-transform:uppercase;padding:9px 15px;border:1px solid #ffffff45;border-radius:999px;background:#ffffff13}
+.roast-title{max-width:1250px;font-size:clamp(32px,5.7vw,78px);font-weight:1000;line-height:1.04;letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:anywhere;text-wrap:balance;text-shadow:0 5px 25px #0005}
+.roast-answer{max-width:1100px;font-size:clamp(18px,2.4vw,29px);font-weight:850;line-height:1.3}
+.roast-explanation{width:min(1000px,100%);padding:clamp(14px,2.5vw,24px);border:1px solid #ffffff30;border-radius:18px;background:#ffffff12;font-size:clamp(16px,1.8vw,22px);line-height:1.55}
+.roast-footer{font-size:clamp(13px,1.5vw,17px);font-weight:750;color:#ffffffc9}
+.roast-footer kbd{display:inline-grid;place-items:center;min-width:34px;padding:3px 9px;margin:0 3px;border:1px solid #ffffff70;border-bottom-width:3px;border-radius:8px;background:#ffffff17;color:#fff;font:inherit}
+.roast-close{position:absolute;top:0;right:0;display:flex;align-items:center;gap:9px;border:1px solid #ffffff65;border-radius:999px;padding:9px 14px;background:#ffffff18;color:#fff;font-size:13px;font-weight:900}
+.roast-close-mark{font-size:23px;line-height:.8}
+.roast-close:hover{background:#ffffff30}
+@media(max-width:760px){.roast-overlay{padding:10px}.roast-content{gap:15px;padding:58px 5px 14px}.roast-title{font-size:clamp(30px,8.5vw,49px);letter-spacing:-.03em}.roast-answer{font-size:clamp(17px,4.5vw,22px)}.roast-explanation{font-size:15px;padding:13px;border-radius:13px}.roast-close{top:2px;right:2px;padding:8px 12px}.roast-footer{font-size:13px}}
+
 .hidden{display:none!important}
 @media(max-width:760px){
  main{padding:22px 15px 35px}.hero{grid-template-columns:1fr;gap:12px}.hero-copy{padding:25px}.hero-stats{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:13px}.stats-heading,.grade-counts{grid-column:1/-1}
@@ -198,6 +215,16 @@ body.quiz-active .quiz-actions .btn{padding:10px 15px}
  </section>
 </main>
 <footer><span>Kuis IPA · Media latihan mandiri</span><span>Materi kelas 7, 8, dan 9</span></footer>
+<div class="roast-overlay hidden" id="roastOverlay" role="dialog" aria-modal="true" aria-labelledby="roastTitle">
+ <div class="roast-content">
+  <button type="button" class="roast-close" onclick="dismissRoastOverlay()" aria-label="Tutup feedback"><span class="roast-close-mark" aria-hidden="true">×</span><span>TUTUP · X</span></button>
+  <div class="roast-kicker" id="roastStatus">FEEDBACK JAWABAN</div>
+  <div class="roast-title" id="roastTitle">Jawabanmu sudah diperiksa.</div>
+  <div class="roast-answer" id="roastAnswer"></div>
+  <div class="roast-explanation"><strong>Pembahasan:</strong> <span id="roastExplanation"></span></div>
+  <div class="roast-footer">Tekan <kbd>X</kbd> untuk menutup feedback, lalu <kbd>Enter</kbd> untuk lanjut.</div>
+ </div>
+</div>
 <script>
 "use strict";
 const materials=[
@@ -1376,8 +1403,122 @@ const chapterInfo=[];
 materials.forEach(function(m){chapterInfo.push({name:m.chapter,grade:m.grade,book:m.book,count:m.items.length})});
 const questionBank=[];
 materials.forEach(function(m,mi){m.items.forEach(function(q,qi){questionBank.push({id:"m"+mi+"q"+qi,grade:m.grade,book:m.book,chapter:m.chapter,question:q.q,options:q.options,answer:q.answer,explanation:q.explanation})})});
+
+const ROASTS={
+ correct:[
+  "Modal hoki, jangan banyak gaya.",
+  "Benar satu, sombongnya sudah satu kecamatan.",
+  "Wih, tumben otaknya masuk kelas!",
+  "Anak SD juga bisa, jangan bangga dulu.",
+  "Benar doang, gaya sudah kayak juara olimpiade.",
+  "Hoki lu lagi bagus, rupanya.",
+  "Akhirnya benar juga. Tadi gurunya hampir kehilangan harapan.",
+  "Baru satu soal, senyumnya sudah sampai belakang kepala.",
+  "Benar?! Kirain tombol jawaban cuma buat pajangan.",
+  "Jangan-jangan lu asal pilih dan kebetulan selamat.",
+  "Buset, kali ini tebakan lu punya masa depan.",
+  "Benar satu langsung berasa paling pintar sekelas.",
+  "Tumben jawaban lu nggak bikin guru menghela napas.",
+  "Wah, keajaiban kelas hari ini sudah dimulai.",
+  "Benar lagi? Jangan-jangan soalnya kasihan sama lu.",
+  "Otak lu akhirnya absen juga.",
+  "Santai, Bos. Baru menang lawan satu soal.",
+  "Benar satu, cerita ke anak cucu nanti malam.",
+  "Gaya lu sudah ranking satu, hasilnya baru satu benar.",
+  "Ternyata lu bisa juga kalau kebetulan mendukung.",
+  "Jangan senyum begitu, jawabannya saja yang benar, bukan hidup lu.",
+  "Akhirnya pilihan lu tidak bikin orang lain ikut bingung.",
+  "Wah, hari ini guru nggak perlu menebak isi kepala lu.",
+  "Benar lagi? Ini akun lu dipakai siapa?",
+  "Hebat, satu soal berhasil dilewati tanpa drama."
+ ],
+ wrong:[
+  "LOL, lu jawab apa sih?",
+  "Kocak lu, soalnya nanya apa, jawaban lu ke mana.",
+  "Ketahuan sering tidur di kelas, nih.",
+  "Lu baca soal pakai mata atau pakai perasaan?",
+  "Jarinya paling cepat, mikirnya paling akhir.",
+  "Yakin banget, salahnya juga yakin banget.",
+  "Lu lagi jawab soal apa lagi mengarang bebas?",
+  "Empat pilihan, lu berhasil pilih masalah.",
+  "Jawaban lu bikin guru pengen pura-pura nggak kenal.",
+  "Lu tadi dengar penjelasan atau cuma dengar suara?",
+  "Waduh, otaknya ketinggalan di kelas sebelah.",
+  "Ini jawaban atau hasil tunjuk mata tertutup?",
+  "Lu pencet dulu, mikirnya nanti malam?",
+  "Baca soalnya, jangan cuma kenalan sama pilihan jawabannya.",
+  "Lu sama jawaban benar kayaknya belum pernah ketemu.",
+  "Hoki pun sampai angkat tangan melihat jawaban lu.",
+  "Percaya diri lu mahal, ketepatan jawaban lu diskon besar.",
+  "Lu memilih jawaban atau sedang memilih penderitaan?",
+  "Soal sesingkat ini, jawaban lu malah bikin cerita panjang.",
+  "Tadi pas dijelaskan, pikiran lu piknik ke mana?",
+  "Jawaban lu bikin tanda tanya ikut kebingungan.",
+  "Lu kira semua pilihan jawaban cuma hiasan?",
+  "Guru menjelaskan, lu mengangguk. Hasilnya malah begini.",
+  "Lu jawab secepat kilat, hasilnya selambat pemahaman.",
+  "Soalnya di depan mata, jawabannya di luar nalar.",
+  "Kalau asal pilih dapat piala, lemari lu sudah penuh.",
+  "Lu bukan kekurangan pilihan, lu kebanyakan percaya diri.",
+  "Salahnya bukan main, yakinnya juga bukan main.",
+  "Jawaban lu punya keberanian yang tidak dimiliki kebenaran.",
+  "Ini kuis IPA, bukan lomba bikin guru geleng-geleng.",
+  "Lu membaca pertanyaannya sampai tamat nggak, sih?",
+  "Pilihan lu bikin jawaban lain merasa lebih berguna.",
+  "Waduh, logikanya sedang tidak satu alamat sama soal.",
+  "Lu mau cepat selesai atau mau benar? Soalnya dua-duanya belum.",
+  "Jawaban lu melenceng, sampai tujuan awalnya lupa.",
+  "Tadi gayanya paling yakin, sekarang hasilnya paling malu-maluin.",
+  "Lu mengerjakan soal atau sedang mengetes kesabaran layar?",
+  "Sepertinya buku dan lu cuma kenal nama.",
+  "Jawaban lu bikin guru bertanya, 'Tadi saya ngajarin apa?'",
+  "Kalau jawaban salah bisa bicara, jawaban lu sudah pidato.",
+  "Lu pilih jawaban pakai ilmu atau pakai undian?",
+  "Soalnya nggak menjebak, lu sendiri yang nyasar.",
+  "Ini bukan tebak-tebakan sama teman sebangku, Bos.",
+  "Jawaban lu datang dari dimensi yang berbeda.",
+  "Lu yakin sekali, sampai salahnya kelihatan percaya diri.",
+  "Kalau membaca soal itu olahraga, lu tadi baru pemanasan.",
+  "Waktu lu habis buat mikir atau habis buat bengong?",
+  "Lu pilih jawaban yang benar-benar nggak punya hubungan sama pertanyaan.",
+  "Bahkan pilihan yang nggak lu pilih mungkin ikut lega.",
+  "Jawaban lu barusan bikin guru ingin memeriksa ulang matanya.",
+  "Lu sedang mengerjakan kuis atau membuat kuis baru?",
+  "Salah begini, pilihan jawabannya sampai ikut malu.",
+  "Lu dan pemahaman materi sedang tidak saling menyapa.",
+  "Ini jawaban spontan atau hasil rapat tanpa ketua?",
+  "Lu baca soal setengah, jawabnya sepenuh hati.",
+  "Sepertinya lu memilih jawaban berdasarkan siapa yang paling ganteng hurufnya.",
+  "Lu mengalahkan soal yang bahkan tidak menyerang lu.",
+  "Jawabannya sudah ada di pilihan, kok masih bisa tersesat?",
+  "Gaya mengerjakan lu seperti ahli, hasilnya seperti baru datang.",
+  "SALAH LAGI?! Lu sedang mengoleksi jawaban keliru, ya?"
+ ]
+};
+const ROAST_COMBOS={
+ correct:{
+  2:"Dua kali benar, lu sudah mulai merasa tak terkalahkan.",
+  3:"TIGA COMBO! Jangan-jangan soal berikutnya belum kenal siapa lu.",
+  4:"Empat kali benar. Lu mulai berlagak jadi wali kelas.",
+  5:"Lima benar! Lu latihan diam-diam atau soalnya lagi baik hati?",
+  7:"Tujuh combo, gaya lu sudah minta dipanggil Pak Profesor.",
+  10:"Sepuluh benar?! Pede lu sekarang bisa terdengar dari kelas sebelah."
+ },
+ wrong:{
+  2:"Dua kali salah, lu lagi pemanasan menuju mana?",
+  3:"Tiga kali meleset! Lu lagi lomba salah sama siapa?",
+  4:"Empat kali terpeleset. Sepertinya perlu rem sebelum memilih jawaban.",
+  5:"Lima kali salah, jawaban benar sudah jadi orang asing buat lu.",
+  7:"Tujuh kali salah, ini kuis apa tur keliling pilihan keliru?",
+  10:"Sepuluh kali salah! Lu sedang berburu rekor yang salah, ya?"
+ },
+ correctAfterWrong:"LAH, BENAR?! Kirain lu sudah pindah jurusan.",
+ wrongAfterCorrect:"WKWK, baru juga gaya juara, langsung terpeleset."
+};
+let lastRoastMessage="";
+
 const SESSION_KEY="kuis_ipa_smp_session_v2";
-const state={view:"home",deck:[],index:0,reviewMode:false,results:[]};
+const state={view:"home",deck:[],index:0,reviewMode:false,results:[],feedbackOverlayOpen:false,activeRoast:null};
 function saveSession(){try{localStorage.setItem(SESSION_KEY,JSON.stringify({version:2,view:state.view,deck:state.deck,index:state.index,reviewMode:state.reviewMode,results:state.results,savedAt:Date.now()}))}catch(e){console.warn("Sesi tidak dapat disimpan ke localStorage.",e)}}
 function hasResumableSession(){return state.deck.length>0&&(state.reviewMode||!(state.results.length>0&&state.results.length===state.deck.length))}
 function syncResumeButton(){const button=document.getElementById("resumeBtn"),start=document.getElementById("startBtn"),note=document.getElementById("sessionNote");if(!button||!start||!note)return;const available=hasResumableSession();button.classList.toggle("hidden",!available);start.innerHTML=available?'Mulai sesi baru <span aria-hidden="true">↻</span>':'Mulai 100 soal <span aria-hidden="true">→</span>';if(available){button.textContent="Lanjutkan sesi · soal "+Math.min(state.index+1,state.deck.length)+"/"+state.deck.length;note.classList.remove("hidden");note.innerHTML="<strong>Progres tersimpan.</strong> Lanjutkan untuk mempertahankan jawaban dan urutan soal sebelumnya. Mulai sesi baru akan mengacak soal kembali dan mengganti progres sesi yang tersimpan."}else{note.classList.add("hidden");note.textContent=""}}
@@ -1393,7 +1534,7 @@ function startQuiz(mode){
  if(state.reviewMode){chosen=state.results.filter(function(r){return !r.isCorrect}).map(function(r){return r.question})}
  if(!chosen.length){alert("Belum ada soal yang salah untuk diulang. Kerjakan kuis lengkap terlebih dahulu.");return}
  state.deck=shuffle(chosen).map(function(q){const opts=shuffle(q.options.map(function(text,i){return {text:text,correct:i===q.answer}}));return {question:q,options:opts,selected:null,checked:false}});
- state.index=0;state.view="quiz";if(!state.reviewMode)state.results=[];
+ state.index=0;state.view="quiz";state.feedbackOverlayOpen=false;state.activeRoast=null;if(!state.reviewMode)state.results=[];
  document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="flex";document.body.classList.add("quiz-active");
  saveSession();syncResumeButton();renderQuestion();window.scrollTo(0,0);
 }
@@ -1429,15 +1570,55 @@ function renderQuestion(){
  document.getElementById("nextBtn").classList.toggle("hidden",!entry.checked);
  document.getElementById("nextBtn").textContent=state.index===total-1?(state.reviewMode?"Lihat hasil ulasan":"Lihat hasil akhir"):"Berikutnya →";
  document.getElementById("actionHint").textContent=entry.checked?"Enter lanjut · Backspace kembali.":"A–D pilih · Enter periksa · Backspace kembali.";
+ renderRoastOverlay(entry);
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
 function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;saveSession();renderQuestion()}
-function checkAnswer(){const e=state.deck[state.index];if(e.selected===null||e.checked)return;e.checked=true;saveSession();renderQuestion()}
+function currentStreak(isCorrect,startIndex){let streak=0;for(let i=startIndex;i>=0;i--){const item=state.deck[i];const valid=item.checked&&item.selected!==null;const itemCorrect=valid&&!!item.options[item.selected].correct;if(!valid||itemCorrect!==isCorrect)break;streak++}return streak}
+function pickRoast(type){let choices=ROASTS[type].filter(function(message){return message!==lastRoastMessage});if(!choices.length)choices=ROASTS[type];const message=choices[Math.floor(Math.random()*choices.length)];lastRoastMessage=message;return message}
+function createRoast(entry){
+ const isCorrect=!!(entry.selected!==null&&entry.options[entry.selected]&&entry.options[entry.selected].correct);
+ let message="";
+ if(state.index>0){
+  const previous=state.deck[state.index-1];
+  if(isCorrect&&previous.checked&&previous.selected!==null&&!previous.options[previous.selected].correct&&currentStreak(false,state.index-1)>=3)message=ROAST_COMBOS.correctAfterWrong;
+  if(!isCorrect&&previous.checked&&previous.selected!==null&&previous.options[previous.selected].correct&&currentStreak(true,state.index-1)>=3)message=ROAST_COMBOS.wrongAfterCorrect;
+ }
+ if(!message)message=ROAST_COMBOS[isCorrect?"correct":"wrong"][currentStreak(isCorrect,state.index)]||"";
+ if(message&&message===lastRoastMessage)message="";
+ if(!message)message=pickRoast(isCorrect?"correct":"wrong");else lastRoastMessage=message;
+ return {message:message,isCorrect:isCorrect};
+}
+function renderRoastOverlay(entry){
+ const overlay=document.getElementById("roastOverlay");
+ if(!overlay)return;
+ if(!state.feedbackOverlayOpen||!entry.checked||!state.activeRoast){overlay.classList.add("hidden");return}
+ const isCorrect=state.activeRoast.isCorrect;
+ overlay.classList.remove("hidden","good","bad");
+ overlay.classList.add(isCorrect?"good":"bad");
+ document.getElementById("roastStatus").textContent=isCorrect?"JAWABAN BENAR — JANGAN GE-ER":"JAWABAN SALAH — SILAKAN RENUNGKAN";
+ document.getElementById("roastTitle").textContent=state.activeRoast.message;
+ const answerText=entry.options.find(function(option){return option.correct}).text;
+ document.getElementById("roastAnswer").textContent=isCorrect?"Jawaban lu benar: "+answerText:"Jawaban yang benar: "+answerText;
+ document.getElementById("roastExplanation").textContent=entry.question.explanation;
+}
+function dismissRoastOverlay(){
+ state.feedbackOverlayOpen=false;
+ document.getElementById("roastOverlay").classList.add("hidden");
+ const nextButton=document.getElementById("nextBtn");
+ if(nextButton&&!nextButton.classList.contains("hidden"))nextButton.focus();
+}
+function checkAnswer(){const e=state.deck[state.index];if(e.selected===null||e.checked)return;e.checked=true;state.activeRoast=createRoast(e);state.feedbackOverlayOpen=true;saveSession();renderQuestion()}
 document.addEventListener("keydown",function(event){
  if(state.view!=="quiz"||!state.deck.length||event.altKey||event.ctrlKey||event.metaKey)return;
  const target=event.target;
  if(target&&(target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)))return;
  const key=event.key.toLowerCase();
+ if(state.feedbackOverlayOpen){
+  if(key==="x"){event.preventDefault();if(!event.repeat)dismissRoastOverlay();return}
+  if(["a","b","c","d","enter","backspace"].includes(key))event.preventDefault();
+  return;
+ }
  if(["a","b","c","d"].includes(key)){
   event.preventDefault();
   if(!event.repeat&&!state.deck[state.index].checked)selectAnswer(key.charCodeAt(0)-97);
@@ -1463,7 +1644,7 @@ function moveQuestion(delta){
    if(state.reviewMode){showHomeAfterReview();return}
    finishQuiz();return;
  }
- state.index=next;saveSession();renderQuestion();window.scrollTo(0,0);
+ state.feedbackOverlayOpen=false;state.activeRoast=null;state.index=next;saveSession();renderQuestion();window.scrollTo(0,0);
 }
 function finishQuiz(){
  state.view="result";
@@ -1487,7 +1668,7 @@ function showHomeAfterReview(){
  document.getElementById("resultContent").innerHTML='<div class="result-head"><div><span class="eyebrow">ULASAN SELESAI</span><h1 class="result-title">Ulasan soal salah selesai.</h1><p class="result-sub">Gunakan penjelasan yang baru dibaca untuk memperkuat materi.</p></div></div><div class="result-actions"><button class="btn btn-primary" onclick="startQuiz(\'all\')">Ulangi 100 soal ↻</button><button class="btn btn-secondary" onclick="goHome()">Kembali ke beranda</button></div>';
 }
 function confirmHome(){if(state.index>0&&!confirm("Kembali ke beranda? Progres sesi akan disimpan dan bisa dilanjutkan."))return;goHome()}
-function goHome(event){if(event&&event.preventDefault)event.preventDefault();state.view="home";saveSession();document.body.classList.remove("quiz-active");document.getElementById("homeView").style.display="block";document.getElementById("quizView").style.display="none";document.getElementById("resultView").style.display="none";syncResumeButton();window.scrollTo(0,0)}
+function goHome(event){if(event&&event.preventDefault)event.preventDefault();state.view="home";state.feedbackOverlayOpen=false;state.activeRoast=null;document.getElementById("roastOverlay").classList.add("hidden");saveSession();document.body.classList.remove("quiz-active");document.getElementById("homeView").style.display="block";document.getElementById("quizView").style.display="none";document.getElementById("resultView").style.display="none";syncResumeButton();window.scrollTo(0,0)}
 function validateQuestionBank(){
  const expected=100;
  if(questionBank.length!==expected)throw new Error("Jumlah soal harus tepat 100, saat ini: "+questionBank.length);
