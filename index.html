@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f9fc">
+<meta name="description" content="100 kuis IPA SMP dari materi kelas 7, 8, dan 9. Urutan soal diacak, lengkap dengan pembahasan dan hasil belajar.">
+<meta property="og:title" content="Kuis IPA — 100 Soal SMP">
+<meta property="og:description" content="Latihan IPA kelas 7, 8, dan 9 dengan urutan soal acak dan pembahasan.">
+<meta property="og:type" content="website">
+<title>Kuis IPA — 100 Soal SMP</title>
+<style>
+:root{color-scheme:light;--bg:#f5f7fb;--surface:#fff;--ink:#19243a;--muted:#68758b;--line:#e5eaf2;--primary:#315ee8;--primary-dark:#2348c5;--primary-pale:#edf2ff;--teal:#087e8b;--teal-pale:#e8f8f8;--green:#18794e;--green-pale:#eaf8f0;--red:#b42335;--red-pale:#fff0f1;--amber:#9b6300;--amber-pale:#fff7df;--shadow:0 18px 50px rgba(23,37,72,.07);--radius:20px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #315ee855;outline-offset:3px}
+button:disabled{cursor:not-allowed;opacity:.4}
+.topbar{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 max(22px,calc((100vw - 1120px)/2));background:#ffffffdd;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:11px;color:inherit;text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:850;font-size:18px;box-shadow:0 5px 12px #315ee82e}
+.brand-name{font-weight:800;letter-spacing:-.4px;font-size:16px;line-height:1.2}
+.brand-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.top-pill{font-size:12px;color:#4b5b76;background:#f1f4f9;border:1px solid #e6ebf3;border-radius:999px;padding:7px 12px;font-weight:700;white-space:nowrap}
+main{max-width:1120px;margin:0 auto;padding:40px 24px 64px;min-height:calc(100vh - 130px)}
+.hero{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(270px,.78fr);gap:24px;align-items:stretch;margin-bottom:22px}
+.hero-copy,.hero-stats,.panel,.quiz-card,.result-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero-copy{padding:clamp(25px,4vw,45px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.eyebrow{font-size:11px;font-weight:800;color:var(--primary);letter-spacing:1.4px;text-transform:uppercase}
+h1{font-size:clamp(31px,4.6vw,48px);line-height:1.1;letter-spacing:-1.7px;margin:14px 0}
+.hero-copy p{max-width:570px;margin:0;color:var(--muted);font-size:15px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.btn{border:1px solid transparent;border-radius:12px;padding:12px 18px;font-size:13px;font-weight:750;transition:background .15s,border-color .15s,transform .15s}
+.btn:hover:not(:disabled){transform:translateY(-1px)}
+.btn-primary{color:#fff;background:var(--primary);box-shadow:0 5px 12px #315ee82e}
+.btn-primary:hover:not(:disabled){background:var(--primary-dark)}
+.btn-secondary{background:#fff;border-color:var(--line);color:#34425a}
+.btn-secondary:hover:not(:disabled){background:#f7f9fd}
+.hero-stats{padding:23px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.stats-heading{font-size:13px;font-weight:800;margin-bottom:2px}
+.stat{display:flex;align-items:center;gap:13px}
+.stat-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:var(--primary-pale);color:var(--primary);font-size:14px;font-weight:850;flex-shrink:0}
+.stat strong{display:block;font-size:18px;letter-spacing:-.4px;line-height:1.25}
+.stat small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.grade-counts{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+.grade-pill{font-size:11px;font-weight:800;padding:6px 9px;border-radius:8px;white-space:nowrap}
+.g7{background:#eef3ff;color:#3155bd}.g8{background:#e9f8f4;color:#08785b}.g9{background:#f4efff;color:#7041b6}
+.panel{padding:23px 25px;margin-top:22px}
+.section-heading{font-size:16px;font-weight:800;letter-spacing:-.2px;margin:0 0 5px}
+.section-sub{font-size:13px;color:var(--muted);margin:0 0 18px}
+.material-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.material-row{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.material-number{width:30px;height:30px;display:grid;place-items:center;background:#f1f4f9;border-radius:9px;color:#63718a;font-size:11px;font-weight:850;flex-shrink:0}
+.material-text{min-width:0;flex:1}
+.material-text strong{display:block;font-size:12px;line-height:1.35}
+.material-text small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.material-count{font-size:11px;font-weight:800;color:#617087;white-space:nowrap}
+.notice{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:17px}
+#quizView,#resultView{display:none}
+.quiz-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.text-button{border:0;background:transparent;color:#56647a;padding:8px 0;font-size:12px;font-weight:750}
+.text-button:hover{color:var(--primary)}
+.progress-wrap{display:flex;align-items:center;gap:12px;min-width:210px;justify-content:flex-end}
+.progress-track{height:7px;background:#e8edf6;border-radius:100px;overflow:hidden;flex:1;max-width:210px}
+.progress-fill{height:100%;width:0;border-radius:100px;background:var(--primary);transition:width .2s}
+.progress-count{font-size:11px;color:var(--muted);font-weight:800;white-space:nowrap}
+.quiz-card{padding:clamp(22px,4.4vw,42px);min-height:470px}
+.question-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:25px}
+.chapter-label{background:#f1f4f9;color:#47566d;border-radius:8px;padding:6px 9px;font-weight:750;font-size:11px}
+.book-label{font-size:11px;color:var(--muted);padding-left:3px}
+.question-overline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.question-number{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.6px}
+.question-title{font-size:clamp(20px,3vw,28px);line-height:1.35;letter-spacing:-.55px;margin:13px 0 24px;max-width:860px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.option{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;min-height:65px;padding:15px;border:1px solid var(--line);background:#fff;border-radius:13px;color:var(--ink);transition:border-color .15s,background .15s,box-shadow .15s}
+.option:hover:not(:disabled){border-color:#aabcf7;background:#fafbff}
+.option.selected{border-color:var(--primary);background:var(--primary-pale);box-shadow:0 0 0 1px var(--primary) inset}
+.option.correct{border-color:#81ceaa;background:var(--green-pale)}
+.option.wrong{border-color:#f1a2aa;background:var(--red-pale)}
+.option-key{width:27px;height:27px;display:grid;place-items:center;flex-shrink:0;border-radius:8px;background:#f0f3f8;color:#5c6b82;font-size:11px;font-weight:850}
+.option.selected .option-key{background:var(--primary);color:#fff}
+.option.correct .option-key{background:var(--green);color:var(--green)}
+.option.wrong .option-key{background:#ffd9de;color:var(--red)}
+.option-copy{font-size:13px;line-height:1.48;padding-top:3px}
+.feedback{display:none;margin-top:17px;padding:14px 16px;border-radius:12px;font-size:13px}
+.feedback.show{display:block}
+.feedback.good{color:#176340;background:var(--green-pale);border:1px solid #ccebd9}
+.feedback.bad{color:#9e2534;background:var(--red-pale);border:1px solid #f4d1d5}
+.feedback strong{display:block;margin-bottom:4px}
+.feedback p{margin:0;line-height:1.55}
+.quiz-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:25px}
+.quiz-actions-left,.quiz-actions-right{display:flex;align-items:center;gap:9px}
+.action-hint{font-size:11px;color:var(--muted)}
+.result-card{padding:clamp(23px,4vw,40px)}
+.result-head{display:flex;align-items:center;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:25px}
+.score-ring{width:100px;height:100px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--primary) var(--score-angle,0deg),#e9edf5 0);position:relative;flex-shrink:0}
+.score-ring:after{content:"";position:absolute;inset:8px;border-radius:50%;background:white}
+.score-inner{position:relative;z-index:1;text-align:center}
+.score-inner strong{font-size:22px;display:block;line-height:1.15}
+.score-inner small{font-size:10px;color:var(--muted)}
+.result-title{font-size:25px;letter-spacing:-.7px;margin:0 0 4px}
+.result-sub{font-size:13px;color:var(--muted);margin:0}
+.result-grades{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.grade-result{padding:15px;border:1px solid var(--line);border-radius:12px}
+.grade-result small{color:var(--muted);display:block;font-size:11px}
+.grade-result strong{display:block;font-size:21px;margin:4px 0}
+.grade-result span{font-size:11px;color:#4c5a70}
+.result-section{margin-top:27px}
+.result-section h3{font-size:14px;margin:0 0 12px}
+.result-table{width:100%;border-collapse:collapse;font-size:12px}
+.result-table th,.result-table td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--line)}
+.result-table th{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
+.result-table td:last-child,.result-table th:last-child{text-align:right}
+.result-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:27px}
+footer{max-width:1120px;margin:0 auto;padding:0 24px 28px;display:flex;justify-content:space-between;gap:12px;color:#8b96a8;font-size:11px}
+.hidden{display:none!important}
+@media(max-width:760px){
+ .topbar{height:62px;padding:0 17px}.top-pill{font-size:10px;padding:6px 9px}
+ main{padding:24px 15px 45px}.hero{grid-template-columns:1fr;gap:12px}.hero-copy{padding:25px}.hero-stats{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:13px}.stats-heading,.grade-counts{grid-column:1/-1}
+ .panel{padding:20px 17px}.material-grid{grid-template-columns:1fr}.material-row{padding:10px}
+ .quiz-toolbar{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%;justify-content:flex-start;min-width:0}.progress-track{max-width:none}
+ .quiz-card{min-height:0;padding:22px 17px}.question-meta{margin-bottom:20px}.options{grid-template-columns:1fr}.option{min-height:58px}
+ .quiz-actions{align-items:stretch}.quiz-actions-left,.quiz-actions-right{display:flex}.quiz-actions .btn{padding:11px 13px}
+ .result-grades{grid-template-columns:1fr}.result-table{font-size:11px}.result-table th,.result-table td{padding:9px 5px}
+ footer{padding:0 15px 22px;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="#" aria-label="Kuis IPA, beranda" onclick="goHome(event)">
+  <span class="brand-mark">Q</span><span><span class="brand-name">Kuis IPA</span><span class="brand-sub">LATIHAN IPA SMP</span></span>
+ </a>
+ <span class="top-pill">100 soal · Kelas 7–9</span>
+</header>
+<main>
+ <section id="homeView">
+  <div class="hero">
+   <div class="hero-copy">
+    <span class="eyebrow">LATIHAN MANDIRI</span>
+    <h1>Seberapa jauh kamu memahami IPA?</h1>
+    <p>Latihan 100 soal dari materi IPA kelas 7, 8, dan 9. Urutan soal diacak untuk setiap sesi, dan setiap soal dilengkapi pembahasan singkat setelah jawaban diperiksa.</p>
+    <div class="hero-actions"><button class="btn btn-primary" id="startBtn" onclick="startQuiz('all')">Mulai 100 soal <span aria-hidden="true">→</span></button><button class="btn btn-secondary" onclick="scrollToMaterials()">Lihat cakupan materi</button></div>
+   </div>
+   <div class="hero-stats">
+    <div class="stats-heading">Ringkasan kuis</div>
+    <div class="stat"><div class="stat-icon">100</div><div><strong>100 soal</strong><small>10 soal untuk setiap bab</small></div></div>
+    <div class="stat"><div class="stat-icon">↻</div><div><strong>Urutan acak</strong><small>Diacak saat sesi dimulai</small></div></div>
+    <div class="stat"><div class="stat-icon">✓</div><div><strong>Pembahasan</strong><small>Umpan balik per jawaban</small></div></div>
+    <div class="grade-counts"><span class="grade-pill g7">Kelas 7 · 30 soal</span><span class="grade-pill g8">Kelas 8 · 20 soal</span><span class="grade-pill g9">Kelas 9 · 50 soal</span></div>
+   </div>
+  </div>
+  <section class="panel" id="materialsPanel">
+   <h2 class="section-heading">Cakupan materi</h2>
+   <p class="section-sub">10 bab dari daftar materi yang sudah dibahas, dengan 10 soal pada setiap bab.</p>
+   <div class="material-grid" id="materialGrid"></div>
+   <div class="notice"><span aria-hidden="true">ⓘ</span><span>Label kelas mengikuti pengelompokan materi Buku 1A untuk kelas 7, Buku 2A untuk kelas 8, dan Buku 3A untuk kelas 9. Urutan soal diacak lintas bab; label kelas dan bab tetap ditampilkan.</span></div>
+  </section>
+ </section>
+ <section id="quizView" aria-live="polite">
+  <div class="quiz-toolbar">
+   <button class="text-button" onclick="confirmHome()">← Beranda</button>
+   <div class="progress-wrap"><span class="progress-count" id="progressCount">SOAL 1 / 100</span><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+  </div>
+  <article class="quiz-card">
+   <div class="question-meta" id="questionMeta"></div>
+   <div class="question-overline"><span class="eyebrow">UJI PEMAHAMAN</span><span class="question-number" id="questionNumber">SOAL 01</span></div>
+   <h2 class="question-title" id="questionText"></h2>
+   <div class="options" id="optionsWrap"></div>
+   <div class="feedback" id="feedback" role="status"></div>
+   <div class="quiz-actions">
+    <div class="quiz-actions-left"><button class="btn btn-secondary" id="prevBtn" onclick="moveQuestion(-1)">← Sebelumnya</button></div>
+    <div class="quiz-actions-right"><span class="action-hint" id="actionHint">Pilih jawaban terbaik.</span><button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()" disabled>Periksa jawaban</button><button class="btn btn-primary hidden" id="nextBtn" onclick="moveQuestion(1)">Berikutnya →</button></div>
+   </div>
+  </article>
+ </section>
+ <section id="resultView">
+  <div class="quiz-toolbar"><button class="text-button" onclick="goHome()">← Beranda</button><span class="top-pill">HASIL LATIHAN</span></div>
+  <article class="result-card" id="resultContent"></article>
+ </section>
+</main>
+<footer><span>Kuis IPA · Media latihan mandiri</span><span>Materi kelas 7, 8, dan 9</span></footer>
+<script>
+"use strict";
+const materials=[
+{grade:7,book:"Buku 1A",chapter:"Hakikat Ilmu Sains dan Metode Ilmiah",items:[
+{q:"Apa yang menjadi dasar utama dalam penyusunan kesimpulan ilmiah?",options:["Bukti dan data hasil pengamatan","Pendapat yang paling populer","Dugaan yang tidak diuji","Keinginan agar hasil sesuai harapan"],answer:0,explanation:"Kesimpulan ilmiah harus didukung bukti dan data yang diperoleh melalui pengamatan atau penyelidikan."},
+{q:"Cabang ilmu sains yang secara khusus mempelajari makhluk hidup adalah…",options:["Geologi","Biologi","Astronomi","Fisika"],answer:1,explanation:"Biologi mempelajari makhluk hidup dan proses kehidupannya."},
+{q:"Seorang siswa mencatat bahwa daun tanaman tampak layu. Pernyataan tersebut termasuk…",options:["Hipotesis","Kesimpulan akhir","Observasi","Variabel kontrol"],answer:2,explanation:"Observasi adalah informasi yang diperoleh secara langsung melalui indra atau alat; daun tampak layu merupakan hasil pengamatan."},
+{q:"Dalam metode ilmiah, hipotesis paling tepat dipahami sebagai…",options:["Daftar alat percobaan","Hasil akhir yang tidak boleh berubah","Data yang sudah terbukti benar","Dugaan sementara yang dapat diuji"],answer:3,explanation:"Hipotesis merupakan jawaban sementara terhadap pertanyaan yang perlu diuji dengan bukti."},
+{q:"Peneliti mengubah banyaknya cahaya yang diterima tanaman dan mengukur pertumbuhannya. Banyaknya cahaya adalah variabel…",options:["Bebas","Terikat","Kontrol","Tetap yang tidak diubah"],answer:0,explanation:"Variabel bebas adalah faktor yang sengaja diubah untuk melihat pengaruhnya."},
+{q:"Manakah contoh data kuantitatif?",options:["Permukaan batu terasa kasar","Air terlihat keruh","Panjang pensil 15 cm","Daun berwarna hijau"],answer:2,explanation:"Data kuantitatif berupa angka hasil pengukuran atau perhitungan, seperti panjang 15 cm."},
+{q:"Satuan dasar SI untuk mengukur panjang adalah…",options:["Liter","Meter","Gram","Menit"],answer:1,explanation:"Meter (m) merupakan satuan dasar SI untuk panjang."},
+{q:"Alat yang sesuai untuk mengukur massa sebuah benda adalah…",options:["Termometer","Stopwatch","Gelas ukur","Neraca"],answer:3,explanation:"Neraca digunakan untuk mengukur massa, sedangkan termometer mengukur suhu dan stopwatch mengukur waktu."},
+{q:"Untuk mengurangi kesalahan paralaks ketika membaca skala alat ukur, mata sebaiknya berada…",options:["Tepat sejajar dengan tanda skala yang dibaca","Jauh di atas skala","Di bawah skala","Miring dari samping"],answer:0,explanation:"Posisi mata sejajar dengan tanda skala membantu menghindari perbedaan pembacaan akibat sudut pandang."},
+{q:"Sebuah percobaan bertujuan mengetahui pengaruh pupuk terhadap tinggi tanaman. Kesimpulan yang baik seharusnya…",options:["Selalu mendukung hipotesis awal","Mengabaikan data yang berbeda","Menjawab tujuan berdasarkan data yang diperoleh","Dibuat sebelum pengukuran dilakukan"],answer:2,explanation:"Kesimpulan harus menjawab tujuan percobaan dan sesuai dengan data, termasuk jika hasilnya tidak mendukung dugaan awal."}
+]},
+{grade:7,book:"Buku 1A",chapter:"Zat dan Perubahannya",items:[
+{q:"Materi atau zat dapat didefinisikan sebagai sesuatu yang…",options:["Selalu bisa dilihat oleh mata","Memiliki massa dan menempati ruang","Hanya memiliki wujud padat","Tidak memiliki volume"],answer:1,explanation:"Materi memiliki massa dan menempati ruang; materi dapat berwujud padat, cair, atau gas."},
+{q:"Mengapa benda padat umumnya mempertahankan bentuknya?",options:["Partikelnya berjauhan dan bebas bergerak ke segala arah","Partikelnya tidak bergerak sama sekali","Partikelnya berubah menjadi cair","Partikelnya tersusun rapat dan bergetar di sekitar posisi tetap"],answer:3,explanation:"Partikel zat padat tersusun rapat dan hanya bergetar di sekitar posisi relatif tetap, sehingga bentuknya terjaga."},
+{q:"Sifat zat cair yang tepat adalah…",options:["Bentuk mengikuti wadah, volume relatif tetap","Bentuk dan volumenya selalu mengikuti wadah","Bentuk tetap, tetapi volume berubah mengikuti wadah","Partikelnya memenuhi seluruh ruang seperti gas"],answer:0,explanation:"Zat cair memiliki volume relatif tetap tetapi bentuknya mengikuti wadah."},
+{q:"Apa yang terjadi pada partikel gas dibandingkan partikel zat padat?",options:["Partikel gas tersusun teratur dan tidak berpindah","Partikel gas kehilangan seluruh energinya","Partikel gas berjauhan dan bergerak bebas","Partikel gas terikat lebih kuat pada posisi tetap"],answer:2,explanation:"Partikel gas berjauhan dan bergerak bebas, sehingga gas mengisi ruang yang ditempatinya."},
+{q:"Perubahan wujud dari es menjadi air disebut…",options:["Mengembun","Mencair","Menyublim","Membeku"],answer:1,explanation:"Mencair adalah perubahan wujud dari padat menjadi cair."},
+{q:"Ketika air pada pakaian basah berubah menjadi uap air, proses itu disebut…",options:["Membeku","Mengembun","Deposisi","Menguap"],answer:3,explanation:"Menguap adalah perubahan wujud dari cair menjadi gas."},
+{q:"Titik-titik air yang muncul di sisi luar gelas berisi es terbentuk terutama karena…",options:["Uap air di udara mengembun pada permukaan gelas yang dingin","Air di dalam gelas menembus dinding gelas","Gelas berubah menjadi air","Es berubah langsung menjadi gas"],answer:0,explanation:"Uap air di udara kehilangan energi saat menyentuh permukaan dingin lalu mengembun menjadi cairan."},
+{q:"Manakah yang merupakan perubahan fisika?",options:["Kayu terbakar menjadi abu","Besi berkarat","Kertas dipotong menjadi bagian kecil","Susu menjadi asam akibat fermentasi"],answer:2,explanation:"Memotong kertas mengubah ukuran dan bentuk tanpa menghasilkan zat baru."},
+{q:"Tanda yang paling kuat bahwa telah terjadi perubahan kimia adalah…",options:["Benda berubah posisi","Terbentuk zat baru dengan sifat berbeda","Benda berubah bentuk karena dipotong","Benda larut tanpa reaksi kimia"],answer:1,explanation:"Perubahan kimia menghasilkan zat baru; perubahan warna, gas, atau endapan dapat menjadi petunjuk, bergantung pada prosesnya."},
+{q:"Metode yang sesuai untuk memisahkan pasir dari air adalah…",options:["Distilasi bertingkat","Kromatografi kertas","Penyubliman","Filtrasi atau penyaringan"],answer:3,explanation:"Filtrasi menahan partikel pasir pada penyaring dan memungkinkan air melewatinya."}
+]},
+{grade:7,book:"Buku 1A",chapter:"Gerak Benda dan Gaya",items:[
+{q:"Jarak tempuh berbeda dari perpindahan karena jarak tempuh…",options:["Selalu nol untuk benda bergerak","Memperhitungkan panjang seluruh lintasan yang dilalui","Selalu menunjukkan arah gerak","Hanya dapat diukur dalam satuan waktu"],answer:1,explanation:"Jarak adalah panjang seluruh lintasan, sedangkan perpindahan adalah perubahan posisi dari titik awal ke titik akhir beserta arahnya."},
+{q:"Sebuah sepeda menempuh jarak 120 meter dalam 20 sekon. Kelajuan rata-ratanya adalah…",options:["6 m/s","4 m/s","10 m/s","24 m/s"],answer:0,explanation:"Kelajuan rata-rata = jarak ÷ waktu = 120 m ÷ 20 s = 6 m/s."},
+{q:"Besaran yang menyatakan perubahan kecepatan tiap satuan waktu adalah…",options:["Jarak","Massa","Percepatan","Gaya berat"],answer:2,explanation:"Percepatan menyatakan perubahan kecepatan terhadap waktu."},
+{q:"Benda dikatakan mengalami gerak lurus beraturan (GLB) ketika…",options:["Arah dan kecepatan selalu berubah","Benda selalu bergerak makin cepat","Benda berhenti di setiap detik","Benda bergerak lurus dengan kecepatan tetap"],answer:3,explanation:"Pada GLB, benda bergerak di lintasan lurus dengan kecepatan tetap."},
+{q:"Pada gerak lurus berubah beraturan, percepatan benda dianggap…",options:["Selalu nol","Tetap","Selalu tidak terhingga","Sama dengan jarak"],answer:1,explanation:"GLBB adalah gerak lurus dengan percepatan tetap, sehingga kecepatan berubah secara teratur."},
+{q:"Gaya dapat mengubah keadaan benda, misalnya…",options:["Mengubah kecepatan atau arah geraknya","Menghilangkan massa benda dalam semua keadaan","Memastikan benda selalu bergerak lurus","Menghapus pengaruh gravitasi"],answer:0,explanation:"Gaya dapat mengubah kecepatan, arah gerak, dan bentuk benda."},
+{q:"Buku yang diletakkan di atas meja tetap diam sampai ada gaya resultan yang mengubah keadaannya. Contoh ini berkaitan dengan…",options:["Hukum Newton III saja","Hukum pemantulan","Hukum Newton I tentang kelembaman","Hukum Pascal"],answer:2,explanation:"Hukum Newton I menjelaskan bahwa benda mempertahankan keadaan diam atau gerak lurus beraturan jika resultan gaya nol."},
+{q:"Jika gaya resultan pada benda bermassa tetap diperbesar, maka percepatannya akan…",options:["Selalu menjadi nol","Menjadi sama dengan massa","Berkurang dalam semua keadaan","Bertambah searah gaya resultan"],answer:3,explanation:"Menurut Hukum Newton II, percepatan sebanding dengan gaya resultan untuk massa tetap: F = m × a."},
+{q:"Gaya gesek antara ban dan jalan berguna karena membantu kendaraan…",options:["Menghilangkan massa ban","Mendapatkan traksi untuk bergerak dan mengerem","Bergerak tanpa gaya apa pun","Selalu mencapai kelajuan tak terbatas"],answer:1,explanation:"Gaya gesek antara ban dan jalan menyediakan traksi sehingga kendaraan dapat bergerak, berbelok, dan mengerem."},
+{q:"Ketika seseorang mendorong dinding, dinding memberikan gaya reaksi pada orang tersebut. Ini menggambarkan…",options:["Hukum Newton III","Hukum Newton I saja","Hukum Archimedes","Hukum kekekalan massa"],answer:0,explanation:"Hukum Newton III menyatakan bahwa gaya interaksi muncul berpasangan, sama besar dan berlawanan arah, pada benda yang berbeda."}
+]},
+{grade:8,book:"Buku 2A",chapter:"Pengenalan Sel",items:[
+{q:"Sel disebut unit dasar kehidupan karena…",options:["Semua sel berukuran sama","Sel hanya ditemukan pada hewan","Sel merupakan unit struktural dan fungsional dasar makhluk hidup","Sel tidak membutuhkan proses kimia"],answer:2,explanation:"Sel membentuk struktur makhluk hidup dan menjalankan fungsi kehidupan."},
+{q:"Alat yang digunakan untuk melihat struktur sel yang terlalu kecil bagi mata adalah…",options:["Teleskop","Mikroskop","Barometer","Dinamometer"],answer:1,explanation:"Mikroskop memperbesar objek kecil agar strukturnya dapat diamati."},
+{q:"Bagian sel yang berfungsi mengatur keluar masuknya banyak zat adalah…",options:["Membran sel","Dinding sel saja","Kloroplas","Kromosom di luar sel"],answer:0,explanation:"Membran sel membatasi sel dan mengatur pertukaran zat dengan lingkungannya."},
+{q:"Bagian sel yang menyimpan sebagian besar materi genetik pada sel eukariotik adalah…",options:["Vakuola","Membran sel","Dinding sel","Inti sel atau nukleus"],answer:3,explanation:"Pada sel eukariotik, sebagian besar DNA berada di dalam nukleus."},
+{q:"Organel yang menjadi tempat utama fotosintesis pada sel tumbuhan adalah…",options:["Mitokondria","Kloroplas","Ribosom","Lisosom"],answer:1,explanation:"Kloroplas mengandung klorofil dan menjadi tempat berlangsungnya fotosintesis pada sel tumbuhan fotosintetik."},
+{q:"Struktur yang umumnya ada pada sel tumbuhan dan tidak dimiliki sel hewan adalah…",options:["Sitoplasma","Membran sel","Dinding sel dari bahan utama selulosa","Materi genetik"],answer:2,explanation:"Sel tumbuhan umumnya memiliki dinding sel yang mengandung selulosa; sel hewan tidak memiliki dinding sel."},
+{q:"Cairan di dalam sel tempat berbagai organel berada disebut…",options:["Sitoplasma","Jaringan","Organ","Kutikula"],answer:0,explanation:"Sitoplasma adalah bagian sel di antara membran dan inti yang menjadi lingkungan bagi banyak organel."},
+{q:"Sel darah merah memiliki bentuk dan struktur khusus yang terutama mendukung fungsi…",options:["Membuat empedu","Mendeteksi cahaya","Menghasilkan enzim pencernaan","Mengangkut oksigen dalam darah"],answer:3,explanation:"Sel darah merah mengandung hemoglobin yang mengikat dan mengangkut oksigen."},
+{q:"Kumpulan sel sejenis yang bekerja sama menjalankan fungsi tertentu disebut…",options:["Organisme","Jaringan","Sistem organ","Populasi"],answer:1,explanation:"Jaringan merupakan kumpulan sel sejenis atau terkait yang bekerja bersama menjalankan fungsi tertentu."},
+{q:"Urutan organisasi kehidupan yang tepat dari tingkat sederhana ke lebih kompleks adalah…",options:["Organ → sel → jaringan → sistem organ","Jaringan → sel → organisme → organ","Sel → jaringan → organ → sistem organ","Sistem organ → organ → sel → jaringan"],answer:2,explanation:"Sel membentuk jaringan, jaringan menyusun organ, dan organ bekerja sama dalam sistem organ."}
+]},
+{grade:8,book:"Buku 2A",chapter:"Struktur dan Fungsi Tubuh Makhluk Hidup",items:[
+{q:"Zat makanan yang terutama menjadi sumber energi cepat bagi tubuh adalah…",options:["Karbohidrat","Vitamin","Mineral","Air"],answer:0,explanation:"Karbohidrat merupakan sumber energi utama yang dapat diolah tubuh menjadi glukosa."},
+{q:"Fungsi penting protein dalam tubuh adalah…",options:["Menggantikan seluruh kebutuhan air","Menjadi satu-satunya sumber vitamin","Membangun dan memperbaiki jaringan tubuh","Menghentikan semua reaksi enzim"],answer:2,explanation:"Protein dibutuhkan antara lain untuk pertumbuhan serta perbaikan jaringan dan pembentukan enzim."},
+{q:"Pencernaan kimiawi karbohidrat dapat mulai berlangsung di mulut dengan bantuan…",options:["Asam klorida","Enzim amilase dalam air liur","Empedu","Hemoglobin"],answer:1,explanation:"Amilase saliva memulai pemecahan pati menjadi molekul karbohidrat yang lebih sederhana."},
+{q:"Sebagian besar penyerapan hasil pencernaan makanan berlangsung di…",options:["Kerongkongan","Usus besar","Lambung","Usus halus"],answer:3,explanation:"Usus halus memiliki permukaan luas dengan vili dan mikrovili untuk menyerap sebagian besar nutrien."},
+{q:"Asam klorida di lambung antara lain membantu…",options:["Membuat empedu di usus","Mengangkut oksigen","Menciptakan suasana asam dan membantu membunuh banyak mikroba yang masuk","Menyerap seluruh air dalam tubuh"],answer:2,explanation:"Asam lambung menciptakan kondisi asam untuk membantu pencernaan dan menghambat banyak mikroorganisme."},
+{q:"Komponen darah yang membawa oksigen terutama dengan bantuan hemoglobin adalah…",options:["Sel darah merah","Trombosit","Plasma saja","Sel saraf"],answer:0,explanation:"Hemoglobin di dalam sel darah merah mengikat oksigen untuk diangkut ke jaringan."},
+{q:"Pertukaran gas oksigen dan karbon dioksida pada paru-paru terutama terjadi di…",options:["Trakea","Laring","Diafragma","Alveolus"],answer:3,explanation:"Alveolus memiliki dinding tipis dan dikelilingi kapiler sehingga mendukung pertukaran gas."},
+{q:"Saat menarik napas normal, diafragma umumnya…",options:["Relaksasi dan naik sehingga rongga dada mengecil","Berkontraksi dan turun sehingga volume rongga dada meningkat","Menutup saluran pernapasan sepenuhnya","Menghentikan gerakan tulang rusuk"],answer:1,explanation:"Kontraksi diafragma membuatnya mendatar dan turun, meningkatkan volume rongga dada sehingga udara masuk."},
+{q:"Organ yang menyaring darah dan membentuk urine adalah…",options:["Lambung","Pankreas","Ginjal","Usus halus"],answer:2,explanation:"Ginjal menyaring darah, mengatur komposisi cairan, dan menghasilkan urine."},
+{q:"Pola makan seimbang paling tepat berarti…",options:["Mengonsumsi beragam pangan dengan jumlah sesuai kebutuhan tubuh","Menghindari semua lemak dalam setiap keadaan","Memakan satu jenis makanan saja","Melewatkan sarapan setiap hari"],answer:0,explanation:"Pola makan seimbang mencakup keragaman pangan dan jumlah yang sesuai kebutuhan energi serta zat gizi."}
+]},
+{grade:9,book:"Buku 3A",chapter:"Sistem Koordinasi dan Zat Adiktif",items:[
+{q:"Sistem saraf membantu tubuh terutama dengan cara…",options:["Menyimpan urine","Mencerna makanan di lambung","Menerima rangsang, mengolah informasi, lalu mengoordinasikan respons","Menghasilkan semua hormon tubuh"],answer:2,explanation:"Sistem saraf menerima rangsangan, memproses informasi, dan mengirim sinyal untuk mengatur respons tubuh."},
+{q:"Struktur yang menerima rangsangan seperti cahaya, suara, atau sentuhan disebut…",options:["Reseptor","Efektor","Antibodi","Alveolus"],answer:0,explanation:"Reseptor mendeteksi rangsangan tertentu dan mengubahnya menjadi sinyal yang dapat diproses tubuh."},
+{q:"Bagian sistem saraf pusat terdiri atas…",options:["Saraf sensorik dan kulit","Otak dan sumsum tulang belakang","Kelenjar keringat dan otot","Jantung dan pembuluh darah"],answer:1,explanation:"Sistem saraf pusat pada manusia terdiri atas otak dan sumsum tulang belakang."},
+{q:"Respons menarik tangan dengan cepat setelah menyentuh benda panas adalah contoh…",options:["Pencernaan kimiawi","Gerak sadar yang selalu lambat","Pembentukan antibodi","Gerak refleks"],answer:3,explanation:"Gerak refleks merupakan respons cepat melalui jalur saraf refleks, yang membantu melindungi tubuh dari bahaya."},
+{q:"Hormon berbeda dari impuls saraf karena hormon umumnya…",options:["Tidak memiliki pengaruh pada organ lain","Dikirim melalui darah dari sel atau kelenjar penghasilnya","Hanya bekerja di dalam tulang","Selalu menghasilkan respons seketika"],answer:1,explanation:"Hormon merupakan pembawa pesan kimia yang dibawa melalui darah menuju sel target; responsnya bisa lebih lambat dan bertahan lebih lama."},
+{q:"Nikotin pada produk tembakau termasuk zat yang…",options:["Dapat menyebabkan ketergantungan","Membantu paru-paru membersihkan semua racun","Tidak memengaruhi sistem saraf","Selalu meningkatkan kesehatan jantung"],answer:0,explanation:"Nikotin memengaruhi sistem saraf dan memiliki potensi ketergantungan."},
+{q:"Salah satu alasan alkohol berbahaya saat seseorang mengemudi adalah karena alkohol dapat…",options:["Meningkatkan ketepatan refleks dalam semua kondisi","Menghilangkan kebutuhan tidur","Mengganggu penilaian, koordinasi, dan waktu reaksi","Mengubah udara menjadi oksigen"],answer:2,explanation:"Alkohol dapat memperlambat waktu reaksi dan mengganggu koordinasi serta kemampuan mengambil keputusan."},
+{q:"Cara yang sehat untuk menolak ajakan menggunakan zat adiktif adalah…",options:["Mengikuti ajakan agar diterima kelompok","Mencoba sedikit tanpa mempertimbangkan risiko","Menyimpan ajakan tersebut dan mengabaikannya selalu","Menolak dengan tegas dan memilih kegiatan yang lebih aman"],answer:3,explanation:"Menolak secara tegas, menjauh dari situasi berisiko, dan meminta bantuan orang tepercaya merupakan strategi pencegahan yang lebih aman."},
+{q:"Kelenjar endokrin melepaskan hormon terutama ke…",options:["Ruang kosong di luar tubuh","Aliran darah","Permukaan tulang saja","Saluran pencernaan saja"],answer:1,explanation:"Kelenjar endokrin melepaskan hormon ke cairan jaringan dan umumnya ke aliran darah untuk mencapai sel target."},
+{q:"Ketika mendengar suara keras, tubuh dapat segera bereaksi karena informasi diteruskan melalui…",options:["Jalur saraf sensorik dan pusat pemrosesan saraf","Tulang tanpa peran sistem saraf","Ginjal menuju usus","Sel darah merah saja"],answer:0,explanation:"Informasi suara diterima reseptor pendengaran dan diteruskan melalui saraf ke pusat pemrosesan untuk menghasilkan respons."}
+]},
+{grade:9,book:"Buku 3A",chapter:"Homeostasis",items:[
+{q:"Homeostasis adalah kemampuan tubuh untuk…",options:["Menghentikan seluruh perubahan internal","Mempertahankan kondisi internal dalam kisaran yang sesuai","Menaikkan suhu tubuh tanpa batas","Menghindari semua rangsangan dari luar"],answer:1,explanation:"Homeostasis menjaga kondisi internal, seperti suhu, cairan, dan glukosa, dalam kisaran yang mendukung fungsi tubuh."},
+{q:"Ketika suhu lingkungan panas, keringat membantu mendinginkan tubuh melalui…",options:["Pembekuan darah","Peningkatan produksi tulang","Penguapan air dari permukaan kulit","Penghentian aliran darah"],answer:2,explanation:"Penguapan keringat memerlukan energi panas yang diambil dari permukaan kulit sehingga membantu mendinginkan tubuh."},
+{q:"Saat tubuh kedinginan, menggigil membantu menaikkan suhu karena…",options:["Otot berkontraksi berulang dan menghasilkan panas","Keringat menguap lebih cepat","Darah berhenti mengalir","Pencernaan berhenti secara permanen"],answer:0,explanation:"Kontraksi otot berulang saat menggigil menghasilkan panas yang membantu menaikkan suhu tubuh."},
+{q:"Saat tubuh terlalu panas, pembuluh darah dekat permukaan kulit dapat melebar. Proses ini disebut…",options:["Vasokonstriksi","Filtrasi","Osmosis","Vasodilatasi"],answer:3,explanation:"Vasodilatasi meningkatkan aliran darah ke kulit sehingga panas lebih mudah dilepas ke lingkungan."},
+{q:"Hormon yang membantu ginjal mengatur banyaknya air yang diserap kembali adalah…",options:["Insulin saja","ADH","Adrenalin saja","Melatonin saja"],answer:1,explanation:"ADH membantu mengatur reabsorpsi air di ginjal sehingga memengaruhi volume dan konsentrasi urine."},
+{q:"Ketika kadar glukosa darah naik setelah makan, hormon yang membantu menurunkannya adalah…",options:["Insulin","Glukagon","Adrenalin saja","Tiroksin saja"],answer:0,explanation:"Insulin membantu sel mengambil glukosa dan mendorong penyimpanan glukosa sehingga kadar glukosa darah menurun."},
+{q:"Saat kadar glukosa darah turun, hormon yang membantu menaikkannya dengan mendorong pelepasan glukosa dari simpanan hati adalah…",options:["Insulin","ADH","Glukagon","Oksitosin"],answer:2,explanation:"Glukagon merangsang hati melepaskan glukosa dari simpanan, membantu menaikkan kadar glukosa darah."},
+{q:"Mekanisme umpan balik negatif bekerja dengan cara…",options:["Memperkuat perubahan tanpa batas","Membuat semua proses tubuh berhenti","Menjaga gangguan agar selalu meningkat","Mengurangi penyimpangan dari kondisi acuan"],answer:3,explanation:"Umpan balik negatif menentang perubahan awal sehingga membantu mengembalikan kondisi internal menuju kisaran normal."},
+{q:"Saat kekurangan air, tubuh umumnya menghemat air dengan menghasilkan urine yang…",options:["Lebih pekat dan volumenya cenderung lebih sedikit","Selalu lebih banyak dan sangat encer","Tidak mengandung air sama sekali","Berubah menjadi darah"],answer:0,explanation:"Peningkatan reabsorpsi air di ginjal membantu tubuh menghasilkan urine lebih pekat dan mengurangi kehilangan air."},
+{q:"Mengapa homeostasis penting bagi enzim dan sel tubuh?",options:["Agar kondisi internal selalu berubah ekstrem","Agar kondisi seperti suhu dan pH berada dalam kisaran yang sesuai untuk reaksi tubuh","Agar tubuh tidak membutuhkan energi","Agar semua enzim bekerja sama cepat dalam suhu berapa pun"],answer:1,explanation:"Banyak reaksi sel bergantung pada kondisi seperti suhu, pH, dan keseimbangan cairan yang relatif stabil."}
+]},
+{grade:9,book:"Buku 3A",chapter:"Sistem Reproduksi Manusia",items:[
+{q:"Organ reproduksi laki-laki yang menghasilkan sperma adalah…",options:["Kandung kemih","Prostat","Testis","Ureter"],answer:2,explanation:"Testis menghasilkan sperma dan juga menghasilkan hormon testosteron."},
+{q:"Sel telur pada manusia dihasilkan oleh…",options:["Ovarium","Rahim","Vagina","Tuba falopi"],answer:0,explanation:"Ovarium menghasilkan sel telur dan hormon reproduksi seperti estrogen serta progesteron."},
+{q:"Pembuahan pada manusia umumnya terjadi di…",options:["Serviks","Vagina","Kandung kemih","Tuba falopi"],answer:3,explanation:"Pembuahan biasanya berlangsung di tuba falopi ketika sperma bertemu sel telur."},
+{q:"Menstruasi terjadi ketika…",options:["Semua sel tubuh mati","Lapisan dinding rahim meluruh saat tidak terjadi kehamilan","Ovarium berhenti berfungsi selamanya","Sperma diproduksi di rahim"],answer:1,explanation:"Jika tidak terjadi kehamilan, perubahan hormon memicu peluruhan lapisan dalam rahim yang keluar sebagai darah menstruasi."},
+{q:"Masa pubertas ditandai dengan…",options:["Berhentinya seluruh pertumbuhan tubuh","Hilangnya kebutuhan nutrisi","Perubahan fisik dan pematangan fungsi reproduksi","Tidak adanya perubahan hormon"],answer:2,explanation:"Pubertas merupakan tahap perkembangan ketika perubahan hormon menimbulkan perubahan fisik dan pematangan fungsi reproduksi."},
+{q:"Plasenta selama kehamilan berfungsi terutama untuk…",options:["Menjadi tempat pertukaran zat antara darah ibu dan janin","Menghasilkan sperma","Menggantikan seluruh fungsi paru-paru ibu","Mencerna makanan ibu"],answer:0,explanation:"Plasenta memungkinkan pertukaran oksigen, nutrien, dan sisa metabolisme antara ibu dan janin tanpa mencampurkan langsung seluruh darah mereka."},
+{q:"Peran utama rahim dalam kehamilan adalah…",options:["Menghasilkan urine","Menyimpan empedu","Memompa darah ke paru-paru","Menjadi tempat implantasi dan perkembangan embrio/janin"],answer:3,explanation:"Embrio berimplantasi pada lapisan rahim, dan rahim menjadi tempat janin berkembang selama kehamilan."},
+{q:"Perubahan suara pada banyak anak laki-laki selama pubertas terutama berkaitan dengan…",options:["Mengecilnya tulang dada","Pertumbuhan laring dan perubahan pita suara","Berhentinya kerja paru-paru","Perubahan warna darah"],answer:1,explanation:"Pengaruh hormon pubertas membuat laring dan pita suara tumbuh sehingga suara menjadi lebih berat."},
+{q:"Kebiasaan yang mendukung kesehatan sistem reproduksi adalah…",options:["Mengabaikan kebersihan pribadi","Menggunakan obat tanpa petunjuk","Menjaga kebersihan organ, memahami perubahan tubuh, dan mencari informasi tepercaya","Mempercayai semua informasi anonim tanpa pemeriksaan"],answer:2,explanation:"Kebersihan, pemahaman perubahan tubuh, dan informasi kesehatan dari sumber tepercaya mendukung kesehatan reproduksi."},
+{q:"Mengapa pendidikan kesehatan reproduksi untuk remaja perlu disampaikan secara benar dan sesuai usia?",options:["Agar remaja dapat memahami perubahan tubuh dan membuat keputusan yang bertanggung jawab","Agar semua pertanyaan tentang kesehatan dilarang","Agar perubahan pubertas dapat dihentikan","Agar remaja tidak perlu berkonsultasi kepada tenaga kesehatan"],answer:0,explanation:"Informasi yang akurat dan sesuai usia membantu remaja memahami perkembangan, menjaga kesehatan, serta mengenali kapan memerlukan bantuan."}
+]},
+{grade:9,book:"Buku 3A",chapter:"Pewarisan Sifat",items:[
+{q:"Unit dasar pewarisan informasi biologis yang terdapat pada DNA disebut…",options:["Jaringan","Organ","Enzim","Gen"],answer:3,explanation:"Gen adalah bagian DNA yang membawa informasi biologis, misalnya untuk menghasilkan produk fungsional tertentu."},
+{q:"Struktur yang tersusun dari DNA dan protein serta membawa banyak gen disebut…",options:["Vakuola","Kromosom","Ribosom","Membran"],answer:1,explanation:"Kromosom merupakan struktur DNA dan protein yang membawa gen."},
+{q:"Bentuk alternatif suatu gen pada lokus yang sama disebut…",options:["Alel","Organel","Jaringan","Hormon"],answer:0,explanation:"Alel merupakan versi alternatif suatu gen yang menempati lokus yang sama pada kromosom homolog."},
+{q:"Dalam notasi sederhana, individu dengan pasangan alel Bb disebut…",options:["Homozigot dominan","Homozigot resesif","Heterozigot","Tanpa alel"],answer:2,explanation:"Bb memiliki dua alel berbeda, sehingga disebut heterozigot."},
+{q:"Dalam model pewarisan sederhana, alel dominan biasanya ditulis menggunakan…",options:["Angka saja","Huruf kapital","Tanda baca","Huruf kecil saja"],answer:1,explanation:"Dalam notasi Mendel sederhana, alel dominan sering dilambangkan huruf kapital, sementara alel resesif memakai huruf kecil."},
+{q:"Jika persilangan sederhana Bb × Bb dilakukan dengan dominansi penuh dan kedua induk menghasilkan gamet B atau b sama mungkin, peluang keturunan bb adalah…",options:["0%","25%","50%","75%"],answer:1,explanation:"Kemungkinan genotipe adalah BB, Bb, Bb, dan bb; satu dari empat kemungkinan adalah bb, yaitu 25%."},
+{q:"Istilah fenotipe mengacu pada…",options:["Ciri yang dapat diamati atau diukur sebagai hasil interaksi gen dan lingkungan","Urutan seluruh kromosom tanpa ciri yang tampak","Nama ilmiah untuk semua alel resesif","Jumlah sel pada organisme saja"],answer:0,explanation:"Fenotipe adalah karakteristik yang tampak atau terukur, dipengaruhi genotipe serta faktor lingkungan."},
+{q:"Jika suatu sifat sederhana hanya muncul pada individu aa, maka sifat tersebut pada model dominansi penuh disebut…",options:["Selalu terpaut kromosom Y","Dominan","Tidak diwariskan","Resesif"],answer:3,explanation:"Dalam model dominansi penuh, sifat resesif muncul pada homozigot resesif aa."},
+{q:"Perubahan urutan DNA yang dapat menghasilkan variasi genetik disebut…",options:["Osmosis","Mutasi","Evaporasi","Fotosintesis"],answer:1,explanation:"Mutasi adalah perubahan pada materi genetik yang dapat menimbulkan variasi; dampaknya bergantung pada perubahan dan konteksnya."},
+{q:"Pemanfaatan organisme atau bagian organisme untuk menghasilkan produk yang berguna termasuk bidang…",options:["Seismologi","Astronomi","Bioteknologi","Meteorologi"],answer:2,explanation:"Bioteknologi menggunakan organisme, sel, atau proses biologis untuk menghasilkan produk atau layanan, misalnya fermentasi."}
+]},
+{grade:9,book:"Buku 3A",chapter:"Tekanan",items:[
+{q:"Tekanan pada permukaan padat dihitung dengan membagi…",options:["Gaya tegak lurus permukaan dengan luas bidang tekan","Luas bidang tekan dengan massa jenis","Massa dengan volume","Jarak dengan waktu"],answer:0,explanation:"Tekanan padat dirumuskan P = F/A, yaitu gaya tegak lurus dibagi luas bidang tekan."},
+{q:"Sebuah gaya 100 N bekerja tegak lurus pada bidang seluas 0,5 m². Tekanannya adalah…",options:["50 Pa","100 Pa","200 Pa","500 Pa"],answer:2,explanation:"P = F/A = 100 N ÷ 0,5 m² = 200 N/m² atau 200 Pa."},
+{q:"Jika gaya yang sama bekerja pada luas bidang tekan yang lebih kecil, tekanan akan…",options:["Selalu tetap","Meningkat","Menjadi nol","Berubah menjadi massa"],answer:1,explanation:"Untuk gaya yang tetap, tekanan berbanding terbalik dengan luas bidang tekan."},
+{q:"Tekanan hidrostatis dalam zat cair diam dipengaruhi oleh…",options:["Warna wadah dan bentuk permukaan","Bau zat cair saja","Luas permukaan meja","Massa jenis zat cair, gravitasi, dan kedalaman"],answer:3,explanation:"Tekanan hidrostatis mengikuti P = ρgh, sehingga bergantung pada massa jenis, percepatan gravitasi, dan kedalaman."},
+{q:"Pada zat cair yang sama di tempat dengan gravitasi sama, tekanan hidrostatis umumnya lebih besar pada titik yang…",options:["Lebih dalam","Lebih dekat permukaan","Di luar zat cair","Memiliki warna berbeda"],answer:0,explanation:"Tekanan hidrostatis meningkat seiring bertambahnya kedalaman dalam cairan yang sama."},
+{q:"Hukum Pascal menyatakan bahwa tekanan yang diberikan pada fluida tertutup diteruskan…",options:["Hanya ke bawah","Tanpa diteruskan ke bagian lain","Sama besar ke segala arah dalam fluida","Hanya pada permukaan terbuka"],answer:2,explanation:"Menurut Hukum Pascal, perubahan tekanan pada fluida tertutup diteruskan tanpa berkurang ke segala arah."},
+{q:"Dongkrak hidrolik dapat mengangkat beban besar dengan gaya masukan lebih kecil karena…",options:["Tekanan hilang di dalam cairan","Gaya pada piston keluaran dapat lebih besar ketika luas pistonnya lebih besar","Massa beban menjadi nol","Cairan tidak meneruskan tekanan"],answer:1,explanation:"Tekanan diteruskan oleh fluida; piston keluaran yang luasnya lebih besar menghasilkan gaya lebih besar, dengan pertukaran jarak gerak."},
+{q:"Tekanan gas pada dinding wadah muncul terutama akibat…",options:["Partikel gas diam selamanya","Gas tidak memiliki massa","Partikel hanya tertarik ke dasar wadah","Tumbukan partikel gas terhadap dinding wadah"],answer:3,explanation:"Partikel gas bergerak dan bertumbukan dengan dinding wadah; perubahan momentum pada tumbukan menghasilkan tekanan."},
+{q:"Alat yang digunakan untuk mengukur tekanan atmosfer adalah…",options:["Barometer","Termometer","Amperemeter","Mikrometer sekrup"],answer:0,explanation:"Barometer digunakan untuk mengukur tekanan atmosfer."},
+{q:"Ketika bernapas, udara masuk ke paru-paru ketika tekanan di dalam paru-paru menjadi…",options:["Selalu lebih tinggi daripada tekanan luar","Sama dengan nol mutlak","Lebih rendah daripada tekanan udara luar","Tidak berhubungan dengan volume rongga dada"],answer:2,explanation:"Saat inspirasi, volume rongga dada dan paru-paru meningkat sehingga tekanan di dalamnya turun di bawah tekanan atmosfer dan udara masuk."}
+]}
+];
+const chapterInfo=[];
+materials.forEach(function(m){chapterInfo.push({name:m.chapter,grade:m.grade,book:m.book,count:m.items.length})});
+const questionBank=[];
+materials.forEach(function(m,mi){m.items.forEach(function(q,qi){questionBank.push({id:"m"+mi+"q"+qi,grade:m.grade,book:m.book,chapter:m.chapter,question:q.q,options:q.options,answer:q.answer,explanation:q.explanation})})});
+const state={view:"home",deck:[],index:0,reviewMode:false,results:[]};
+function shuffle(list){const out=list.slice();for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const temp=out[i];out[i]=out[j];out[j]=temp}return out}
+function gradeClass(grade){return grade===7?"g7":grade===8?"g8":"g9"}
+function gradeName(grade){return "Kelas "+grade}
+function buildMaterials(){const grid=document.getElementById("materialGrid");grid.innerHTML=materials.map(function(m,i){return '<div class="material-row"><span class="material-number">'+String(i+1).padStart(2,"0")+'</span><span class="material-text"><strong>'+m.chapter+'</strong><small>'+gradeName(m.grade)+' · '+m.book+'</small></span><span class="material-count">10 soal</span></div>'}).join("")}
+function startQuiz(mode){
+ state.reviewMode=mode==="wrong";
+ let chosen=questionBank.slice();
+ if(state.reviewMode){chosen=state.results.filter(function(r){return !r.isCorrect}).map(function(r){return r.question})}
+ if(!chosen.length){alert("Belum ada soal yang salah untuk diulang. Kerjakan kuis lengkap terlebih dahulu.");return}
+ state.deck=shuffle(chosen).map(function(q){const opts=shuffle(q.options.map(function(text,i){return {text:text,correct:i===q.answer}}));return {question:q,options:opts,selected:null,checked:false}});
+ state.index=0;state.view="quiz";
+ document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="block";
+ renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderQuestion(){
+ const entry=state.deck[state.index],q=entry.question,total=state.deck.length,number=state.index+1;
+ document.getElementById("progressCount").textContent="SOAL "+number+" / "+total;
+ document.getElementById("progressFill").style.width=(number/total*100)+"%";
+ document.getElementById("questionMeta").innerHTML='<span class="grade-pill '+gradeClass(q.grade)+'">'+gradeName(q.grade)+'</span><span class="chapter-label">'+q.chapter+'</span><span class="book-label">'+q.book+'</span>';
+ document.getElementById("questionNumber").textContent="SOAL "+String(number).padStart(2,"0");
+ document.getElementById("questionText").textContent=q.question;
+ const options=document.getElementById("optionsWrap");options.innerHTML="";
+ entry.options.forEach(function(opt,i){
+   const button=document.createElement("button");button.type="button";button.className="option";
+   if(entry.selected===i)button.classList.add("selected");
+   if(entry.checked&&opt.correct)button.classList.add("correct");
+   if(entry.checked&&entry.selected===i&&!opt.correct)button.classList.add("wrong");
+   button.disabled=entry.checked;
+   button.innerHTML='<span class="option-key">'+String.fromCharCode(65+i)+'</span><span class="option-copy"></span>';
+   button.querySelector(".option-copy").textContent=opt.text;
+   button.addEventListener("click",function(){selectAnswer(i)});
+   options.appendChild(button);
+ });
+ const feedback=document.getElementById("feedback");
+ if(entry.checked){
+   const isCorrect=entry.options[entry.selected]&&entry.options[entry.selected].correct;
+   const answerText=entry.options.find(function(o){return o.correct}).text;
+   feedback.className="feedback show "+(isCorrect?"good":"bad");
+   feedback.innerHTML='<strong>'+(isCorrect?"Jawaban benar":"Jawaban belum tepat · Jawaban yang benar: "+escapeHTML(answerText))+'</strong><p>'+escapeHTML(q.explanation)+'</p>';
+ }else{feedback.className="feedback";feedback.textContent=""}
+ document.getElementById("prevBtn").disabled=state.index===0;
+ document.getElementById("checkBtn").classList.toggle("hidden",entry.checked);
+ document.getElementById("checkBtn").disabled=entry.selected===null;
+ document.getElementById("nextBtn").classList.toggle("hidden",!entry.checked);
+ document.getElementById("nextBtn").textContent=state.index===total-1?(state.reviewMode?"Lihat hasil ulasan":"Lihat hasil akhir"):"Berikutnya →";
+ document.getElementById("actionHint").textContent=entry.checked?"Jawaban telah diperiksa.": "Pilih jawaban terbaik.";
+}
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
+function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;renderQuestion()}
+function checkAnswer(){const e=state.deck[state.index];if(e.selected===null)return;e.checked=true;renderQuestion()}
+function moveQuestion(delta){
+ const next=state.index+delta;
+ if(next<0)return;
+ if(next>=state.deck.length){
+   if(state.reviewMode){showHomeAfterReview();return}
+   finishQuiz();return;
+ }
+ state.index=next;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+}
+function finishQuiz(){
+ state.view="result";
+ state.results=state.deck.map(function(e){return {question:e.question,options:e.options,selected:e.selected,isCorrect:!!(e.selected!==null&&e.options[e.selected].correct)}});
+ document.getElementById("quizView").style.display="none";
+ document.getElementById("resultView").style.display="block";
+ renderResults();window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderResults(){
+ const total=state.results.length,correct=state.results.filter(function(r){return r.isCorrect}).length,percent=total?Math.round(correct/total*100):0;
+ const gradeRows=[7,8,9].map(function(grade){const rows=state.results.filter(function(r){return r.question.grade===grade});const score=rows.filter(function(r){return r.isCorrect}).length;return {grade:grade,total:rows.length,score:score,percent:rows.length?Math.round(score/rows.length*100):0}});
+ const chapterRows=materials.map(function(m){const rows=state.results.filter(function(r){return r.question.chapter===m.chapter});return {name:m.chapter,grade:m.grade,total:rows.length,score:rows.filter(function(r){return r.isCorrect}).length}});
+ const wrong=state.results.filter(function(r){return !r.isCorrect}).length;
+ let gradeHTML=gradeRows.map(function(g){return '<div class="grade-result"><span class="grade-pill '+gradeClass(g.grade)+'">'+gradeName(g.grade)+'</span><strong>'+g.score+' / '+g.total+'</strong><small>'+g.percent+'% jawaban benar</small></div>'}).join("");
+ let chapterHTML=chapterRows.map(function(c){return '<tr><td>'+escapeHTML(c.name)+'<br><span style="color:var(--muted)">'+gradeName(c.grade)+'</span></td><td>'+c.score+' / '+c.total+'</td></tr>'}).join("");
+ document.getElementById("resultContent").innerHTML='<div class="result-head"><div class="score-ring" style="--score-angle:'+(percent*3.6)+'deg"><div class="score-inner"><strong>'+percent+'%</strong><small>skor</small></div></div><div><span class="eyebrow">LATIHAN SELESAI</span><h1 class="result-title">'+(percent>=85?"Kerja bagus!":percent>=65?"Terus tingkatkan!":"Jadikan bahan belajar berikutnya.")+'</h1><p class="result-sub">Jawaban benar '+correct+' dari '+total+' soal. '+(state.reviewMode?"Ini adalah hasil sesi ulasan soal salah.":"Urutan soal pada sesi berikutnya akan diacak kembali.")+'</p></div></div><div class="result-grades">'+gradeHTML+'</div><div class="result-section"><h3>Hasil per bab</h3><table class="result-table"><thead><tr><th>Bab / kelas</th><th>Benar</th></tr></thead><tbody>'+chapterHTML+'</tbody></table></div><div class="result-actions"><button class="btn btn-primary" onclick="startQuiz(\'all\')">Ulangi 100 soal ↻</button>'+(wrong>0&&!state.reviewMode?'<button class="btn btn-secondary" onclick="startQuiz(\'wrong\')">Ulangi '+wrong+' soal yang salah</button>':'')+'<button class="btn btn-secondary" onclick="goHome()">Kembali ke beranda</button></div>';
+}
+function showHomeAfterReview(){
+ document.getElementById("resultView").style.display="block";
+ document.getElementById("quizView").style.display="none";
+ document.getElementById("resultContent").innerHTML='<div class="result-head"><div><span class="eyebrow">ULASAN SELESAI</span><h1 class="result-title">Ulasan soal salah selesai.</h1><p class="result-sub">Gunakan penjelasan yang baru dibaca untuk memperkuat materi.</p></div></div><div class="result-actions"><button class="btn btn-primary" onclick="startQuiz(\'all\')">Ulangi 100 soal ↻</button><button class="btn btn-secondary" onclick="goHome()">Kembali ke beranda</button></div>';
+}
+function confirmHome(){if(state.index>0&&!confirm("Keluar dari kuis? Progres sesi ini akan diakhiri."))return;goHome()}
+function goHome(event){if(event&&event.preventDefault)event.preventDefault();state.view="home";document.getElementById("homeView").style.display="block";document.getElementById("quizView").style.display="none";document.getElementById("resultView").style.display="none";window.scrollTo({top:0,behavior:"smooth"})}
+function scrollToMaterials(){document.getElementById("materialsPanel").scrollIntoView({behavior:"smooth",block:"start"})}
+function validateQuestionBank(){
+ const expected=100;
+ if(questionBank.length!==expected)throw new Error("Jumlah soal harus tepat 100, saat ini: "+questionBank.length);
+ questionBank.forEach(function(q,i){if(q.options.length!==4||q.answer<0||q.answer>3)throw new Error("Format soal bermasalah pada "+q.id)});
+}
+buildMaterials();validateQuestionBank();
+</script>
+</body>
+</html>
