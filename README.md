@@ -8,6 +8,11 @@ Cover setiap bab dan slide pendalaman menampilkan foto atau diagram sains dari W
 
 Setiap gambar mencantumkan kredit, lisensi, dan tautan sumber di dekat gambar. Gambar ditampilkan dari server Wikimedia Commons, jadi koneksi internet dibutuhkan agar gambar dapat dimuat. Jika gambar cover gagal dimuat, ilustrasi SVG lokal tetap ditampilkan sebagai fallback. Tautan sumber membuka halaman sumber gambar, tempat detail lisensi dan versi resolusi lain dapat diperiksa.
 
+
+## Gambar lebih besar dan mode perbesar
+
+Gambar di cover bab dibuat lebih besar, dan gambar pada slide pendalaman memakai area yang lebih lebar/tinggi. Klik atau ketuk gambar untuk membukanya di lightbox hampir layar penuh. Viewer mencoba memuat berkas resolusi asli Wikimedia Commons, lalu memakai thumbnail sebagai fallback bila gambar aslinya gagal dimuat. Kredit, lisensi, dan tautan sumber tetap tersedia.
+
 ## Isi presentasi
 
 Terdapat 94 slide, termasuk halaman pembuka. Setiap bab memiliki:
