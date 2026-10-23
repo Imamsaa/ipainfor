@@ -117,6 +117,70 @@ body.presenter .sidebar{display:none}body.presenter .app{grid-template-columns:m
 @media(max-width:780px){.deep-dive-head{align-items:stretch}.lesson-reference-figure{max-width:38%;flex-basis:190px;width:190px;min-width:155px}.lesson-image-link{height:120px;min-height:100px}.lesson-image-open{opacity:1}}
 @media(max-width:480px){.deep-dive-head{display:flex;flex-direction:column;gap:12px}.lesson-reference-figure{max-width:none;width:100%;min-width:0;flex-basis:auto}.lesson-image-link{height:170px;min-height:150px}.lesson-image-link img{max-height:175px}.lesson-reference-figure figcaption{padding:7px 9px}.lesson-image-credit{font-size:8px}.online-cover-art .external-lesson-art{padding:6px 7px 49px}.online-cover-caption{padding:6px 8px}.online-cover-caption small{font-size:7px}}
 
+
+/* Enlarged educational images with fullscreen zoom */
+.cover-art.online-cover-art{min-height:370px;height:100%;align-self:stretch;margin:0}
+.online-cover-art .external-lesson-art{max-height:480px;padding:12px 12px 52px;cursor:zoom-in}
+.online-cover-art .online-image-fallback{padding:15px 12px 52px}
+.online-cover-caption{padding:10px 12px 8px;gap:5px}
+.online-cover-caption>span{font-size:12px}
+.online-cover-caption small{font-size:9px;line-height:1.45}
+.lesson-reference-figure{flex:0 0 340px;width:340px;max-width:41%;min-width:260px}
+.lesson-image-link{height:235px;min-height:205px;cursor:zoom-in}
+.lesson-image-link img{max-height:255px;padding:7px}
+.lesson-image-open{opacity:1;right:9px;bottom:9px;padding:7px 10px;font-size:10px;background:#fffdf0f2;box-shadow:0 2px 9px #33415513}
+.lesson-reference-figure figcaption{padding:9px 11px 10px;gap:7px}
+.lesson-reference-figure figcaption>b{font-size:11px;line-height:1.4}
+.lesson-image-credit{font-size:9px;line-height:1.55}
+.external-lesson-art:focus-visible{outline:4px solid #46b9a7;outline-offset:-5px}
+.image-lightbox[hidden]{display:none!important}
+.image-lightbox{position:fixed;z-index:1000;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,2.2vw,28px);background:#172640df;backdrop-filter:blur(8px)}
+.image-lightbox-card{width:min(1220px,96vw);max-height:94vh;display:flex;flex-direction:column;overflow:hidden;border:1px solid #e8ddca;border-radius:18px;background:#fffaf0;box-shadow:0 24px 80px #0f1c2f55}
+.image-lightbox-header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 18px;border-bottom:1px solid #e7dcc8}
+.image-lightbox-header span{font-size:9px;letter-spacing:1.4px;color:#3fa897;font-weight:950}
+.image-lightbox-header h2{font-size:17px;line-height:1.3;margin:4px 0 0;color:#283954}
+.image-lightbox-close{width:38px;height:38px;flex-shrink:0;border:1px solid #dfd1b9;border-radius:10px;background:#fff;color:#374761;font-size:16px;cursor:pointer}
+.image-lightbox-view{min-height:0;display:flex;align-items:center;justify-content:center;padding:12px;background:#f1efe6;overflow:auto}
+.image-lightbox-view img{display:block;width:auto;height:auto;max-width:92vw;max-height:72vh;object-fit:contain;background:#fff;border-radius:6px;box-shadow:0 5px 20px #293a5110}
+.image-lightbox-view #imageLightboxError{max-width:500px;padding:28px;text-align:center;font-size:13px;line-height:1.7;color:#8b6a50}
+.image-lightbox-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:11px 18px;border-top:1px solid #e7dcc8}
+.image-lightbox-footer p{font-size:10px;line-height:1.5;color:#7d8998;margin:0}
+.image-lightbox-footer a{flex-shrink:0;font-size:10px;font-weight:900;color:#298b80;text-decoration:none}
+.image-lightbox-footer a:hover{text-decoration:underline}
+body.image-lightbox-open{overflow:hidden}
+@media(max-width:1000px){
+ .cover-art.online-cover-art{min-height:320px}
+ .lesson-reference-figure{flex-basis:290px;width:290px;max-width:43%;min-width:230px}
+ .lesson-image-link{height:210px;min-height:180px}
+ .lesson-image-credit{font-size:8px}
+}
+@media(max-width:780px){
+ .cover-art.online-cover-art{min-height:300px;height:300px}
+ .deep-dive-head{align-items:stretch}
+ .lesson-reference-figure{max-width:46%;flex-basis:260px;width:260px;min-width:210px}
+ .lesson-image-link{height:190px;min-height:170px}
+ .image-lightbox-view img{max-height:70vh}
+}
+@media(max-width:480px){
+ .cover-art.online-cover-art{min-height:240px;height:240px}
+ .online-cover-art .external-lesson-art{padding:7px 7px 54px}
+ .online-cover-caption>span{font-size:11px}
+ .online-cover-caption small{font-size:8px}
+ .deep-dive-head{display:flex;flex-direction:column;gap:12px}
+ .lesson-reference-figure{max-width:none;width:100%;min-width:0;flex-basis:auto}
+ .lesson-image-link{height:230px;min-height:210px}
+ .lesson-image-link img{max-height:245px}
+ .lesson-reference-figure figcaption>b{font-size:12px}
+ .lesson-image-credit{font-size:9px}
+ .image-lightbox{padding:6px}
+ .image-lightbox-card{width:100%;max-height:96vh;border-radius:13px}
+ .image-lightbox-header{padding:11px 13px}
+ .image-lightbox-header h2{font-size:14px}
+ .image-lightbox-view{padding:6px}
+ .image-lightbox-view img{max-width:94vw;max-height:68vh}
+ .image-lightbox-footer{align-items:flex-start;flex-direction:column;padding:10px 13px;gap:8px}
+}
+
 </style>
 </head>
 <body>
@@ -380,8 +444,15 @@ const CHAPTER_COVER_IMAGE={"1a1":"microscope","1a2":"matter","1a3":"motion","2a1
 const CHAPTER_SECTION_IMAGES={"1a1":["microscope","microscope","microscope","microscope"],"1a2":["matter","matter","matter","separation"],"1a3":["motion","motion","motion","motion","motion"],"2a1":["microscope","plantCell","plantCell","cellCycle"],"2a2":["digestive","digestive","circulatory","lungs","urinary"],"3a1":["nervous","eye","eye","nervous","nervous"],"3a2":["homeostasis","homeostasis","urinary","homeostasis"],"3a3":["cellCycle","reproductive","reproductive","reproductive"],"3a4":["dna","dna","dna","dna"],"3a5":["fluid","fluid","pascal","fluid"]};
 function getLessonImage(c,kind,partIndex){const key=kind==="cover"?(CHAPTER_COVER_IMAGE[c.id]||"microscope"):((CHAPTER_SECTION_IMAGES[c.id]||[])[partIndex]||CHAPTER_COVER_IMAGE[c.id]||"microscope");return LESSON_IMAGES[key]||LESSON_IMAGES.microscope}
 function lessonImageCredit(image){return '<small class="lesson-image-credit">Kredit: '+image.credit+' · <a href="'+image.licenseUrl+'" target="_blank" rel="noopener noreferrer">'+image.license+'</a> · <a href="'+image.source+'" target="_blank" rel="noopener noreferrer">Sumber gambar ↗</a></small>'}
-function lessonCoverImageHTML(c){const image=getLessonImage(c,"cover",0);return '<figure class="cover-art online-cover-art"><img class="external-lesson-art" src="'+image.url+'" alt="'+image.alt+'" loading="eager" decoding="async" onerror="this.parentElement.querySelector(&quot;.online-image-fallback&quot;).hidden=false;this.remove()"><div class="online-image-fallback" hidden>'+svgArt(c.visual)+'</div><figcaption class="online-cover-caption"><span>'+image.title+'</span><small>'+image.credit+' · <a href="'+image.licenseUrl+'" target="_blank" rel="noopener noreferrer">'+image.license+'</a> · <a href="'+image.source+'" target="_blank" rel="noopener noreferrer">Sumber ↗</a></small></figcaption></figure>'}
-function lessonImageFigureHTML(c,section,partIndex){const image=getLessonImage(c,"details",partIndex);return '<figure class="lesson-reference-figure"><a class="lesson-image-link" href="'+image.source+'" target="_blank" rel="noopener noreferrer" aria-label="Buka sumber gambar '+image.title+'"><img src="'+image.url+'" alt="'+image.alt+'" loading="lazy" decoding="async" onerror="this.closest(&quot;figure&quot;).classList.add(&quot;image-failed&quot;)"><span class="lesson-image-open">Buka sumber ↗</span></a><figcaption><b>'+image.title+'</b>'+lessonImageCredit(image)+'</figcaption></figure>'}
+function lessonCoverImageHTML(c){
+ const image=getLessonImage(c,"cover",0),full=image.source.replace('/wiki/File:','/wiki/Special:Redirect/file/');
+ return '<figure class="cover-art online-cover-art"><img class="external-lesson-art" role="button" tabindex="0" onclick="openLessonImage(this)" onkeydown="if(event.keyCode===13||event.keyCode===32){event.preventDefault();openLessonImage(this)}" data-full="'+full+'" data-thumbnail="'+image.url+'" src="'+image.url+'" alt="'+image.alt+'" loading="eager" decoding="async" onerror="this.parentElement.querySelector(&quot;.online-image-fallback&quot;).hidden=false;this.remove()"><div class="online-image-fallback" hidden>'+svgArt(c.visual)+'</div><figcaption class="online-cover-caption"><span>'+image.title+'</span><small>'+image.credit+' · <a href="'+image.licenseUrl+'" target="_blank" rel="noopener noreferrer">'+image.license+'</a> · <a href="'+image.source+'" target="_blank" rel="noopener noreferrer">Sumber ↗</a></small></figcaption></figure>';
+}
+function lessonImageFigureHTML(c,section,partIndex){
+ const image=getLessonImage(c,"details",partIndex);
+ const full=image.source.replace('/wiki/File:','/wiki/Special:Redirect/file/');
+ return '<figure class="lesson-reference-figure"><a class="lesson-image-link" href="#" data-full="'+full+'" data-thumbnail="'+image.url+'" onclick="openLessonImage(this);return false" aria-label="Perbesar gambar '+image.title+'"><img src="'+image.url+'" alt="'+image.alt+'" loading="lazy" decoding="async" onerror="this.closest(&quot;figure&quot;).classList.add(&quot;image-failed&quot;)"><span class="lesson-image-open">⤢ Perbesar gambar</span></a><figcaption><b>'+image.title+'</b>'+lessonImageCredit(image)+'</figcaption></figure>';
+}
 
 
 let deck=[];
@@ -492,8 +563,49 @@ document.addEventListener("keydown",e=>{
  else if(e.key==="Escape"&&document.body.classList.contains("presenter")){document.body.classList.remove("presenter");$("#presentBtn").textContent="▣ Presentasi"}
 });
 document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement&&document.body.classList.contains("presenter")){document.body.classList.remove("presenter");$("#presentBtn").textContent="▣ Presentasi"}});
+
+function openLessonImage(element){
+ const figure=element.closest("figure");
+ if(!figure)return;
+ const img=element.tagName==="IMG"?element:element.querySelector("img");
+ const thumb=element.dataset.thumbnail||(img?img.src:"");
+ const full=element.dataset.full||(img?img.dataset.full:"");
+ const sources=Array.from(figure.querySelectorAll("figcaption a"));
+ const sourceLink=sources.find(a=>a.textContent.includes("Sumber")||a.textContent.includes("Sumber ↗"))||sources[sources.length-1];
+ const titleNode=figure.querySelector("figcaption>span,figcaption>b");
+ const creditNode=figure.querySelector("figcaption small");
+ const modal=$("#imageLightbox"),photo=$("#imageLightboxImg");
+ if(!modal||!photo)return;
+ $("#imageLightboxTitle").textContent=titleNode?titleNode.textContent:(img?img.alt:"Gambar materi");
+ $("#imageLightboxCredit").textContent=creditNode?creditNode.textContent:"";
+ $("#imageLightboxSource").href=sourceLink?sourceLink.href:"#";
+ $("#imageLightboxError").hidden=true;
+ photo.onerror=()=>{if(photo.dataset.fallback!=="1"&&thumb){photo.dataset.fallback="1";photo.src=thumb}else{$("#imageLightboxError").hidden=false}};
+ photo.onload=()=>{$("#imageLightboxError").hidden=true};
+ photo.dataset.fallback="0";
+ photo.alt=img?img.alt:"Ilustrasi materi IPA";
+ photo.src=full||thumb||(img?img.src:"");
+ modal.hidden=false;
+ document.body.classList.add("image-lightbox-open");
+ const close=modal.querySelector(".image-lightbox-close");if(close)close.focus();
+}
+function closeImageLightbox(){
+ const modal=$("#imageLightbox");if(!modal)return;
+ modal.hidden=true;document.body.classList.remove("image-lightbox-open");
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){const modal=$("#imageLightbox");if(modal&&!modal.hidden){closeImageLightbox();return}}});
+
 buildDeck();
 render();
 </script>
+
+<div class="image-lightbox" id="imageLightbox" hidden role="dialog" aria-modal="true" aria-labelledby="imageLightboxTitle" onclick="if(event.target===this)closeImageLightbox()">
+ <div class="image-lightbox-card">
+  <div class="image-lightbox-header"><div><span>JELAJAH IPA · REFERENSI VISUAL</span><h2 id="imageLightboxTitle">Gambar materi</h2></div><button type="button" class="image-lightbox-close" onclick="closeImageLightbox()" aria-label="Tutup gambar">✕</button></div>
+  <div class="image-lightbox-view"><img id="imageLightboxImg" alt=""><div id="imageLightboxError" hidden>Gambar resolusi tinggi tidak tersedia. Silakan buka halaman sumber untuk melihat versi lainnya.</div></div>
+  <div class="image-lightbox-footer"><p id="imageLightboxCredit"></p><a id="imageLightboxSource" href="#" target="_blank" rel="noopener noreferrer">Buka sumber gambar ↗</a></div>
+ </div>
+</div>
+
 </body>
 </html>
