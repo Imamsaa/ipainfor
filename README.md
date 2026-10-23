@@ -1,64 +1,67 @@
 # Jelajah IPA — Presentasi Interaktif SMP
 
-Web presentasi pembelajaran IPA dengan tema sekolah yang cerah. Materi disusun mengikuti urutan daftar isi diktat yang diberikan: Buku IPA 1a, 2a, dan 3a. Setiap bab memiliki lima bagian presentasi, sehingga guru dapat menyampaikan materi secara bertahap dari pertanyaan pembuka sampai kuis pemahaman.
+Web presentasi pembelajaran IPA bertema sekolah yang cerah, disusun mengikuti daftar isi Diktat IPA Jawara 1a, 2a, dan 3a yang disediakan pengguna.
 
 ## Isi presentasi
 
-### Buku IPA 1a — IPA Dasar
-1. Hakikat Ilmu Sains dan Metode Ilmiah
-2. Zat dan Perubahannya
-3. Gerak Benda dan Gaya
+Ada **94 slide** termasuk halaman pembuka. Masing-masing dari 10 bab memiliki:
+1. Pembuka dan pertanyaan pemantik.
+2. Konsep inti.
+3. Peta materi bab.
+4. Beberapa slide pendalaman submateri (definisi, konsep, contoh, rumus jika sesuai, dan pertanyaan refleksi).
+5. Aktivitas/diskusi kelas.
+6. Kuis pilihan ganda dengan umpan balik.
 
-### Buku IPA 2a — Biologi
-4. Pengenalan Sel
-5. Struktur dan Fungsi Tubuh Makhluk Hidup
+## Bab dan cakupan
 
-### Buku IPA 3a — Sistem dan Fisika
-6. Sistem Koordinasi dan Zat Adiktif
-7. Homeostasis
-8. Sistem Reproduksi Manusia
-9. Pewarisan Sifat
-10. Tekanan
+### Buku 1a — IPA Dasar
+1. **Hakikat Ilmu Sains dan Metode Ilmiah:** apa itu sains, observasi dan inferensi, laboratorium dan keselamatan kerja, rancangan percobaan, variabel, alat ukur, besaran pokok dan turunan, konversi dan awalan satuan, tabel/grafik, pelaporan hasil.
+2. **Zat dan Perubahannya:** model partikel, sifat zat padat/cair/gas, perubahan wujud dan perpindahan energi, perubahan fisika dan kimia, campuran homogen/heterogen, metode pemisahan campuran.
+3. **Gerak Benda dan Gaya:** jarak dan perpindahan, kelajuan/kecepatan/percepatan, GLB dan GLBB, persamaan gerak dasar, grafik, percobaan gerak, jenis gaya, resultan gaya, Hukum I/II/III Newton.
 
-## Format setiap bab
+### Buku 2a — Biologi
+4. **Pengenalan Sel:** sel sebagai unit kehidupan, penemuan mikroskop, mikroskop cahaya dan elektron, bagian mikroskop, struktur organel, sel hewan/tumbuhan, spesialisasi sel, jaringan, organ, dan sistem organ.
+5. **Struktur dan Fungsi Tubuh Makhluk Hidup:** nutrien, diet sehat dan label gizi, zat aditif, organ/kelenjar dan proses pencernaan, peredaran darah, komponen darah dan jantung, pernapasan dan pertukaran gas, rokok/perokok pasif, ekskresi oleh ginjal/kulit/paru-paru serta peran hati, gangguan dan pemeliharaan kesehatan.
 
-- **Pembuka:** tujuan belajar, pertanyaan pemantik, dan ilustrasi.
-- **Konsep inti:** gagasan utama dan tiga kartu penjelasan.
-- **Jelajahi materi:** tiga bagian konsep beserta contoh sehari-hari.
-- **Aktivitas kelas:** kasus diskusi, langkah kegiatan, dan panduan jawaban yang dapat dibuka saat mengajar.
-- **Cek pemahaman:** kuis pilihan ganda dengan umpan balik jawaban.
+### Buku 3a — Sistem dan Fisika
+6. **Sistem Koordinasi dan Zat Adiktif:** jalur rangsangan-respons, sistem saraf, mata, telinga, hidung, lidah, kulit, hormon, jenis/risko zat adiktif, pencegahan dan cara mencari dukungan.
+7. **Homeostasis:** peran keseimbangan internal, umpan balik negatif, pengaturan suhu, cairan, dan kadar glukosa darah.
+8. **Sistem Reproduksi Manusia:** siklus dan pembelahan sel, mitosis/meiosis secara pengantar, organ reproduksi, pubertas, gamet dan fertilisasi, perkembangan/kehamilan, menstruasi, kesehatan reproduksi, gangguan dan pencegahan.
+9. **Pewarisan Sifat:** istilah genetika, alel/genotipe/fenotipe, kromosom-DNA-gen, ekspresi gen, persilangan Mendel, monohibrid dan dihibrid, bioteknologi konvensional/modern, manfaat dan pertimbangan dampaknya.
+10. **Tekanan:** konsep gaya per satuan luas, tekanan zat padat, tekanan hidrostatik, Hukum Pascal dan gaya apung sebagai konteks tekanan fluida, tekanan gas, satuan/penghitungan, dan penerapan pada makhluk hidup.
 
-## Fitur presentasi
+## Fitur untuk mengajar
 
-- Navigasi bab di sisi kiri dan pencarian materi.
-- Tombol sebelumnya/berikutnya dan indikator bagian pada setiap bab.
+- Navigasi bab dan pencarian submateri.
+- Slide maju-mundur dengan indikator progres.
 - Mode presentasi layar penuh.
-- Catatan guru yang bisa ditampilkan atau disembunyikan.
-- Ilustrasi SVG tertanam; tidak membutuhkan file gambar terpisah.
-- Progres bab yang selesai mengerjakan kuis disimpan secara lokal di browser.
-- Pintasan keyboard: **→ / spasi** untuk maju, **←** untuk mundur, **Home** untuk pembuka, **End** untuk slide terakhir, dan **N** untuk menampilkan/menyembunyikan catatan guru.
-- Tidak membutuhkan framework, proses build, atau koneksi internet untuk fitur inti.
+- Catatan guru pada setiap bab.
+- Pertanyaan diskusi dengan panduan jawaban yang bisa ditampilkan.
+- Kuis pilihan ganda dengan penjelasan.
+- Ilustrasi SVG tertanam dan tema pastel cerah.
+- Pintasan keyboard: **→ / spasi** untuk maju, **←** untuk mundur, **Home** untuk pembuka, **End** untuk slide terakhir, dan **N** untuk catatan guru.
+- Tidak memerlukan framework atau koneksi internet untuk fitur presentasi inti.
 
 ## Menjalankan secara lokal
 
-1. Klik **Code → Download ZIP** pada repository dan ekstrak file.
+1. Pilih **Code → Download ZIP** pada repository lalu ekstrak.
 2. Buka `index.html` dengan Chrome, Edge, atau Firefox.
 
-Jika ingin menjalankan lewat server lokal:
+Alternatif menggunakan server lokal:
 
 ```bash
 py -m http.server 8000
 ```
 
-Kemudian buka `http://localhost:8000`.
+Buka `http://localhost:8000`.
 
-## Publikasi melalui GitHub Pages
+## Referensi isi
 
-1. Pastikan `index.html` berada di root branch `main`.
-2. Buka **Settings → Pages**.
-3. Pilih **Deploy from a branch**, branch `main`, folder `/(root)`, lalu simpan.
-4. Setelah deployment selesai, buka URL yang ditampilkan GitHub Pages.
+Materi detail dikembangkan dengan berpegang pada daftar isi diktat yang diberikan, lalu diperdalam menggunakan sumber rujukan Kurikulum Merdeka:
+- [Panduan Mata Pelajaran IPA Fase D (2025)](https://kurikulum.kemendikdasmen.go.id/file/panduan/dokumen/8.%20Final%20Panduan%20Mata%20Pelajaran%20IPA_16_OKT_2025_revisi%204.pdf)
+- [Buku IPA Kelas VII Edisi Revisi](https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_VII_Rev.pdf)
+- [Buku IPA Kelas VIII Edisi Revisi](https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_VIII_Rev.pdf)
+- [Buku IPA Kelas IX Edisi Revisi](https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_IX_Rev.pdf)
 
-## Catatan materi
+Pembagian materi pada buku edisi revisi dapat berbeda dari urutan diktat sekolah. Karena itu, bahan presentasi mempertahankan judul/urutan 10 bab dari diktat dan mengambil rincian rujukan yang relevan. Materi ditulis sebagai rangkuman ajar dan contoh, bukan salinan lengkap teks buku. Guru perlu menyesuaikan kedalaman, istilah, dan contoh dengan buku pegangan serta tujuan pembelajaran sekolah.
 
-Urutan bab dan submateri mengikuti daftar isi diktat IPA yang diberikan. Penjelasan ringkas, contoh sehari-hari, pertanyaan diskusi, dan kuis merupakan bahan ajar pendamping yang disusun untuk membantu guru menjelaskan konsep; bukan salinan lengkap isi buku.
