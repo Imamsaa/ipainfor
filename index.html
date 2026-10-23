@@ -141,7 +141,7 @@ body{background:#f5eddf!important;color:#1c2946!important;font-family:Arial,Helv
 .edu-brand-mark{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,#43cbb9,#b6e88c);color:#14213b;font-size:25px;font-weight:900}.edu-brand-copy{display:grid;gap:1px}.edu-brand-copy b{font-size:19px;letter-spacing:2.2px;font-weight:900}.edu-brand-copy small{font-size:9px;color:#9a8d78;letter-spacing:2px;font-weight:800}
 .edu-header-center{display:flex;align-items:center;gap:11px;min-width:0;flex:1;justify-content:center}.edu-header-center .crumb{font-size:11px;color:#7c705d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.edu-live-indicator{border-left:1px solid #d4c4a7;padding-left:11px;color:#5c7b78;white-space:nowrap;font-size:9px;letter-spacing:1px;font-weight:900}.edu-live-indicator i{display:inline-block;width:6px;height:6px;background:#45c7ae;border-radius:50%;margin-right:4px;box-shadow:0 0 0 3px #45c7ae22}
 .edu-header-status{display:flex;align-items:center;gap:12px}.edu-progress-chip{display:grid;grid-template-columns:auto minmax(70px,1fr) auto;align-items:center;gap:7px;padding:7px 11px;min-width:172px;border:1px solid #deceb1;border-radius:9px;background:#f8f0e0;color:#2b3956}.edu-progress-chip>span{font-size:10px;white-space:nowrap}.edu-progress-chip>span b{font-size:9px;letter-spacing:.6px;margin-left:4px}.edu-progress-line{height:7px;border-radius:99px;background:#e3d7c4;overflow:hidden}.edu-progress-line i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#4dcbbb,#9ddb83);transition:width .3s}.edu-progress-chip strong{font-size:10px;white-space:nowrap}.edu-date-chip{display:grid;gap:3px;font:10px/1.25 ui-monospace,Consolas,monospace;color:#7e7462;white-space:nowrap}.edu-date-chip b{font-size:9px;letter-spacing:1px}.edu-global-header .pill{border-color:#d9c9ad;color:#2aaea4;background:#fbf4e6;font-weight:900}
-.content{max-width:none!important;margin:0!important;padding:9px 10px 9px!important;height:calc(100vh - 66px);overflow:hidden!important}
+.content{max-width:none!important;margin:0!important;padding:9px 10px 9px!important;height:calc(100vh - 66px);overflow:auto!important;scrollbar-color:#cfbea0 #f5eddf;scrollbar-width:thin}
 .edu-application{height:100%;min-height:0;display:flex;flex-direction:column;gap:8px}
 .edu-workbench{height:calc(100% - 105px);min-height:420px;display:grid;grid-template-columns:42px minmax(0,1fr) 318px;gap:9px;align-items:stretch}
 .edu-icon-rail{grid-column:1;grid-row:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 4px;border:1px solid #dccbad;border-radius:10px;background:#e9deca;min-width:0}
@@ -168,6 +168,16 @@ body{background:#f5eddf!important;color:#1c2946!important;font-family:Arial,Helv
 .edu-model-fallback[open]{position:absolute;bottom:48px;left:12px;right:12px;z-index:8;display:block;padding:10px;border:1px solid #d9c7a8;border-radius:10px;background:#fbf3e3;box-shadow:0 5px 18px #58432622}
 .edu-model-fallback[open] #labVisualFallback{max-height:160px;overflow:auto;margin-top:9px}
 .edu-model-fallback .game-stage{background:#fff7e9;color:#263654}
+
+
+.edu-mini-control label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:9px;color:#7c6b53;margin-bottom:5px}
+.edu-mini-control label b{font-size:9px;color:#288f84;white-space:nowrap}
+.edu-mini-control input[type=range]{width:100%;accent-color:#36bfb1;cursor:pointer;height:15px}
+.edu-mini-control .vlab-select{font-size:9px;padding:6px;background:#fcf4e6;border-color:#decdb1;color:#293955}
+.edu-mini-actions{display:flex;gap:5px}.edu-mini-actions button{flex:1;border:1px solid #dac8aa;border-radius:6px;background:#fbf3e4;color:#34425b;padding:6px;font-size:9px;cursor:pointer}.edu-mini-actions button:hover{border-color:#40bbaa;background:#e8f5ed}
+.edu-quick-controls{padding:7px 8px;border:1px solid #dfceb3;border-radius:8px;background:#fff8eb;margin-bottom:7px}
+.edu-quick-result{padding:7px 9px}.edu-quick-result>span{font-size:7px}.edu-quick-result strong{font-size:14px}.edu-quick-result p{margin-top:3px}
+@media(max-width:520px){.edu-quick-controls{padding:8px}.edu-mini-control label{font-size:10px}}
 
 </style>
 </head>
@@ -500,6 +510,22 @@ function updateEduHeader(c){
  if(timeEl){const n=new Date();timeEl.textContent=n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}
 }
 function quickResultHTML(c){const d=labData(c.id),m=labMetric(c.id,d);return '<span>HASIL TERKINI / '+m.label.toUpperCase()+'</span><strong id="labLiveValue">'+m.value+'</strong><p id="labLiveNote">'+m.note+'</p>'}
+function quickControlHTML(c){
+ const d=labData(c.id),map={
+ '1a1':['light','Cahaya',0,10,d.light,'/10'],
+ '1a2':['energy','Energi partikel',0,100,d.energy,'%'],
+ '1a3':['speed','Kecepatan awal',0,15,d.speed,'m/s'],
+ '3a1':['reaction','Waktu reaksi model',100,600,d.reaction,'ms'],
+ '3a2':['disturbance','Gangguan',0,100,d.disturbance,'%'],
+ '3a5':['force','Gaya tekan',5,50,d.force,'N']
+ };
+ if(map[c.id]){const x=map[c.id];return '<div class="edu-mini-control"><label>'+x[1]+' <b><span data-value="'+x[0]+'">'+x[4]+'</span> '+x[5]+'</b></label><input type="range" min="'+x[2]+'" max="'+x[3]+'" value="'+x[4]+'" data-key="'+x[0]+'" oninput="labControl(this)"></div>'}
+ if(c.id==='2a1')return '<div class="edu-mini-control"><label>Jenis sampel</label><select class="vlab-select" data-key="cellType" onchange="labControl(this)"><option value="plant" '+(d.cellType==='plant'?'selected':'')+'>Sel tumbuhan</option><option value="animal" '+(d.cellType==='animal'?'selected':'')+'>Sel hewan</option></select></div>';
+ if(c.id==='2a2')return '<div class="edu-mini-control"><label>Eksplorasi jalur organ</label><div class="edu-mini-actions"><button onclick="labAction(this)" data-action="prevNode">←</button><button onclick="labAction(this)" data-action="nextNode">Jelajahi berikutnya →</button></div></div>';
+ if(c.id==='3a3')return '<div class="edu-mini-control"><label>Tahap pembelahan</label><div class="edu-mini-actions"><button onclick="labAction(this)" data-action="prevPhase">← Tahap</button><button onclick="labAction(this)" data-action="nextPhase">Tahap berikutnya →</button></div></div>';
+ if(c.id==='3a4')return '<div class="edu-mini-control"><label>Genotipe induk 1</label><select class="vlab-select" data-key="parentA" onchange="labControl(this)"><option value="AA" '+(d.parentA==='AA'?'selected':'')+'>AA</option><option value="Aa" '+(d.parentA==='Aa'?'selected':'')+'>Aa</option><option value="aa" '+(d.parentA==='aa'?'selected':'')+'>aa</option></select></div>';
+ return '<div class="edu-mini-control"><label>Eksperimen</label><button class="lab-btn primary" onclick="setLabInspectorTab(this.dataset.tab)" data-tab="controls">Buka panel variabel →</button></div>';
+}
 function virtualLabHTML(c){
  return '<div class="edu-workbench" data-lab-root="'+c.id+'" id="labRoot">'+
  '<nav class="edu-icon-rail">'+
@@ -514,7 +540,7 @@ function virtualLabHTML(c){
  '<div class="edu-scene-footer"><span>Geser model dengan mouse · scroll untuk zoom</span><b>INTERACTIVE SCIENCE MODEL</b><details class="edu-model-fallback"><summary>Skema 2D</summary><div id="labVisualFallback">'+labSceneHTML(c.id,labData(c.id))+'</div></details></div></section>'+
  '<aside class="edu-inspector"><div class="edu-inspector-tabs"><button class="edu-tab '+(activeInspectorTab==='summary'?'active':'')+'" data-lab-tab="summary" onclick="setLabInspectorTab(this.dataset.labTab)">RINGKASAN</button><button class="edu-tab '+(activeInspectorTab==='controls'?'active':'')+'" data-lab-tab="controls" onclick="setLabInspectorTab(this.dataset.labTab)">VARIABEL</button><button class="edu-tab '+(activeInspectorTab==='data'?'active':'')+'" data-lab-tab="data" onclick="setLabInspectorTab(this.dataset.labTab)">DATA</button><button class="edu-tab '+(activeInspectorTab==='topics'?'active':'')+'" data-lab-tab="topics" onclick="setLabInspectorTab(this.dataset.labTab)">MATERI</button></div>'+
  '<div class="edu-inspector-content" id="inspectorContent">'+inspectorPanelHTML(c,activeInspectorTab)+'</div>'+
- '<div class="edu-inspector-bottom"><div class="edu-quick-head"><b>COBA SENDIRI</b><small>LIVE SIMULATION</small></div><div class="edu-quick-result" id="labLiveResult">'+quickResultHTML(c)+'</div><div class="edu-quick-actions"><button data-tab="controls" onclick="setLabInspectorTab(this.dataset.tab)">Atur variabel ↗</button><button class="primary" data-chapter="'+c.id+'" onclick="labRun(this.dataset.chapter)">▶ Rekam data</button></div></div></aside></div>';
+ '<div class="edu-inspector-bottom"><div class="edu-quick-head"><b>COBA SENDIRI</b><small>LIVE SIMULATION</small></div><div class="edu-quick-controls" id="labQuickControls">'+quickControlHTML(c)+'</div><div class="edu-quick-result" id="labLiveResult">'+quickResultHTML(c)+'</div><div class="edu-quick-actions"><button data-tab="controls" onclick="setLabInspectorTab(this.dataset.tab)">Atur variabel ↗</button><button class="primary" data-chapter="'+c.id+'" onclick="labRun(this.dataset.chapter)">▶ Rekam data</button></div></div></aside></div>';
 }
 function virtualLabPage(c){
  return '<section class="edu-application">'+virtualLabHTML(c)+
@@ -529,7 +555,7 @@ function gameHTML(c){return virtualLabHTML(c)}
 
 function prevByPage(){prev(state.page)}function nextByPage(){next(state.page)}
 function render(){const c=chapters.find(x=>x.id===state.page);$('#crumb').textContent=c?'BUKU '+c.book.toUpperCase()+' / BAB '+c.n+' · '+shortChapterTitle(c):'Jelajah IPA / Beranda';$('#content').innerHTML=c?chapterPage(c):home();$('#xpPill').textContent='✦ '+state.xp+' XP';nav();updateEduHeader(c);if(c){const root=document.querySelector('[data-lab-root="'+c.id+'"]');if(root){const view=root.querySelector('#threeScene');if(window.renderScience3D)window.renderScience3D(c.id,labData(c.id),view);else{setTimeout(()=>{if(!window.renderScience3D&&view&&view.isConnected){const loading=view.querySelector('.three-scene-loading');if(loading)loading.innerHTML='<div><b>3D belum termuat</b>Periksa koneksi internet untuk memuat Three.js.</div>'}},8000)}}}}
-function labPreview(id){var c=chapters.find(function(x){return x.id===id}),root=document.querySelector('[data-lab-root="'+id+'"]');if(!c||!root)return;var d=labData(id),disp=root.querySelector('#labVisualFallback');if(disp)disp.innerHTML=labSceneHTML(id,d);var report=root.querySelector('#labReport');if(report)report.innerHTML=labReportHTML(c,d);root.querySelectorAll('[data-value]').forEach(function(el){var key=el.getAttribute('data-value');if(d[key]!==undefined)el.textContent=d[key]});root.querySelectorAll('[data-key]').forEach(function(el){var key=el.getAttribute('data-key');if(d[key]!==undefined&&document.activeElement!==el)el.value=d[key]});var stamp=document.querySelector('.vlab-stamp b');if(stamp)stamp.textContent=d.logs.length;var quick=root.querySelector('#labLiveResult');if(quick)quick.innerHTML=quickResultHTML(c);if(activeInspectorTab==='data'){var insp=root.querySelector('#inspectorContent');if(insp)insp.innerHTML=inspectorPanelHTML(c,'data')}if(window.renderScience3D){var view=root.querySelector('#threeScene');if(view)window.renderScience3D(id,d,view)}if(id==='3a1'){var safe=root.querySelector('#safe-decision');if(safe)safe.textContent=d.safeDecision||'Pilih respons untuk melihat konsekuensinya.'}}
+function labPreview(id){var c=chapters.find(function(x){return x.id===id}),root=document.querySelector('[data-lab-root="'+id+'"]');if(!c||!root)return;var d=labData(id),disp=root.querySelector('#labVisualFallback');if(disp)disp.innerHTML=labSceneHTML(id,d);var report=root.querySelector('#labReport');if(report)report.innerHTML=labReportHTML(c,d);root.querySelectorAll('[data-value]').forEach(function(el){var key=el.getAttribute('data-value');if(d[key]!==undefined)el.textContent=d[key]});root.querySelectorAll('[data-key]').forEach(function(el){var key=el.getAttribute('data-key');if(d[key]!==undefined&&document.activeElement!==el)el.value=d[key]});var stamp=document.querySelector('.vlab-stamp b');if(stamp)stamp.textContent=d.logs.length;var quick=root.querySelector('#labLiveResult');if(quick)quick.innerHTML=quickResultHTML(c);root.querySelectorAll('#labQuickControls [data-key]').forEach(function(el){var key=el.getAttribute('data-key');if(d[key]!==undefined&&document.activeElement!==el)el.value=d[key]});root.querySelectorAll('#labQuickControls [data-value]').forEach(function(el){var key=el.getAttribute('data-value');if(d[key]!==undefined)el.textContent=d[key]});if(activeInspectorTab==='data'){var insp=root.querySelector('#inspectorContent');if(insp)insp.innerHTML=inspectorPanelHTML(c,'data')}if(window.renderScience3D){var view=root.querySelector('#threeScene');if(view)window.renderScience3D(id,d,view)}if(id==='3a1'){var safe=root.querySelector('#safe-decision');if(safe)safe.textContent=d.safeDecision||'Pilih respons untuk melihat konsekuensinya.'}}
 
 $('#menuBtn').onclick=()=>$('#sidebar').classList.toggle('open');document.querySelector('[data-home]').onclick=()=>go('home');window.addEventListener('keydown',e=>{if(e.key==='Escape')$('#sidebar').classList.remove('open')});nav();render();
 </script>
