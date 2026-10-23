@@ -201,6 +201,30 @@ body.image-lightbox-open{overflow:hidden}
 @media(max-width:780px){.slideshare-frame-wrap{min-height:300px;max-height:none;aspect-ratio:4/3}.slideshare-sourcebar{align-items:flex-start;flex-direction:column}.slideshare-sourcebar .btn{width:100%;text-align:center}}
 @media(max-width:480px){.slideshare-frame-wrap{min-height:240px;aspect-ratio:3/4}.slideshare-main{padding-top:15px}.slideshare-sourcebar{padding:10px}.slideshare-fallback{font-size:9px}.source-quiz-main{padding-left:10px;padding-right:10px}}
 
+
+/* Present the source PPT as full, individual slides rather than additional text */
+.ppt-slide-main{padding:8px clamp(8px,1.6vw,21px) 8px!important;justify-content:center!important;align-items:stretch;min-height:0}
+.ppt-original-viewer{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:100%;max-width:1400px;margin:0 auto}
+.ppt-original-stage{width:100%;height:min(68vh,760px);min-height:350px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid #e2dac9;border-radius:12px;background:#f4f0e6}
+.ppt-original-image{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;background:#fff}
+.ppt-image-error{position:absolute;inset:0;display:grid;place-items:center;padding:28px;text-align:center;background:#fff8ec;color:#987b5b;font-size:12px;line-height:1.65}
+.ppt-image-error[hidden]{display:none}
+.ppt-original-caption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 3px;font-size:9px;letter-spacing:.7px;font-weight:950;color:#7c8a97}
+.ppt-original-caption a{color:#319b8e;text-decoration:none}
+.ppt-original-caption a:hover{text-decoration:underline}
+.ppt-navigation-footer{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.ppt-navigation-status{display:flex;align-items:center;gap:9px;min-width:175px}
+.ppt-navigation-status>span{font-size:8px;color:#49a798;font-weight:950;letter-spacing:1px;white-space:nowrap}
+.ppt-navigation-status>b{font-size:10px;color:#64778c;white-space:nowrap}
+.ppt-progress{width:90px;height:6px;background:#e7dfd0;border-radius:99px;overflow:hidden}
+.ppt-progress i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#43c0b0,#a4d978)}
+.ppt-navigation-footer .slide-actions{margin-left:auto}
+.ppt-navigation-footer .slide-actions .btn{min-width:110px}
+@media(max-width:780px){.ppt-original-stage{height:58vh;min-height:280px}.ppt-navigation-footer{flex-wrap:wrap}.ppt-navigation-status{min-width:150px}.ppt-progress{width:62px}.ppt-navigation-footer .footer-hint{display:none}}
+@media(max-width:480px){.ppt-slide-main{padding:5px!important}.ppt-original-stage{height:52vh;min-height:240px;border-radius:8px}.ppt-original-viewer{gap:6px}.ppt-original-caption{font-size:8px}.ppt-navigation-footer{gap:8px}.ppt-navigation-status{width:100%;min-width:100%}.ppt-navigation-footer .slide-actions{width:100%}.ppt-navigation-footer .slide-actions .btn{flex:1;min-width:0}}
+body.presenter .ppt-slide-main{height:calc(100vh - 152px)}
+body.presenter .ppt-original-stage{height:min(74vh,880px);min-height:400px}
+
 </style>
 </head>
 <body>
@@ -489,7 +513,7 @@ const SLIDESHARE_MATERIAL_URL="https://www.slideshare.net/slideshow/hakikat-ilmu
 const SLIDESHARE_SOURCE_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373#26";
 
 let deck=[];
-function buildDeck(){deck=[{type:"welcome"}];chapters.forEach(ch=>{["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));if(ch.id==="1a1"){deck.push({type:"activity",id:ch.id});deck.push({type:"slideshare",id:ch.id});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}))}else{deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})}})}
+function buildDeck(){deck=[{type:"welcome"}];chapters.forEach(ch=>{["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));if(ch.id==="1a1"){deck.push({type:"activity",id:ch.id});for(let part=0;part<28;part++)deck.push({type:"pptSlide",id:ch.id,part:part});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}))}else{deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})}})}
 const state={index:0,notes:false,completed:readCompleted(),quizAnswers:{},sourceQuizAnswers:{}};
 function readCompleted(){try{const x=JSON.parse(localStorage.getItem("jelajah_ipa_presentation_done")||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
 function saveCompleted(){try{localStorage.setItem("jelajah_ipa_presentation_done",JSON.stringify(state.completed))}catch(e){}}
@@ -500,7 +524,7 @@ function goWelcome(){state.index=0;state.notes=false;render();closeSidebar()}
 function goChapter(id){const idx=deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
 function nextSlide(){if(state.index<deck.length-1){state.index++;render()}else showToast("Kamu sudah berada di slide terakhir.")}
 function prevSlide(){if(state.index>0){state.index--;render()}}
-function goToChapterSlide(id,type,part){const ix=deck.findIndex(s=>s.id===id&&s.type===type&&(!["details","sourceQuiz"].includes(type)||s.part===Number(part)));if(ix>=0){state.index=ix;render()}}
+function goToChapterSlide(id,type,part){const ix=deck.findIndex(s=>s.id===id&&s.type===type&&(!["details","sourceQuiz","pptSlide"].includes(type)||s.part===Number(part)));if(ix>=0){state.index=ix;render()}}
 function bookName(book){return book==="1a"?"BUKU 1A · IPA DASAR":book==="2a"?"BUKU 2A · BIOLOGI":"BUKU 3A · SISTEM & FISIKA"}
 function renderNav(){const targets={"1a":"#nav1","2a":"#nav2","3a":"#nav3"};Object.keys(targets).forEach(book=>{const target=$(targets[book]);target.innerHTML=chapters.filter(c=>c.book===book).map(c=>'<button class="chapter-link '+(currentChapter()&&currentChapter().id===c.id?"active ":"")+(state.completed.includes(c.id)?"done":"")+'" data-chapter="'+c.id+'" onclick="goChapter(this.dataset.chapter)"><span class="chapter-num">'+String(c.n).padStart(2,"0")+'</span><span class="chapter-name">'+c.short+'</span><span class="chapter-status">'+(state.completed.includes(c.id)?"✓":"›")+'</span></button>').join("")});const h=$("#homeLink");if(h)h.classList.toggle("active",!currentChapter())}
 function filterChapters(q){const query=q.toLowerCase().trim();document.querySelectorAll(".chapter-link[data-chapter]").forEach(b=>{const ch=chapters.find(c=>c.id===b.dataset.chapter);b.style.display=(!query||ch.title.toLowerCase().includes(query)||ch.short.toLowerCase().includes(query))?"grid":"none"})}
@@ -519,7 +543,7 @@ if(kind==="pressure")return '<svg viewBox="0 0 480 340" role="img" aria-label="I
 return '<svg viewBox="0 0 480 340"><circle cx="240" cy="170" r="100" fill="#dff5ed"/><text x="240" y="183" text-anchor="middle" font-size="70">🔎</text></svg>';
 }
 function welcomeHTML(){return '<section class="slide-shell"><div class="slide-topline"><span></span><span></span><span></span><span></span></div><div class="slide-main"><div class="cover-layout"><div><span class="chapter-pill">✦ MEDIA PRESENTASI INTERAKTIF · SMP</span><h1>Belajar IPA,<br><span class="highlight">yuk!</span></h1><p class="lead">Jelajahi alam, pahami cara kerja tubuh, dan temukan konsep fisika lewat presentasi kelas yang visual, cerah, dan mudah diikuti.</p><div class="welcome-stat-row"><span class="welcome-stat"><b>3</b> buku</span><span class="welcome-stat"><b>10</b> bab</span><span class="welcome-stat"><b>'+deck.length+'</b> slide pembelajaran</span></div><div class="intro-badges"><button class="btn btn-primary" onclick="goChapter(\'1a1\')">Mulai mengajar →</button><button class="btn btn-soft" onclick="togglePresentation()">▣ Mode presentasi</button></div></div><div class="cover-art">'+svgArt("science")+'</div></div><div class="book-chooser"><button class="book-card book1" onclick="goChapter(\'1a1\')"><span class="book-icon">🔬</span><b>Buku IPA 1a</b><small>Sains dasar, zat, gerak, dan gaya · 3 bab</small></button><button class="book-card book2" onclick="goChapter(\'2a1\')"><span class="book-icon">🧫</span><b>Buku IPA 2a</b><small>Sel dan sistem tubuh makhluk hidup · 2 bab</small></button><button class="book-card book3" onclick="goChapter(\'3a1\')"><span class="book-icon">🧬</span><b>Buku IPA 3a</b><small>Koordinasi, homeostasis, reproduksi, genetika, tekanan · 5 bab</small></button></div><details class="reference-links"><summary>Referensi guru · Kurikulum Merdeka dan buku IPA revisi</summary><p>Materi presentasi mengikuti daftar isi Diktat IPA Jawara 1a, 2a, dan 3a. Untuk memperdalam penjelasan, lihat juga sumber berikut:</p><div><a href="https://kurikulum.kemendikdasmen.go.id/file/panduan/dokumen/8.%20Final%20Panduan%20Mata%20Pelajaran%20IPA_16_OKT_2025_revisi%204.pdf" target="_blank" rel="noopener">Panduan Mata Pelajaran IPA · Fase D (2025)</a><a href="https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_VII_Rev.pdf" target="_blank" rel="noopener">Buku IPA Kelas VII · Edisi Revisi</a><a href="https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_VIII_Rev.pdf" target="_blank" rel="noopener">Buku IPA Kelas VIII · Edisi Revisi</a><a href="https://static.sc.cloudapp.web.id/content/pdf/bukuteks/kurikulum21/IPA_BS_KLS_IX_Rev.pdf" target="_blank" rel="noopener">Buku IPA Kelas IX · Edisi Revisi</a></div><small>Referensi resmi dapat memiliki pembagian bab yang berbeda dari diktat sekolah. Gunakan submateri yang relevan dengan bab yang sedang diajarkan.</small></details></div></section>'}
-function slideTop(c,type,partIndex){const map={cover:"MULAI DARI PERTANYAAN",concept:"KONSEP INTI",explore:"PETA MATERI",details:"PENDALAMAN MATERI",activity:"AKTIVITAS KELAS",slideshare:"MATERI PRESENTASI SUMBER",sourceQuiz:"KUIS DARI MATERI",quiz:"CEK PEMAHAMAN"};const list=deck.filter(s=>s.id===c.id);const pos=list.findIndex(s=>s.type===type&&(!["details","sourceQuiz"].includes(type)||s.part===partIndex));const partLabel=type==="details"?" · BAGIAN "+(partIndex+1):type==="sourceQuiz"?" · SOAL "+(partIndex+1)+"/"+SOURCE_QUIZ.length:"";return '<div class="slide-meta"><span class="eyebrow">'+bookName(c.book)+' · BAB '+c.n+' / '+map[type]+partLabel+'</span><span class="slide-count-chip">SLIDE '+(pos+1)+' / '+list.length+'</span></div>'}
+function slideTop(c,type,partIndex){const map={cover:"MULAI DARI PERTANYAAN",concept:"KONSEP INTI",explore:"PETA MATERI",details:"PENDALAMAN MATERI",activity:"AKTIVITAS KELAS",slideshare:"MATERI PRESENTASI SUMBER",pptSlide:"PRESENTASI PPT ASLI",sourceQuiz:"KUIS DARI MATERI",quiz:"CEK PEMAHAMAN"};const list=deck.filter(s=>s.id===c.id);const pos=list.findIndex(s=>s.type===type&&(!["details","sourceQuiz","pptSlide"].includes(type)||s.part===partIndex));const partLabel=type==="details"?" · BAGIAN "+(partIndex+1):type==="sourceQuiz"?" · SOAL "+(partIndex+1)+"/"+SOURCE_QUIZ.length:type==="pptSlide"?" · SLIDE PPT "+(partIndex+1)+"/28":"";return '<div class="slide-meta"><span class="eyebrow">'+(type==="pptSlide"?"PRESENTASI ASLI · BAB 1":bookName(c.book)+' · BAB '+c.n+' / '+map[type])+partLabel+'</span><span class="slide-count-chip">SLIDE '+(pos+1)+' / '+list.length+'</span></div>'}
 function teacherNoteHTML(c,type){return '<div class="teacher-notes '+(state.notes?'show':'')+'" id="teacherNotes"><div class="notes-toolbar"><h3>CATATAN GURU · '+c.short.toUpperCase()+'</h3><button onclick="toggleNotes()">Tutup catatan ×</button></div><p>'+c.teacher+(type==="activity"?" Arahkan diskusi agar siswa menyampaikan alasan dan bukti, bukan hanya jawaban akhir.":"")+'</p></div>'}
 
 function detailsSlideHTML(c,partIndex){
@@ -540,8 +564,9 @@ function chapterSlideHTML(c,type){
   body=detailsSlideHTML(c,sl.part);
  }else if(type==="activity"){
   body='<div class="slide-main"><span class="eyebrow">DISKUSI · BERPIKIR · BERBAGI</span><h2>Coba pikirkan bersama</h2><p class="slide-subline">Berikan waktu kepada siswa untuk berpikir mandiri, berdiskusi berpasangan, lalu menjelaskan alasannya berdasarkan konsep dan bukti.</p><div class="application-layout"><section class="mission-board"><span class="mission-title">MISI KELAS</span><h3>'+c.activity+'</h3><p>Diskusikan menggunakan konsep yang baru dipelajari.</p><div class="mission-steps">'+c.steps.map((s,i)=>'<div class="mission-step"><span>'+(i+1)+'</span><div>'+s+'</div></div>').join("")+'</div></section><section class="prompt-board"><span class="prompt-label">PANDUAN DISKUSI</span><h3>Apa bukti atau alasanmu?</h3><p>Tidak cukup hanya menjawab. Jelaskan proses berpikirmu dan dengarkan ide teman.</p><button class="reveal-btn" onclick="revealActivity(this)">Tampilkan panduan jawaban ↗</button><div class="reveal-answer" hidden>'+c.reveal+'</div></section></div></div>';
- }else if(type==="slideshare"){
-  body='<div class="slide-main slideshare-main"><span class="eyebrow">MATERI ASLI DARI SLIDESHARE</span><h2>Hakikat Ilmu Sains dan Metode Ilmiah</h2><p class="slide-subline">Presentasi rujukan terdiri dari 28 slide: cabang sains, laboratorium dan keselamatan kerja, merancang percobaan, pengukuran, serta pelaporan hasil percobaan.</p><div class="slideshare-frame-wrap"><iframe class="slideshare-frame" src="'+SLIDESHARE_MATERIAL_URL+'" title="Hakikat Ilmu Sains dan Metode Ilmiah — SlideShare" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="slideshare-sourcebar"><div><b>Materi rujukan</b><small>Diunggah oleh deanIrvanda1 di SlideShare. Konten dimuat dari situs sumber, bukan disalin ke repository.</small></div><a class="btn btn-primary" href="'+SLIDESHARE_SOURCE_URL+'" target="_blank" rel="noopener noreferrer">Buka presentasi ↗</a></div><div class="slideshare-fallback"><b>Jika pemutar tidak tampil di dalam kotak:</b> buka presentasi melalui tombol di atas. SlideShare dapat membatasi pemuatan halaman biasa di dalam iframe; pemutar resmi di dalam web memerlukan kode Embed dari tombol Share → Embed pada halaman SlideShare.</div></div>';
+ }else if(type==="pptSlide"){
+  const pptNumber=sl.part+1;
+  body='<div class="slide-main ppt-slide-main"><div class="ppt-original-viewer"><div class="ppt-original-stage"><img class="ppt-original-image" src="'+slideShareImageUrl(pptNumber,1024)+'" data-slide-number="'+pptNumber+'" data-image-width="1024" alt="Slide '+pptNumber+' dari presentasi Hakikat Ilmu Sains dan Metode Ilmiah" loading="'+(pptNumber<=2?'eager':'lazy')+'" decoding="async" onerror="slideShareImageError(this)"><div class="ppt-image-error" hidden>Gambar slide tidak berhasil dimuat. Gunakan tautan sumber untuk membuka presentasi asli.</div></div><div class="ppt-original-caption"><span>SLIDE '+String(pptNumber).padStart(2,'0')+' / 28</span><a href="'+SLIDESHARE_SOURCE_URL+'" target="_blank" rel="noopener noreferrer">Sumber PPT ↗</a></div></div></div>';
  }else if(type==="sourceQuiz"){
   body=sourceQuizSlideHTML(c,sl.part);
  }else if(type==="quiz"){
@@ -555,9 +580,32 @@ function slideFooterHTML(c,type,partIndex){
  const labels={cover:"Pembuka",concept:"Konsep inti",explore:"Peta materi",details:"Pendalaman "+(partIndex+1),activity:"Aktivitas",slideshare:"Presentasi sumber",sourceQuiz:"Kuis soal "+(partIndex+1),quiz:"Kuis"};
  const usesPart=["details","sourceQuiz"].includes(type);
  const activePart=list.findIndex(s=>s.type===type&&(!usesPart||s.part===partIndex));
+ if(type==="pptSlide"){
+  const number=partIndex+1;
+  return '<div class="slide-footer ppt-navigation-footer"><div class="ppt-navigation-status"><span>SLIDE PPT</span><div class="ppt-progress"><i style="width:'+(number/28*100)+'%"></i></div><b>'+number+' / 28</b></div><span class="footer-hint">Presentasi asli · gambar dari SlideShare</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(number===1?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(number===28?'Mulai kuis →':'Berikutnya →')+'</button></div></div>';
+ }
  return '<div class="slide-footer"><div class="slide-indicators">'+list.map(function(s,i){const title=s.type==="details"?"Pendalaman "+(s.part+1):s.type==="sourceQuiz"?"Kuis soal "+(s.part+1):(labels[s.type]||s.type);return '<button class="slide-dot '+(i===activePart?'active':'')+'" title="'+title+'" aria-label="'+title+'" data-id="'+c.id+'" data-type="'+s.type+'" data-part="'+(s.part===undefined?'':s.part)+'" onclick="goToChapterSlide(this.dataset.id,this.dataset.type,this.dataset.part)"></button>'}).join("")+'</div><span class="footer-hint">Gunakan ← → atau spasi untuk berpindah slide</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(state.index===0?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(state.index===deck.length-1?'Selesai ✓':'Berikutnya →')+'</button></div></div>';
 }
 
+
+
+function slideShareImageUrl(slideNumber,width){
+ const widths=[1024,638,320];
+ const size=widths.includes(Number(width))?Number(width):320;
+ return "https://image.slidesharecdn.com/hakikatilmusainsdanmetodeilmiah-230814132116-e01e6025/85/Hakikat-ilmu-sains-dan-metode-ilmiah-pptx-"+Number(slideNumber)+"-"+size+".jpg";
+}
+function slideShareImageError(img){
+ const current=Number(img.dataset.imageWidth||1024);
+ const next=current===1024?638:current===638?320:0;
+ if(next){
+  img.dataset.imageWidth=String(next);
+  img.src=slideShareImageUrl(Number(img.dataset.slideNumber||1),next);
+  return;
+ }
+ const stage=img.closest(".ppt-original-stage");
+ if(stage){const error=stage.querySelector(".ppt-image-error");if(error)error.hidden=false}
+ img.hidden=true;
+}
 
 function sourceQuizSlideHTML(c,part){
  const q=SOURCE_QUIZ[part],selected=state.sourceQuizAnswers[part],answered=selected!==undefined;
