@@ -1428,11 +1428,31 @@ function renderQuestion(){
  document.getElementById("checkBtn").disabled=entry.selected===null;
  document.getElementById("nextBtn").classList.toggle("hidden",!entry.checked);
  document.getElementById("nextBtn").textContent=state.index===total-1?(state.reviewMode?"Lihat hasil ulasan":"Lihat hasil akhir"):"Berikutnya →";
- document.getElementById("actionHint").textContent=entry.checked?"Jawaban telah diperiksa.": "Pilih jawaban terbaik.";
+ document.getElementById("actionHint").textContent=entry.checked?"Jawaban diperiksa · Backspace untuk kembali.":"A–D pilih · Enter periksa · Backspace kembali.";
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
 function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;saveSession();renderQuestion()}
-function checkAnswer(){const e=state.deck[state.index];if(e.selected===null)return;e.checked=true;saveSession();renderQuestion()}
+function checkAnswer(){const e=state.deck[state.index];if(e.selected===null||e.checked)return;e.checked=true;saveSession();renderQuestion()}
+document.addEventListener("keydown",function(event){
+ if(state.view!=="quiz"||!state.deck.length||event.altKey||event.ctrlKey||event.metaKey)return;
+ const target=event.target;
+ if(target&&(target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)))return;
+ const key=event.key.toLowerCase();
+ if(["a","b","c","d"].includes(key)){
+  event.preventDefault();
+  if(!event.repeat&&!state.deck[state.index].checked)selectAnswer(key.charCodeAt(0)-97);
+  return;
+ }
+ if(event.key==="Enter"){
+  event.preventDefault();
+  if(!event.repeat&&!state.deck[state.index].checked&&state.deck[state.index].selected!==null)checkAnswer();
+  return;
+ }
+ if(event.key==="Backspace"){
+  event.preventDefault();
+  if(!event.repeat)moveQuestion(-1);
+ }
+});
 function moveQuestion(delta){
  const next=state.index+delta;
  if(next<0)return;
