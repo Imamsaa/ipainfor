@@ -3,6 +3,10 @@
 Web presentasi pembelajaran IPA bertema sekolah yang cerah, disusun mengikuti daftar isi Diktat IPA Jawara 1a, 2a, dan 3a.
 
 
+## Tampilan awal dan navigasi mengambang
+
+Saat website dibuka, halaman langsung menampilkan **slide pertama PPT Hakikat Ilmu Sains dan Metode Ilmiah**—tanpa halaman sambutan atau pengantar tambahan. Presentasi memuat 28 slide asli sebagai gambar, lalu 5 soal kuis. Header diperkecil menjadi kontrol ringkas. Sidebar bab berubah menjadi drawer mengambang dan tidak lagi mengambil lebar layar saat tertutup; buka melalui tombol menu di kiri atas dan tutup melalui area gelap di luar panel.
+
 ## Presentasi PPT asli sebagai rangkaian slide
 
 Pada Bab 1 **Hakikat Ilmu Sains dan Metode Ilmiah**, presentasi SlideShare tidak lagi ditampilkan sebagai halaman berisi banyak teks. Web menampilkan **28 slide asli satu per satu** sebagai gambar besar dari CDN SlideShare, dengan tombol sebelumnya/berikutnya, indikator slide, dan tautan ke sumber. Setelah slide ke-28, navigasi langsung masuk ke 5 soal kuis berbasis materi.
