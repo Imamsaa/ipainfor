@@ -11,6 +11,8 @@ Saat website dibuka, halaman langsung menampilkan **slide pertama PPT Hakikat Il
 
 Pada Bab 1 **Hakikat Ilmu Sains dan Metode Ilmiah**, presentasi SlideShare tidak lagi ditampilkan sebagai halaman berisi banyak teks. Web menampilkan **28 slide asli satu per satu** sebagai gambar besar dari CDN SlideShare, dengan tombol sebelumnya/berikutnya, indikator slide, dan tautan ke sumber. Setelah slide ke-28, navigasi langsung masuk ke 5 soal kuis berbasis materi.
 
+Pada Bab 2 **Zat dan Perubahannya**, web juga menampilkan **17 slide asli satu per satu** dari SlideShare, diikuti 5 soal pilihan ganda yang merujuk pada materi sumber. Setelah kuis, slide pendalaman yang sudah ada tetap tersedia. Tema antarmuka diperbarui mengikuti presentasi ini: latar kuning pastel, aksen biru toska, warna tinta gelap, serta nuansa laboratorium ilustratif. Sumber: [Presentasi materi zat dan perubahannya untuk kelas 7 Kurikulum Merdeka — SlideShare](https://www.slideshare.net/slideshow/presentasi-materi-zat-dan-perubahannya-untuk-kelas-7-kurikulum-merdeka/283754836).
+
 Gambar dicoba pada ukuran tinggi terlebih dahulu, lalu diturunkan ke ukuran yang lebih kecil jika sumber tidak menyediakan ukuran tersebut. Koneksi internet diperlukan karena slide dimuat langsung dari SlideShare. Ini adalah tampilan slide sebagai gambar, bukan file PowerPoint yang diunduh ke proyek dan bukan pemutar PPTX mandiri; pengguna tetap bisa membuka sumber aslinya.
 
 Sumber: [Hakikat ilmu sains dan metode ilmiah.pptx — SlideShare](https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373).
