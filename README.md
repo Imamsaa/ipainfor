@@ -1,51 +1,64 @@
-# Jelajah IPA — Interactive 3D Virtual Lab SMP
+# Jelajah IPA — Presentasi Interaktif SMP
 
-Media belajar IPA berbasis HTML, CSS, JavaScript, dan Three.js. Antarmuka terinspirasi dari meja kerja laboratorium interaktif: kanvas 3D besar di tengah, panel ringkasan dan kontrol di kanan, rail ikon di kiri, serta kartu pelajaran horizontal di bagian bawah.
+Web presentasi pembelajaran IPA dengan tema sekolah yang cerah. Materi disusun mengikuti urutan daftar isi diktat yang diberikan: Buku IPA 1a, 2a, dan 3a. Setiap bab memiliki lima bagian presentasi, sehingga guru dapat menyampaikan materi secara bertahap dari pertanyaan pembuka sampai kuis pemahaman.
 
-## Pengalaman antarmuka
+## Isi presentasi
 
-- **Kanvas eksperimen utama:** objek 3D yang dapat diputar dengan drag, di-zoom dengan scroll, dan di-reset menggunakan toolbar.
-- **Panel kanan bertab:** Ringkasan, Variabel, Data, dan Materi.
-- **Kontrol cepat:** setiap bab memiliki kontrol ringkas yang tetap terlihat sambil mengamati model 3D.
-- **Catatan eksperimen:** rekam kondisi yang diuji dan buka tab Data untuk membaca kembali pengamatan.
-- **Navigasi pelajaran:** deretan kartu bab di bawah untuk berpindah laboratorium dengan cepat.
-- **Tampilan responsif:** panel kontrol berpindah ke bawah viewport pada layar sempit.
+### Buku IPA 1a — IPA Dasar
+1. Hakikat Ilmu Sains dan Metode Ilmiah
+2. Zat dan Perubahannya
+3. Gerak Benda dan Gaya
 
-## Laboratorium per bab
+### Buku IPA 2a — Biologi
+4. Pengenalan Sel
+5. Struktur dan Fungsi Tubuh Makhluk Hidup
 
-- **Buku 1a Bab 1 — Hakikat Sains dan Metode Ilmiah:** greenhouse virtual; atur cahaya, air, nutrien, dan catat hasil model.
-- **Buku 1a Bab 2 — Zat dan Perubahannya:** wadah partikel 3D; ubah energi dan amati gerak pada model padat, cair, dan gas.
-- **Buku 1a Bab 3 — Gerak Benda dan Gaya:** kendaraan 3D di lintasan; atur kecepatan awal, percepatan, dan waktu.
-- **Buku 2a Bab 1 — Pengenalan Sel:** model sel hewan/tumbuhan; klik struktur untuk mempelajari fungsi organel.
-- **Buku 2a Bab 2 — Struktur dan Fungsi Tubuh Makhluk Hidup:** model tubuh dan jalur sistem pernapasan, peredaran darah, pencernaan, dan ekskresi.
-- **Buku 3a Bab 1 — Sistem Koordinasi dan Zat Adiktif:** model kepala, organ indra, ragam rangsangan, dan pilihan aman.
-- **Buku 3a Bab 2 — Homeostasis:** model tubuh dan indikator suhu, cairan, atau glukosa.
-- **Buku 3a Bab 3 — Sistem Reproduksi Manusia:** simulator visual tahapan pembelahan sel.
-- **Buku 3a Bab 4 — Pewarisan Sifat:** model DNA, kombinasi alel, dan kotak Punnett yang dihitung langsung.
-- **Buku 3a Bab 5 — Tekanan:** model benda, cairan, dan gas untuk eksperimen tekanan.
+### Buku IPA 3a — Sistem dan Fisika
+6. Sistem Koordinasi dan Zat Adiktif
+7. Homeostasis
+8. Sistem Reproduksi Manusia
+9. Pewarisan Sifat
+10. Tekanan
+
+## Format setiap bab
+
+- **Pembuka:** tujuan belajar, pertanyaan pemantik, dan ilustrasi.
+- **Konsep inti:** gagasan utama dan tiga kartu penjelasan.
+- **Jelajahi materi:** tiga bagian konsep beserta contoh sehari-hari.
+- **Aktivitas kelas:** kasus diskusi, langkah kegiatan, dan panduan jawaban yang dapat dibuka saat mengajar.
+- **Cek pemahaman:** kuis pilihan ganda dengan umpan balik jawaban.
+
+## Fitur presentasi
+
+- Navigasi bab di sisi kiri dan pencarian materi.
+- Tombol sebelumnya/berikutnya dan indikator bagian pada setiap bab.
+- Mode presentasi layar penuh.
+- Catatan guru yang bisa ditampilkan atau disembunyikan.
+- Ilustrasi SVG tertanam; tidak membutuhkan file gambar terpisah.
+- Progres bab yang selesai mengerjakan kuis disimpan secara lokal di browser.
+- Pintasan keyboard: **→ / spasi** untuk maju, **←** untuk mundur, **Home** untuk pembuka, **End** untuk slide terakhir, dan **N** untuk menampilkan/menyembunyikan catatan guru.
+- Tidak membutuhkan framework, proses build, atau koneksi internet untuk fitur inti.
 
 ## Menjalankan secara lokal
 
-Three.js dimuat sebagai JavaScript module dari CDN, jadi koneksi internet diperlukan. Cara yang paling andal adalah menjalankan server lokal (bukan membuka HTML lewat `file://`):
+1. Klik **Code → Download ZIP** pada repository dan ekstrak file.
+2. Buka `index.html` dengan Chrome, Edge, atau Firefox.
+
+Jika ingin menjalankan lewat server lokal:
 
 ```bash
 py -m http.server 8000
 ```
 
-Jalankan dari folder yang berisi `index.html`, kemudian buka `http://localhost:8000`. Bila modul 3D tidak tersedia, skema 2D dapat dibuka dari area eksperimen.
+Kemudian buka `http://localhost:8000`.
 
-## Publikasi GitHub Pages
+## Publikasi melalui GitHub Pages
 
-Repository ini menggunakan file statis dan tidak memerlukan proses build:
-1. Pastikan `index.html` dan `README.md` berada di root branch `main`.
+1. Pastikan `index.html` berada di root branch `main`.
 2. Buka **Settings → Pages**.
-3. Pada **Build and deployment**, pilih **Deploy from a branch**.
-4. Pilih branch `main` dan folder `/(root)`, lalu simpan.
-5. Buka URL yang diberikan GitHub Pages setelah deployment selesai.
+3. Pilih **Deploy from a branch**, branch `main`, folder `/(root)`, lalu simpan.
+4. Setelah deployment selesai, buka URL yang ditampilkan GitHub Pages.
 
-## Penyimpanan dan batas simulasi
+## Catatan materi
 
-- Variabel eksperimen, XP, progres bab, dan catatan disimpan di `localStorage` browser/perangkat yang sama. Belum ada akun, sinkronisasi antargawai, atau dashboard guru.
-- Simulasi tanaman, gerak tubuh, homeostasis, dan beberapa visual lain adalah model konseptual sederhana; bukan data eksperimen nyata atau alat diagnosis.
-- Model 3D dibuat secara prosedural untuk pembelajaran; tidak dimaksudkan menggantikan alat praktikum atau mikroskop nyata.
-- Materi mengikuti daftar isi diktat IPA 1a, 2a, dan 3a yang diberikan.
+Urutan bab dan submateri mengikuti daftar isi diktat IPA yang diberikan. Penjelasan ringkas, contoh sehari-hari, pertanyaan diskusi, dan kuis merupakan bahan ajar pendamping yang disusun untuk membantu guru menjelaskan konsep; bukan salinan lengkap isi buku.
