@@ -24,7 +24,7 @@ Gambar di cover bab dibuat lebih besar, dan gambar pada slide pendalaman memakai
 
 ## Isi presentasi
 
-Terdapat 99 entri navigasi slide, termasuk halaman pembuka. Setiap bab memiliki:
+Terdapat 126 entri slide navigasi, termasuk halaman pembuka, 28 slide gambar dari PPT SlideShare, dan kuis. Setiap bab memiliki:
 1. Pembuka dan pertanyaan pemantik.
 2. Konsep inti.
 3. Peta materi.
