@@ -25,8 +25,8 @@ Label kelas mengikuti pengelompokan buku/materi yang dibahas sebelumnya: Buku 1A
 ## Penyimpanan sesi dan tampilan kuis
 
 - Sesi kuis, urutan soal yang diacak, pilihan jawaban, status jawaban sudah diperiksa, posisi soal aktif, dan hasil disimpan pada `localStorage` browser.
-- Jika halaman tidak sengaja di-refresh, sesi yang sedang berjalan dipulihkan pada soal yang sama.
-- Jika pengguna kembali ke beranda sebelum selesai, tombol **Lanjutkan sesi** dapat membuka kembali sesi tersimpan.
+- Jika halaman di-refresh saat kuis belum selesai, aplikasi kembali ke beranda dan menawarkan pilihan **Lanjutkan sesi** atau **Mulai sesi baru**.
+- **Lanjutkan sesi** mempertahankan urutan soal, jawaban, dan posisi terakhir. **Mulai sesi baru** mengacak urutan soal dan meminta konfirmasi sebelum mengganti progres yang masih tersimpan.
 - Sesi disimpan secara lokal pada browser/perangkat yang sama. Data tidak otomatis tersinkron antarperangkat atau antarbrowser; menghapus data situs/browser dapat menghapus sesi.
 - Saat mode kuis aktif, halaman dirancang agar soal dan pilihan pas dalam tinggi layar tanpa menggulir seluruh halaman. Ukuran font pilihan jawaban juga diperbesar dan tata letak menyesuaikan layar kecil.
 
