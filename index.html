@@ -1495,26 +1495,6 @@ const ROASTS={
   "SALAH LAGI?! LU SEDANG MENGOLEKSI JAWABAN KELIRU, YA?"
  ]
 };
-const ROAST_COMBOS={
- correct:{
-  2:"DUA KALI BENAR, GAYA LU SUDAH KAYAK PEMILIK SEKOLAH. RAPOR LU BELUM IKUT BICARA, BOS.",
-  3:"TIGA COMBO?! LU BELAJAR DIAM-DIAM ATAU SOALNYA KASIHANI LU?",
-  4:"EMPAT KALI BENAR, TIBA-TIBA JALAN LU KAYAK KEPALA SEKOLAH.",
-  5:"LIMA BENAR! SI PALING PINTER SUDAH MULAI MINTA KURSI GURU.",
-  7:"TUJUH COMBO! JANGAN-JANGAN LU MAU MENGGANTIKAN GURU IPA BESOK.",
-  10:"SEPULUH BENAR?! SIAPA YANG NYURI DAN MASANG OTAK BARU DI KEPALA LU?"
- },
- wrong:{
-  2:"DUA KALI SALAH, LU LAGI NGUMPULIN BUKTI BUAT REMEDIAL?",
-  3:"TIGA KALI SALAH BERTURUT-TURUT! LU LAGI NGEJAR GELAR DUTA JAWABAN MELESET?",
-  4:"EMPAT KALI NGACO! JAWABAN BENAR UDAH LU BLOKIR DARI HIDUP LU?",
-  5:"LIMA KALI SALAH! LU KIRA KUIS INI LOMBA MENGHINDARI JAWABAN BENAR?",
-  7:"TUJUH KALI SALAH! KALAU MELENCENG DAPAT PIALA, LU UDAH NAIK PODIUM.",
-  10:"SEPULUH KALI SALAH?! LU LAGI SPEEDRUN BIKIN GURU MENGHELA NAPAS?"
- },
- correctAfterWrong:"LAH, BENER?! TADI JAWABAN LU KAYAK HASIL UNDIAN, SEKARANG MENDADAK SOK JAGO.",
- wrongAfterCorrect:"WKWK, BARU TADI GAYA LU KAYAK PROFESOR. SEKARANG JAWABANNYA BIKIN GELAR LU DICABUT."
-};
 let lastRoastMessage="";
 
 const SESSION_KEY="kuis_ipa_smp_session_v2";
@@ -1574,20 +1554,10 @@ function renderQuestion(){
 }
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
 function selectAnswer(index){const e=state.deck[state.index];if(e.checked)return;e.selected=index;saveSession();renderQuestion()}
-function currentStreak(isCorrect,startIndex){let streak=0;for(let i=startIndex;i>=0;i--){const item=state.deck[i];const valid=item.checked&&item.selected!==null;const itemCorrect=valid&&!!item.options[item.selected].correct;if(!valid||itemCorrect!==isCorrect)break;streak++}return streak}
 function pickRoast(type){let choices=ROASTS[type].filter(function(message){return message!==lastRoastMessage});if(!choices.length)choices=ROASTS[type];const message=choices[Math.floor(Math.random()*choices.length)];lastRoastMessage=message;return message}
 function createRoast(entry){
  const isCorrect=!!(entry.selected!==null&&entry.options[entry.selected]&&entry.options[entry.selected].correct);
- let message="";
- if(state.index>0){
-  const previous=state.deck[state.index-1];
-  if(isCorrect&&previous.checked&&previous.selected!==null&&!previous.options[previous.selected].correct&&currentStreak(false,state.index-1)>=3)message=ROAST_COMBOS.correctAfterWrong;
-  if(!isCorrect&&previous.checked&&previous.selected!==null&&previous.options[previous.selected].correct&&currentStreak(true,state.index-1)>=3)message=ROAST_COMBOS.wrongAfterCorrect;
- }
- if(!message)message=ROAST_COMBOS[isCorrect?"correct":"wrong"][currentStreak(isCorrect,state.index)]||"";
- if(message&&message===lastRoastMessage)message="";
- if(!message)message=pickRoast(isCorrect?"correct":"wrong");else lastRoastMessage=message;
- return {message:message,isCorrect:isCorrect};
+ return {message:pickRoast(isCorrect?"correct":"wrong"),isCorrect:isCorrect};
 }
 function renderRoastOverlay(entry){
  const overlay=document.getElementById("roastOverlay");
