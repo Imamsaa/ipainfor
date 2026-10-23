@@ -2,6 +2,16 @@
 
 Web presentasi pembelajaran IPA bertema sekolah yang cerah, disusun mengikuti daftar isi Diktat IPA Jawara 1a, 2a, dan 3a.
 
+
+## Integrasi presentasi SlideShare dan kuis Bab 1
+
+Bab **Hakikat Ilmu Sains dan Metode Ilmiah** kini memiliki bagian referensi untuk presentasi SlideShare berikut:
+- [Hakikat ilmu sains dan metode ilmiah.pptx — SlideShare](https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373)
+
+Setelah bagian materi tersebut, siswa mengerjakan **5 soal pilihan ganda** tentang cabang ilmu sains, variabel percobaan, pengamatan kuantitatif, kesalahan paralaks saat mengukur, serta kesimpulan dan pelaporan hasil percobaan. Tiap soal memberikan umpan balik; bab ditandai selesai setelah kelima jawaban benar.
+
+Presentasi sumber diakses dari SlideShare, bukan disalin ke repository. Jika halaman SlideShare tidak dapat dimuat di dalam iframe karena pembatasan situs, tombol **Buka presentasi** membawa pengguna ke situs sumber. Untuk pemutar resmi tertanam, gunakan kode iframe yang disediakan SlideShare melalui **Share → Embed**; sumber tidak menyediakan kunci embed resmi pada metadata halaman publik yang tersedia untuk proses pengembangan ini.
+
 ## Gambar pembelajaran dari internet
 
 Cover setiap bab dan slide pendalaman menampilkan foto atau diagram sains dari Wikimedia Commons yang sesuai dengan topik—misalnya mikroskop, model partikel, Hukum Newton, struktur sel, sistem pencernaan, saraf, homeostasis, DNA, dan tekanan fluida.
@@ -15,7 +25,7 @@ Gambar di cover bab dibuat lebih besar, dan gambar pada slide pendalaman memakai
 
 ## Isi presentasi
 
-Terdapat 94 slide, termasuk halaman pembuka. Setiap bab memiliki:
+Terdapat 99 entri navigasi slide, termasuk halaman pembuka. Setiap bab memiliki:
 1. Pembuka dan pertanyaan pemantik.
 2. Konsep inti.
 3. Peta materi.
