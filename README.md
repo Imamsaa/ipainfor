@@ -38,7 +38,8 @@ Label kelas mengikuti pengelompokan buku/materi yang dibahas sebelumnya: Buku 1A
 - Setiap soal menampilkan label kelas, bab, dan kelompok buku.
 - Terdapat empat pilihan jawaban, pemeriksaan jawaban, dan penjelasan.
 - Progres sesi ditampilkan pada bilah kemajuan.
-- Shortcut keyboard saat kuis aktif: **A/B/C/D** untuk memilih jawaban; **Enter** untuk memeriksa jawaban, lalu menekan **Berikutnya** setelah pembahasan tampil; dan **Backspace** untuk kembali ke soal sebelumnya.
+- Shortcut keyboard saat kuis aktif: **A/B/C/D** untuk memilih jawaban; **Enter** untuk memeriksa jawaban, lalu menekan **Berikutnya** setelah feedback ditutup; **X** untuk menutup feedback layar penuh; dan **Backspace** untuk kembali ke soal sebelumnya.
+- Setelah jawaban diperiksa, muncul feedback roasting acak dengan teks besar satu layar, disertai jawaban yang benar dan pembahasan. Overlay dapat ditutup memakai tombol X di layar atau tombol keyboard **X**. Selagi overlay terbuka, shortcut navigasi lain ditahan agar soal tidak berpindah tanpa sengaja.
 - Hasil akhir berisi skor keseluruhan, ringkasan per kelas, dan hasil per bab.
 - Sesi ulang untuk semua soal atau hanya soal yang salah.
 - Desain clean, responsif di desktop dan ponsel.
