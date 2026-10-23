@@ -87,7 +87,7 @@ function saveCompleted(){try{localStorage.setItem("jelajah_ipa_presentation_done
 function $(s){return document.querySelector(s)}
 function currentSlide(){return deck[state.index]}
 function currentChapter(){const sl=currentSlide();return sl&&sl.id?chapters.find(x=>x.id===sl.id):null}
-function goWelcome(){state.index=0;render();closeSidebar()}
+function goWelcome(){state.index=0;state.notes=false;render();closeSidebar()}
 function goChapter(id){const idx=deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
 function nextSlide(){if(state.index<deck.length-1){state.index++;render()}else showToast("Kamu sudah berada di slide terakhir.")}
 function prevSlide(){if(state.index>0){state.index--;render()}}
@@ -157,7 +157,7 @@ function answerQuiz(button){
  else{feedback.className="quiz-feedback bad";feedback.textContent="Belum tepat. "+c.quiz.explain}
 }
 function nextChapterOrFinish(id){const i=chapters.findIndex(x=>x.id===id);if(i<chapters.length-1)goChapter(chapters[i+1].id);else{showToast("Selesai! Kamu telah sampai di bab terakhir.");goWelcome()}}
-function toggleNotes(){state.notes=!state.notes;const note=$("#teacherNotes");if(note)note.classList.toggle("show",state.notes);$("#notesToggle").textContent=state.notes?"Sembunyikan catatan":"Catatan guru"}
+function toggleNotes(){if(!currentChapter()){showToast("Pilih salah satu bab untuk membuka catatan guru.");return}state.notes=!state.notes;const note=$("#teacherNotes");if(note)note.classList.toggle("show",state.notes);$("#notesToggle").textContent=state.notes?"Sembunyikan catatan":"Catatan guru"}
 function togglePresentation(){
  const active=document.body.classList.toggle("presenter");
  $("#presentBtn").textContent=active?"↙ Keluar presentasi":"▣ Presentasi";
