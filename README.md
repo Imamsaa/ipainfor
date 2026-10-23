@@ -1,28 +1,35 @@
-# Jelajah IPA — Adventure Mode SMP
+# Jelajah IPA — Virtual Lab Interaktif SMP
 
-Media belajar IPA berbasis HTML, CSS, dan JavaScript murni. Setiap bab dikemas sebagai petualangan game dengan cerita misi, tiga level tantangan, umpan balik jawaban, XP, dan aktivitas mini interaktif yang disesuaikan dengan materinya.
+Media praktikum digital berbasis HTML, CSS, dan JavaScript murni. Setiap bab dari diktat IPA 1a, 2a, dan 3a memiliki ruang eksperimen tersendiri. Siswa dapat mengubah variabel, melihat visualisasi berubah langsung, menjalankan simulasi, membaca penjelasan, dan menyimpan catatan pengamatan.
 
-## Mode petualangan
+## Laboratorium per bab
 
-- **Buku 1a:** Detektif Sains, Alkemis Partikel, Roket Newton.
-- **Buku 2a:** Arsitek Sel, Tim Penyelamat Tubuh.
-- **Buku 3a:** Agen Indra, Kapten Homeostasis, Penjaga Siklus Hidup, Detektif Genetika, Insinyur Tekanan.
+- **1a Bab 1 — Hakikat Sains dan Metode Ilmiah:** rumah kaca virtual untuk mengubah cahaya, air, dan nutrien serta mencatat hasil model.
+- **1a Bab 2 — Zat dan Perubahannya:** ruang partikel; ubah energi dan amati model wujud padat, cair, dan gas.
+- **1a Bab 3 — Gerak Benda dan Gaya:** atur kecepatan awal, percepatan, dan waktu untuk membandingkan jarak gerak.
+- **2a Bab 1 — Pengenalan Sel:** mikroskop digital dengan struktur sel yang dapat dipilih, serta pilihan sel hewan/tumbuhan.
+- **2a Bab 2 — Struktur dan Fungsi Tubuh Makhluk Hidup:** telusuri jalur sistem pernapasan, peredaran darah, pencernaan, dan ekskresi.
+- **3a Bab 1 — Sistem Koordinasi dan Zat Adiktif:** kirim rangsangan dari beberapa indra dan pelajari respons serta pilihan aman.
+- **3a Bab 2 — Homeostasis:** terapkan gangguan model pada suhu, cairan, atau glukosa, lalu aktifkan regulasi.
+- **3a Bab 3 — Sistem Reproduksi Manusia:** simulasikan urutan tahap pembelahan sel dan hubungkan dengan pertumbuhan serta kesehatan.
+- **3a Bab 4 — Pewarisan Sifat:** ubah genotipe induk dan amati kotak Punnett serta peluang genotipe.
+- **3a Bab 5 — Tekanan:** uji tekanan zat padat, cair, dan gas dengan mengubah parameter eksperimen.
 
-Setiap bab memiliki tiga level: mengamati petunjuk, menerapkan konsep, dan menuntaskan tantangan. Siswa mendapatkan penjelasan setelah menjawab, serta bisa mencoba mini-simulasi seperti mengatur energi partikel, menggerakkan kendaraan, memeriksa organel, menjaga suhu, dan menguji tekanan.
+Setiap ruang lab berisi panel instrumen, visualisasi, hasil langsung, pertanyaan ilmiah, dan buku catatan pengamatan. XP diberikan ketika siswa merekam eksperimen untuk pertama kali pada bab tersebut.
 
-## Menjalankan di komputer
+## Menjalankan secara lokal
 
 1. Unduh repository melalui **Code → Download ZIP**, lalu ekstrak.
-2. Buka `index.html` dengan Chrome, Edge, atau Firefox.
-3. Jika browser membatasi fitur saat membuka file langsung, jalankan server lokal dari folder ini:
+2. Buka `index.html` menggunakan Chrome, Edge, atau Firefox.
+3. Bila browser membatasi fitur tertentu saat membuka file secara langsung, jalankan server lokal dari folder tersebut:
 
 ```bash
 python -m http.server 8000
 ```
 
-Lalu buka `http://localhost:8000`.
+Kemudian buka `http://localhost:8000`.
 
-Tidak perlu Node.js, framework, paket tambahan, atau koneksi internet untuk fitur inti.
+Tidak membutuhkan Node.js, framework, paket tambahan, database, atau koneksi internet untuk fitur inti.
 
 ## Publikasi di GitHub Pages
 
@@ -30,10 +37,11 @@ Tidak perlu Node.js, framework, paket tambahan, atau koneksi internet untuk fitu
 2. Buka **Settings → Pages**.
 3. Di **Build and deployment**, pilih **Deploy from a branch**.
 4. Pilih branch `main` dan folder `/(root)`, lalu klik **Save**.
-5. Setelah deployment selesai, gunakan URL yang ditampilkan pada bagian Pages.
+5. Gunakan URL yang ditampilkan GitHub Pages setelah deployment selesai.
 
-## Penyimpanan dan catatan pembelajaran
+## Catatan
 
-- XP, aktivitas yang sudah diberi XP, level petualangan, dan bab yang tuntas disimpan dalam `localStorage` pada browser/perangkat yang sama.
-- Data tidak tersinkron otomatis antarperangkat atau antarsiswa; ini bukan sistem akun atau dashboard guru.
-- Materi merujuk pada daftar isi diktat IPA 1a, 2a, dan 3a yang diberikan. Game dan simulasi merupakan media latihan, bukan pengganti praktikum nyata.
+- Pengaturan eksperimen, XP, dan log pengamatan disimpan di `localStorage` browser/perangkat yang sama. Data belum tersinkron antarperangkat maupun ke dashboard guru.
+- Simulasi pertumbuhan tanaman, homeostasis, dan beberapa visual lain adalah model pembelajaran sederhana, bukan data eksperimen nyata atau alat diagnosis.
+- Virtual lab adalah media belajar dan persiapan konsep; tidak menggantikan praktikum nyata.
+- Isi dan pengelompokan materi mengikuti daftar isi diktat IPA yang diberikan.
