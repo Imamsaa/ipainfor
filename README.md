@@ -38,6 +38,7 @@ Label kelas mengikuti pengelompokan buku/materi yang dibahas sebelumnya: Buku 1A
 - Setiap soal menampilkan label kelas, bab, dan kelompok buku.
 - Terdapat empat pilihan jawaban, pemeriksaan jawaban, dan penjelasan.
 - Progres sesi ditampilkan pada bilah kemajuan.
+- Shortcut keyboard saat kuis aktif: **A/B/C/D** untuk memilih jawaban, **Enter** untuk memeriksa jawaban, dan **Backspace** untuk kembali ke soal sebelumnya.
 - Hasil akhir berisi skor keseluruhan, ringkasan per kelas, dan hasil per bab.
 - Sesi ulang untuk semua soal atau hanya soal yang salah.
 - Desain clean, responsif di desktop dan ponsel.
