@@ -3,14 +3,13 @@
 Web presentasi pembelajaran IPA bertema sekolah yang cerah, disusun mengikuti daftar isi Diktat IPA Jawara 1a, 2a, dan 3a.
 
 
-## Integrasi presentasi SlideShare dan kuis Bab 1
+## Presentasi PPT asli sebagai rangkaian slide
 
-Bab **Hakikat Ilmu Sains dan Metode Ilmiah** kini memiliki bagian referensi untuk presentasi SlideShare berikut:
-- [Hakikat ilmu sains dan metode ilmiah.pptx — SlideShare](https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373)
+Pada Bab 1 **Hakikat Ilmu Sains dan Metode Ilmiah**, presentasi SlideShare tidak lagi ditampilkan sebagai halaman berisi banyak teks. Web menampilkan **28 slide asli satu per satu** sebagai gambar besar dari CDN SlideShare, dengan tombol sebelumnya/berikutnya, indikator slide, dan tautan ke sumber. Setelah slide ke-28, navigasi langsung masuk ke 5 soal kuis berbasis materi.
 
-Setelah bagian materi tersebut, siswa mengerjakan **5 soal pilihan ganda** tentang cabang ilmu sains, variabel percobaan, pengamatan kuantitatif, kesalahan paralaks saat mengukur, serta kesimpulan dan pelaporan hasil percobaan. Tiap soal memberikan umpan balik; bab ditandai selesai setelah kelima jawaban benar.
+Gambar dicoba pada ukuran tinggi terlebih dahulu, lalu diturunkan ke ukuran yang lebih kecil jika sumber tidak menyediakan ukuran tersebut. Koneksi internet diperlukan karena slide dimuat langsung dari SlideShare. Ini adalah tampilan slide sebagai gambar, bukan file PowerPoint yang diunduh ke proyek dan bukan pemutar PPTX mandiri; pengguna tetap bisa membuka sumber aslinya.
 
-Presentasi sumber diakses dari SlideShare, bukan disalin ke repository. Jika halaman SlideShare tidak dapat dimuat di dalam iframe karena pembatasan situs, tombol **Buka presentasi** membawa pengguna ke situs sumber. Untuk pemutar resmi tertanam, gunakan kode iframe yang disediakan SlideShare melalui **Share → Embed**; sumber tidak menyediakan kunci embed resmi pada metadata halaman publik yang tersedia untuk proses pengembangan ini.
+Sumber: [Hakikat ilmu sains dan metode ilmiah.pptx — SlideShare](https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373).
 
 ## Gambar pembelajaran dari internet
 
