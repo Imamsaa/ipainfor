@@ -125,8 +125,15 @@ function chapterSlideHTML(c,type){
  }else if(type==="quiz"){
   body='<div class="slide-main"><div class="quiz-card"><span class="quiz-label">✦ CEK PEMAHAMAN</span><h2>'+c.quiz.q+'</h2><div class="quiz-options">'+c.quiz.options.map((opt,i)=>'<button class="quiz-option" data-chapter="'+c.id+'" data-choice="'+i+'" onclick="answerQuiz(this)"><span class="quiz-letter">'+String.fromCharCode(65+i)+'</span><span>'+opt+'</span></button>').join("")+'</div><div class="quiz-feedback" id="quizFeedback">Pilih satu jawaban. Setelah menjawab, baca penjelasannya bersama kelas.</div><div class="intro-badges"><button class="btn btn-soft" onclick="goToChapterSlide(\''+c.id+'\',\'concept\')">↺ Ulangi konsep</button><button class="btn btn-primary" onclick="nextChapterOrFinish(\''+c.id+'\')">Lanjut ke bab berikutnya →</button></div></div></div>';
  }
- return '<section class="slide-shell"><div class="slide-topline"><span></span><span></span><span></span><span></span></div>'+slideTop(c,type)+body+'</section>'+teacherNoteHTML(c,type);
+ return '<section class="slide-shell"><div class="slide-topline"><span></span><span></span><span></span><span></span></div>'+slideTop(c,type)+body+'</section>'+slideFooterHTML(c,type)+teacherNoteHTML(c,type);
 }
+
+function slideFooterHTML(c,type){
+ const types=[["cover","Pembuka"],["concept","Konsep inti"],["explore","Penjelasan"],["activity","Aktivitas"],["quiz","Kuis"]];
+ const index=types.findIndex(x=>x[0]===type);
+ return '<div class="slide-footer"><div class="slide-indicators">'+types.map(function(t,i){return '<button class="slide-dot '+(i===index?'active':'')+'" title="'+t[1]+'" aria-label="'+t[1]+'" data-id="'+c.id+'" data-type="'+t[0]+'" onclick="goToChapterSlide(this.dataset.id,this.dataset.type)"></button>'}).join("")+'</div><span class="footer-hint">Gunakan ← → atau spasi untuk berpindah slide</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(state.index===0?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(state.index===deck.length-1?'Selesai ✓':'Berikutnya →')+'</button></div></div>';
+}
+
 function render(){
  const sl=currentSlide(),ch=currentChapter();
  $("#content").innerHTML=sl.type==="welcome"?welcomeHTML():chapterSlideHTML(ch,sl.type);
