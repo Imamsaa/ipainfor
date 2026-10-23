@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff8e9">
+<meta name="theme-color" content="#fbf1bc">
 <meta name="description" content="Media presentasi pembelajaran IPA SMP yang cerah, interaktif, dan mengikuti urutan materi buku IPA 1a, 2a, dan 3a.">
 <meta property="og:title" content="Jelajah IPA — Presentasi Interaktif SMP">
 <meta property="og:description" content="Belajar sains melalui slide visual, contoh sehari-hari, diskusi kelas, dan kuis singkat.">
@@ -281,6 +281,36 @@ body.ppt-mode .teacher-notes{display:none!important}
  body.ppt-mode .ppt-navigation-footer .slide-actions .btn{flex:1!important;min-width:0!important}
 }
 
+
+/* Visual identity adapted from the Zat dan Perubahannya PPT: warm yellow + turquoise lab accents */
+:root{--ink:#273440;--ink2:#4f5a60;--muted:#7e7b68;--paper:#fffdf2;--paper2:#fff5c7;--line:#e8dca0;--blue:#c7f3fa;--blue2:#4cc9df;--teal:#c8f3e9;--teal2:#21b7c9;--yellow:#fff09b;--coral:#ffd8b5;--coral2:#eaa36c;--lav:#e9e4f8;--green:#d7f2c6;--shadow:0 14px 36px #68602b14}
+html,body{background-color:#fbf1bc;color:var(--ink)}
+body{background-image:radial-gradient(#877c3c18 1px,transparent 1px);background-size:24px 24px}
+.sidebar{background:#fff4c7;border-color:#e8db96}
+.brand{border-bottom-color:#e8db96}
+.brand-mark{background:linear-gradient(145deg,#62d9e9,#a5edda);box-shadow:inset 0 -3px 0 #1c9ea522}
+.side-search{border-color:#e4d993;background:#fffdf2}
+.chapter-link{color:#3d5056}
+.chapter-link:hover{background:#dcf7f5}
+.chapter-link.active{background:#c7f1ee;border-color:#9fe1dd;box-shadow:inset 3px 0 #20b9c9;color:#273440}
+.chapter-num{border-color:#d7dfbf;color:#149cad;background:#fffdf1}
+.side-foot{background:#fffbe5;border-color:#dfd18b}
+.topbar{background:#fffbe5e8;border-bottom-color:#e9dda3}
+.btn-primary{background:#273b46;color:#fff;box-shadow:0 4px 0 #1b2b33}
+.btn-primary:hover{background:#385762}
+.btn-soft{background:#fffdf4;border-color:#e3d896;color:#3b4d52}
+.btn-teal{background:#7ce0e8;border-color:#56ccd7;color:#203d43}
+.slide-shell{background:#fffdf2;border-color:#e9dda7}
+.slide-topline span:nth-child(1){background:#55d1df}
+.slide-topline span:nth-child(2){background:#f8df74}
+.slide-topline span:nth-child(3){background:#9be7d5}
+.slide-topline span:nth-child(4){background:#ffc18d}
+.eyebrow{color:#199faf}
+.slide-count-chip{background:#fff9d9;border-color:#e6dc9c}
+.progress-track{background:#e7dfb7}
+.progress-track span{background:linear-gradient(90deg,#2bbdcc,#83debf)}
+body.ppt-mode .ppt-original-stage{background:#f9efbb!important}
+@media(max-width:780px){.sidebar{background:#fff4c7;border-color:#e5d78f}}
 </style>
 </head>
 <body>
@@ -565,23 +595,31 @@ const SOURCE_QUIZ=[
  {q:"Kesimpulan laporan percobaan seharusnya didasarkan pada…",options:["Tujuan percobaan dan pola data yang diperoleh","Pendapat awal tanpa memeriksa data","Hasil yang paling sesuai dengan dugaan saja","Data yang dipilih tanpa menjelaskan alasannya"],correct:0,explain:"Pada materi SlideShare, kesimpulan harus menjawab tujuan yang dirumuskan dan berdasarkan pola yang terlihat pada data atau grafik."}
 ];
 
+const MATTER_SLIDESHARE_SOURCE_URL="https://www.slideshare.net/slideshow/presentasi-materi-zat-dan-perubahannya-untuk-kelas-7-kurikulum-merdeka/283754836";
+const MATTER_QUIZ=[
+ {q:"Menurut presentasi, materi (zat) adalah…",options:["Segala sesuatu yang memiliki massa dan menempati ruang","Segala sesuatu yang hanya dapat dilihat","Benda yang selalu berwujud padat"],correct:0,explain:"Materi didefinisikan sebagai segala sesuatu yang memiliki massa dan menempati ruang."},
+ {q:"Mengapa zat padat memiliki bentuk dan volume tetap?",options:["Partikelnya sangat renggang dan bergerak bebas","Partikelnya tersusun rapat dan teratur, dengan ikatan relatif kuat","Partikelnya tidak memiliki energi"],correct:1,explain:"Pada zat padat, partikel tersusun rapat dan teratur serta gaya tarik antarpartikel kuat."},
+ {q:"Pernyataan yang sesuai dengan zat cair adalah…",options:["Bentuk dan volumenya selalu tetap","Bentuknya mengikuti wadah, sedangkan volumenya tetap","Partikelnya sangat berjauhan dan memenuhi semua ruang"],correct:1,explain:"Zat cair memiliki volume tetap, tetapi bentuknya berubah mengikuti wadah."},
+ {q:"Perubahan wujud dari zat cair menjadi gas disebut…",options:["Membeku","Mengembun","Menguap"],correct:2,explain:"Menguap adalah perubahan wujud dari cair menjadi gas saat zat memperoleh energi."},
+ {q:"Titik leleh adalah suhu ketika suatu zat berubah dari…",options:["Padat menjadi cair","Cair menjadi gas","Gas menjadi cair"],correct:0,explain:"Titik leleh adalah suhu pada tekanan tertentu saat zat berubah dari padat menjadi cair."}
+];
 
 const SLIDESHARE_MATERIAL_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373";
 const SLIDESHARE_SOURCE_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373#26";
 
 let deck=[];
-function buildDeck(){deck=[];chapters.forEach(ch=>{if(ch.id==="1a1"){for(let part=0;part<28;part++)deck.push({type:"pptSlide",id:ch.id,part:part});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}));return}["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})})}
-const state={index:0,notes:false,completed:readCompleted(),quizAnswers:{},sourceQuizAnswers:{}};
+function buildDeck(){deck=[];chapters.forEach(ch=>{if(ch.id==="1a1"){for(let part=0;part<28;part++)deck.push({type:"pptSlide",id:ch.id,part:part});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}));return}if(ch.id==="1a2"){for(let part=0;part<17;part++)deck.push({type:"matterPptSlide",id:ch.id,part:part});MATTER_QUIZ.forEach((q,part)=>deck.push({type:"matterQuiz",id:ch.id,part:part}))}["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})})}
+const state={index:0,notes:false,completed:readCompleted(),quizAnswers:{},sourceQuizAnswers:{},matterQuizAnswers:{}};
 function readCompleted(){try{const x=JSON.parse(localStorage.getItem("jelajah_ipa_presentation_done")||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
 function saveCompleted(){try{localStorage.setItem("jelajah_ipa_presentation_done",JSON.stringify(state.completed))}catch(e){}}
 function $(s){return document.querySelector(s)}
 function currentSlide(){return deck[state.index]}
 function currentChapter(){const sl=currentSlide();return sl&&sl.id?chapters.find(x=>x.id===sl.id):null}
 function goWelcome(){state.index=0;state.notes=false;render();closeSidebar()}
-function goChapter(id){const idx=id==="1a1"?deck.findIndex(s=>s.id===id&&s.type==="pptSlide"&&s.part===0):deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
+function goChapter(id){const idx=(id==="1a1"||id==="1a2")?deck.findIndex(s=>s.id===id&&s.type===(id==="1a1"?"pptSlide":"matterPptSlide")&&s.part===0):deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
 function nextSlide(){if(state.index<deck.length-1){state.index++;render()}else showToast("Kamu sudah berada di slide terakhir.")}
 function prevSlide(){if(state.index>0){state.index--;render()}}
-function goToChapterSlide(id,type,part){const ix=deck.findIndex(s=>s.id===id&&s.type===type&&(!["details","sourceQuiz","pptSlide"].includes(type)||s.part===Number(part)));if(ix>=0){state.index=ix;render()}}
+function goToChapterSlide(id,type,part){const ix=deck.findIndex(s=>s.id===id&&s.type===type&&(!["details","sourceQuiz","pptSlide","matterPptSlide","matterQuiz"].includes(type)||s.part===Number(part)));if(ix>=0){state.index=ix;render()}}
 function bookName(book){return book==="1a"?"BUKU 1A · IPA DASAR":book==="2a"?"BUKU 2A · BIOLOGI":"BUKU 3A · SISTEM & FISIKA"}
 function renderNav(){const targets={"1a":"#nav1","2a":"#nav2","3a":"#nav3"};Object.keys(targets).forEach(book=>{const target=$(targets[book]);target.innerHTML=chapters.filter(c=>c.book===book).map(c=>'<button class="chapter-link '+(currentChapter()&&currentChapter().id===c.id?"active ":"")+(state.completed.includes(c.id)?"done":"")+'" data-chapter="'+c.id+'" onclick="goChapter(this.dataset.chapter)"><span class="chapter-num">'+String(c.n).padStart(2,"0")+'</span><span class="chapter-name">'+c.short+'</span><span class="chapter-status">'+(state.completed.includes(c.id)?"✓":"›")+'</span></button>').join("")});const h=$("#homeLink");if(h)h.classList.toggle("active",!currentChapter())}
 function filterChapters(q){const query=q.toLowerCase().trim();document.querySelectorAll(".chapter-link[data-chapter]").forEach(b=>{const ch=chapters.find(c=>c.id===b.dataset.chapter);b.style.display=(!query||ch.title.toLowerCase().includes(query)||ch.short.toLowerCase().includes(query))?"grid":"none"})}
@@ -624,6 +662,11 @@ function chapterSlideHTML(c,type){
  }else if(type==="pptSlide"){
   const pptNumber=sl.part+1;
   body='<div class="slide-main ppt-slide-main"><div class="ppt-original-viewer"><div class="ppt-original-stage"><img class="ppt-original-image" src="'+slideShareImageUrl(pptNumber,1024)+'" data-slide-number="'+pptNumber+'" data-image-width="1024" alt="Slide '+pptNumber+' dari presentasi Hakikat Ilmu Sains dan Metode Ilmiah" loading="'+(pptNumber<=2?'eager':'lazy')+'" decoding="async" onerror="slideShareImageError(this)"><div class="ppt-image-error" hidden>Gambar slide tidak berhasil dimuat. Gunakan tautan sumber untuk membuka presentasi asli.</div></div><div class="ppt-original-caption"><span>SLIDE '+String(pptNumber).padStart(2,'0')+' / 28</span><a href="'+SLIDESHARE_SOURCE_URL+'" target="_blank" rel="noopener noreferrer">Sumber PPT ↗</a></div></div></div>';
+ }else if(type==="matterPptSlide"){
+  const pptNumber=sl.part+1;
+  body='<div class="slide-main ppt-slide-main"><div class="ppt-original-viewer"><div class="ppt-original-stage"><img class="ppt-original-image" src="'+matterSlideShareImageUrl(pptNumber,1024)+'" data-material="matter" data-slide-number="'+pptNumber+'" data-image-width="1024" alt="Slide '+pptNumber+' dari presentasi Zat dan Perubahannya kelas 7" loading="'+(pptNumber<=2?'eager':'lazy')+'" decoding="async" onerror="slideShareImageError(this)"><div class="ppt-image-error" hidden>Gambar slide tidak berhasil dimuat. Gunakan tautan sumber untuk membuka presentasi asli.</div></div><div class="ppt-original-caption"><span>SLIDE '+String(pptNumber).padStart(2,'0')+' / 17</span><a href="'+MATTER_SLIDESHARE_SOURCE_URL+'" target="_blank" rel="noopener noreferrer">Sumber PPT ↗</a></div></div></div>';
+ }else if(type==="matterQuiz"){
+  body=matterQuizSlideHTML(c,sl.part);
  }else if(type==="sourceQuiz"){
   body=sourceQuizSlideHTML(c,sl.part);
  }else if(type==="quiz"){
@@ -634,12 +677,12 @@ function chapterSlideHTML(c,type){
 
 function slideFooterHTML(c,type,partIndex){
  const list=deck.filter(s=>s.id===c.id);
- const labels={cover:"Pembuka",concept:"Konsep inti",explore:"Peta materi",details:"Pendalaman "+(partIndex+1),activity:"Aktivitas",slideshare:"Presentasi sumber",sourceQuiz:"Kuis soal "+(partIndex+1),quiz:"Kuis"};
- const usesPart=["details","sourceQuiz"].includes(type);
+ const labels={cover:"Pembuka",concept:"Konsep inti",explore:"Peta materi",details:"Pendalaman "+(partIndex+1),activity:"Aktivitas",slideshare:"Presentasi sumber",sourceQuiz:"Kuis soal "+(partIndex+1),matterQuiz:"Kuis zat "+(partIndex+1),quiz:"Kuis"};
+ const usesPart=["details","sourceQuiz","matterQuiz","matterPptSlide"].includes(type);
  const activePart=list.findIndex(s=>s.type===type&&(!usesPart||s.part===partIndex));
- if(type==="pptSlide"){
-  const number=partIndex+1;
-  return '<div class="slide-footer ppt-navigation-footer"><div class="ppt-navigation-status"><span>SLIDE PPT</span><div class="ppt-progress"><i style="width:'+(number/28*100)+'%"></i></div><b>'+number+' / 28</b></div><span class="footer-hint">Presentasi asli · gambar dari SlideShare</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(number===1?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(number===28?'Mulai kuis →':'Berikutnya →')+'</button></div></div>';
+ if(type==="pptSlide"||type==="matterPptSlide"){
+  const number=partIndex+1,total=type==="matterPptSlide"?17:28;
+  return '<div class="slide-footer ppt-navigation-footer"><div class="ppt-navigation-status"><span>SLIDE PPT</span><div class="ppt-progress"><i style="width:'+(number/total*100)+'%"></i></div><b>'+number+' / '+total+'</b></div><span class="footer-hint">Presentasi asli · gambar dari SlideShare</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(number===1?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(number===total?'Mulai kuis →':'Berikutnya →')+'</button></div></div>';
  }
  return '<div class="slide-footer"><div class="slide-indicators">'+list.map(function(s,i){const title=s.type==="details"?"Pendalaman "+(s.part+1):s.type==="sourceQuiz"?"Kuis soal "+(s.part+1):(labels[s.type]||s.type);return '<button class="slide-dot '+(i===activePart?'active':'')+'" title="'+title+'" aria-label="'+title+'" data-id="'+c.id+'" data-type="'+s.type+'" data-part="'+(s.part===undefined?'':s.part)+'" onclick="goToChapterSlide(this.dataset.id,this.dataset.type,this.dataset.part)"></button>'}).join("")+'</div><span class="footer-hint">Gunakan ← → atau spasi untuk berpindah slide</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(state.index===0?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(state.index===deck.length-1?'Selesai ✓':'Berikutnya →')+'</button></div></div>';
 }
@@ -651,18 +694,42 @@ function slideShareImageUrl(slideNumber,width){
  const size=widths.includes(Number(width))?Number(width):320;
  return "https://image.slidesharecdn.com/hakikatilmusainsdanmetodeilmiah-230814132116-e01e6025/85/Hakikat-ilmu-sains-dan-metode-ilmiah-pptx-"+Number(slideNumber)+"-"+size+".jpg";
 }
+function matterSlideShareImageUrl(slideNumber,width){
+ const widths=[1024,638,320];
+ const size=widths.includes(Number(width))?Number(width):320;
+ return "https://image.slidesharecdn.com/pptzatdanperubahannya-251011134647-6ac8a05e/85/presentasi-materi-zat-dan-perubahannya-untuk-kelas-7-kurikulum-merdeka-"+Number(slideNumber)+"-"+size+".jpg";
+}
 function slideShareImageError(img){
  const current=Number(img.dataset.imageWidth||1024);
  const next=current===1024?638:current===638?320:0;
  if(next){
   img.dataset.imageWidth=String(next);
-  img.src=slideShareImageUrl(Number(img.dataset.slideNumber||1),next);
+  img.src=img.dataset.material==="matter"?matterSlideShareImageUrl(Number(img.dataset.slideNumber||1),next):slideShareImageUrl(Number(img.dataset.slideNumber||1),next);
   return;
  }
  const stage=img.closest(".ppt-original-stage");
  if(stage){const error=stage.querySelector(".ppt-image-error");if(error)error.hidden=false}
  img.hidden=true;
 }
+
+function matterQuizSlideHTML(c,part){
+ const q=MATTER_QUIZ[part],selected=state.matterQuizAnswers[part],answered=selected!==undefined;
+ const score=MATTER_QUIZ.reduce((n,item,i)=>n+(state.matterQuizAnswers[i]===item.correct?1:0),0);
+ const opts=q.options.map(function(opt,i){const cls=answered&&i===q.correct?' correct':answered&&i===selected&&selected!==q.correct?' wrong':'';return '<button class="quiz-option'+cls+'" data-part="'+part+'" data-choice="'+i+'" onclick="answerMatterQuiz(this)" '+(answered?'disabled':'')+'><span class="quiz-letter">'+String.fromCharCode(65+i)+'</span><span>'+opt+'</span></button>'}).join("");
+ const allCorrect=MATTER_QUIZ.every((item,i)=>state.matterQuizAnswers[i]===item.correct);
+ const feedback=answered?'<div class="quiz-feedback '+(selected===q.correct?'good':'bad')+'">'+(selected===q.correct?'Tepat! ':'Belum tepat. ')+q.explain+'</div>':'<div class="quiz-feedback">Pilih satu jawaban, lalu baca penjelasannya bersama kelas.</div>';
+ const retry=answered&&selected!==q.correct?'<button class="btn btn-soft" onclick="retryMatterQuiz('+part+')">↺ Coba lagi</button>':'';
+ const completion=allCorrect?'<div class="quiz-feedback good">Hebat! Semua soal dari materi Zat dan Perubahannya sudah benar.</div>':'';
+ return '<div class="slide-main source-quiz-main"><div class="quiz-card"><span class="quiz-label">✦ KUIS ZAT DAN PERUBAHANNYA · SOAL '+(part+1)+'/'+MATTER_QUIZ.length+'</span><div class="source-quiz-progress"><span style="width:'+((part+1)/MATTER_QUIZ.length*100)+'%"></span></div><h2>'+q.q+'</h2><div class="quiz-options">'+opts+'</div>'+feedback+retry+completion+'<div class="source-quiz-score"><span>Skor saat ini</span><b>'+score+' / '+MATTER_QUIZ.length+'</b></div><div class="intro-badges"><button class="btn btn-soft" data-id="1a2" data-type="matterPptSlide" data-part="0" onclick="goToChapterSlide(this.dataset.id,this.dataset.type,this.dataset.part)">↶ Kembali ke materi</button><button class="btn btn-primary" onclick="nextSlide()">'+(part<MATTER_QUIZ.length-1?'Soal berikutnya →':'Lanjut ke pendalaman materi →')+'</button></div></div></div>';
+}
+function answerMatterQuiz(button){
+ const part=Number(button.dataset.part),choice=Number(button.dataset.choice),q=MATTER_QUIZ[part];if(!q)return;
+ state.matterQuizAnswers[part]=choice;
+ const allCorrect=MATTER_QUIZ.every((item,i)=>state.matterQuizAnswers[i]===item.correct);
+ if(allCorrect&&!state.completed.includes("1a2")){state.completed.push("1a2");saveCompleted();showToast("Materi zat selesai! Skor 5/5 ✓");renderNav()}
+ render();
+}
+function retryMatterQuiz(part){delete state.matterQuizAnswers[part];if(state.completed.includes("1a2")){state.completed=state.completed.filter(id=>id!=="1a2");saveCompleted()}render()}
 
 function sourceQuizSlideHTML(c,part){
  const q=SOURCE_QUIZ[part],selected=state.sourceQuizAnswers[part],answered=selected!==undefined;
@@ -695,8 +762,8 @@ function goToNextSourceQuiz(){
 
 function render(){
  const sl=currentSlide(),ch=currentChapter();
- document.body.classList.toggle("ppt-mode",sl.type==="pptSlide");
- document.body.classList.toggle("quiz-mode",sl.type==="sourceQuiz");
+ document.body.classList.toggle("ppt-mode",sl.type==="pptSlide"||sl.type==="matterPptSlide");
+ document.body.classList.toggle("quiz-mode",sl.type==="sourceQuiz"||sl.type==="matterQuiz");
  $("#content").innerHTML=sl.type==="welcome"?welcomeHTML():chapterSlideHTML(ch,sl.type);
  $("#crumb").textContent=ch?bookName(ch.book)+" / Bab "+ch.n+" · "+capped(ch.short):"Jelajah IPA / Pembuka";
  $("#slideTotal").textContent=(state.index+1)+" / "+deck.length+" SLIDE";
