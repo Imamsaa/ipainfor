@@ -192,15 +192,15 @@ body.quiz-active .quiz-actions .btn{padding:10px 15px}
    </div>
    <div class="hero-stats">
     <div class="stats-heading">Ringkasan kuis</div>
-    <div class="stat"><div class="stat-icon">100</div><div><strong>100 soal</strong><small>10 soal untuk setiap bab</small></div></div>
+    <div class="stat"><div class="stat-icon">100</div><div><strong>100 soal</strong><small>jumlah soal disesuaikan per kelas dan bab</small></div></div>
     <div class="stat"><div class="stat-icon">↻</div><div><strong>Urutan acak</strong><small>Diacak saat sesi dimulai</small></div></div>
     <div class="stat"><div class="stat-icon">✓</div><div><strong>Pembahasan</strong><small>Umpan balik per jawaban</small></div></div>
-    <div class="grade-counts"><span class="grade-pill g7">Kelas 7 · 30 soal</span><span class="grade-pill g8">Kelas 8 · 20 soal</span><span class="grade-pill g9">Kelas 9 · 50 soal</span></div>
+    <div class="grade-counts"><span class="grade-pill g7">Kelas 7 · 40 soal</span><span class="grade-pill g8">Kelas 8 · 40 soal</span><span class="grade-pill g9">Kelas 9 · 20 soal</span></div>
    </div>
   </div>
   <section class="panel" id="materialsPanel">
    <h2 class="section-heading">Cakupan materi</h2>
-   <p class="section-sub">10 bab dari daftar materi yang sudah dibahas, dengan 10 soal pada setiap bab.</p>
+   <p class="section-sub">10 bab dari daftar materi yang sudah dibahas, dengan komposisi 40 soal kelas 7, 40 soal kelas 8, dan 20 soal kelas 9.</p>
    <div class="material-grid" id="materialGrid"></div>
    <div class="notice"><span aria-hidden="true">ⓘ</span><span>Label kelas mengikuti pengelompokan materi Buku 1A untuk kelas 7, Buku 2A untuk kelas 8, dan Buku 3A untuk kelas 9. Urutan soal diacak lintas bab; label kelas dan bab tetap ditampilkan.</span></div>
   </section>
@@ -231,141 +231,1191 @@ body.quiz-active .quiz-actions .btn{padding:10px 15px}
 <script>
 "use strict";
 const materials=[
-{grade:7,book:"Buku 1A",chapter:"Hakikat Ilmu Sains dan Metode Ilmiah",items:[
-{q:"Apa yang menjadi dasar utama dalam penyusunan kesimpulan ilmiah?",options:["Bukti dan data hasil pengamatan","Pendapat yang paling populer","Dugaan yang tidak diuji","Keinginan agar hasil sesuai harapan"],answer:0,explanation:"Kesimpulan ilmiah harus didukung bukti dan data yang diperoleh melalui pengamatan atau penyelidikan."},
-{q:"Cabang ilmu sains yang secara khusus mempelajari makhluk hidup adalah…",options:["Geologi","Biologi","Astronomi","Fisika"],answer:1,explanation:"Biologi mempelajari makhluk hidup dan proses kehidupannya."},
-{q:"Seorang siswa mencatat bahwa daun tanaman tampak layu. Pernyataan tersebut termasuk…",options:["Hipotesis","Kesimpulan akhir","Observasi","Variabel kontrol"],answer:2,explanation:"Observasi adalah informasi yang diperoleh secara langsung melalui indra atau alat; daun tampak layu merupakan hasil pengamatan."},
-{q:"Dalam metode ilmiah, hipotesis paling tepat dipahami sebagai…",options:["Daftar alat percobaan","Hasil akhir yang tidak boleh berubah","Data yang sudah terbukti benar","Dugaan sementara yang dapat diuji"],answer:3,explanation:"Hipotesis merupakan jawaban sementara terhadap pertanyaan yang perlu diuji dengan bukti."},
-{q:"Peneliti mengubah banyaknya cahaya yang diterima tanaman dan mengukur pertumbuhannya. Banyaknya cahaya adalah variabel…",options:["Bebas","Terikat","Kontrol","Tetap yang tidak diubah"],answer:0,explanation:"Variabel bebas adalah faktor yang sengaja diubah untuk melihat pengaruhnya."},
-{q:"Manakah contoh data kuantitatif?",options:["Permukaan batu terasa kasar","Air terlihat keruh","Panjang pensil 15 cm","Daun berwarna hijau"],answer:2,explanation:"Data kuantitatif berupa angka hasil pengukuran atau perhitungan, seperti panjang 15 cm."},
-{q:"Satuan dasar SI untuk mengukur panjang adalah…",options:["Liter","Meter","Gram","Menit"],answer:1,explanation:"Meter (m) merupakan satuan dasar SI untuk panjang."},
-{q:"Panjang sebuah benda adalah 0,75 meter. Nilai itu setara dengan…",options:["7,5 cm","75 cm","750 cm","0,075 cm"],answer:1,explanation:"Satu meter sama dengan 100 sentimeter, jadi 0,75 m = 0,75 × 100 cm = 75 cm."},
-{q:"Untuk mengurangi kesalahan paralaks ketika membaca skala alat ukur, mata sebaiknya berada…",options:["Tepat sejajar dengan tanda skala yang dibaca","Jauh di atas skala","Di bawah skala","Miring dari samping"],answer:0,explanation:"Posisi mata sejajar dengan tanda skala membantu menghindari perbedaan pembacaan akibat sudut pandang."},
-{q:"Jika bahan kimia tumpah di laboratorium, tindakan pertama yang tepat bagi siswa adalah…",options:["Membersihkannya dengan tangan kosong","Mencoba mencium atau menyentuhnya","Membiarkannya tanpa memberi tahu siapa pun","Segera menjauh bila berisiko dan melaporkannya kepada guru"],answer:3,explanation:"Tumpahan bahan kimia perlu segera dilaporkan kepada guru dan ditangani sesuai prosedur keselamatan, bukan disentuh atau dibersihkan sembarangan."}
-]},
-{grade:7,book:"Buku 1A",chapter:"Zat dan Perubahannya",items:[
-{q:"Materi atau zat dapat didefinisikan sebagai sesuatu yang…",options:["Selalu bisa dilihat oleh mata","Memiliki massa dan menempati ruang","Hanya memiliki wujud padat","Tidak memiliki volume"],answer:1,explanation:"Materi memiliki massa dan menempati ruang; materi dapat berwujud padat, cair, atau gas."},
-{q:"Mengapa benda padat umumnya mempertahankan bentuknya?",options:["Partikelnya berjauhan dan bebas bergerak ke segala arah","Partikelnya tidak bergerak sama sekali","Partikelnya berubah menjadi cair","Partikelnya tersusun rapat dan bergetar di sekitar posisi tetap"],answer:3,explanation:"Partikel zat padat tersusun rapat dan hanya bergetar di sekitar posisi relatif tetap, sehingga bentuknya terjaga."},
-{q:"Sifat zat cair yang tepat adalah…",options:["Bentuk mengikuti wadah, volume relatif tetap","Bentuk dan volumenya selalu mengikuti wadah","Bentuk tetap, tetapi volume berubah mengikuti wadah","Partikelnya memenuhi seluruh ruang seperti gas"],answer:0,explanation:"Zat cair memiliki volume relatif tetap tetapi bentuknya mengikuti wadah."},
-{q:"Apa yang terjadi pada partikel gas dibandingkan partikel zat padat?",options:["Partikel gas tersusun teratur dan tidak berpindah","Partikel gas kehilangan seluruh energinya","Partikel gas berjauhan dan bergerak bebas","Partikel gas terikat lebih kuat pada posisi tetap"],answer:2,explanation:"Partikel gas berjauhan dan bergerak bebas, sehingga gas mengisi ruang yang ditempatinya."},
-{q:"Perubahan wujud dari es menjadi air disebut…",options:["Mengembun","Mencair","Menyublim","Membeku"],answer:1,explanation:"Mencair adalah perubahan wujud dari padat menjadi cair."},
-{q:"Ketika air pada pakaian basah berubah menjadi uap air, proses itu disebut…",options:["Membeku","Mengembun","Deposisi","Menguap"],answer:3,explanation:"Menguap adalah perubahan wujud dari cair menjadi gas."},
-{q:"Titik-titik air yang muncul di sisi luar gelas berisi es terbentuk terutama karena…",options:["Uap air di udara mengembun pada permukaan gelas yang dingin","Air di dalam gelas menembus dinding gelas","Gelas berubah menjadi air","Es berubah langsung menjadi gas"],answer:0,explanation:"Uap air di udara kehilangan energi saat menyentuh permukaan dingin lalu mengembun menjadi cairan."},
-{q:"Manakah yang merupakan perubahan fisika?",options:["Kayu terbakar menjadi abu","Besi berkarat","Kertas dipotong menjadi bagian kecil","Susu menjadi asam akibat fermentasi"],answer:2,explanation:"Memotong kertas mengubah ukuran dan bentuk tanpa menghasilkan zat baru."},
-{q:"Tanda yang paling kuat bahwa telah terjadi perubahan kimia adalah…",options:["Benda berubah posisi","Terbentuk zat baru dengan sifat berbeda","Benda berubah bentuk karena dipotong","Benda larut tanpa reaksi kimia"],answer:1,explanation:"Perubahan kimia menghasilkan zat baru; perubahan warna, gas, atau endapan dapat menjadi petunjuk, bergantung pada prosesnya."},
-{q:"Metode yang sesuai untuk memisahkan pasir dari air adalah…",options:["Distilasi bertingkat","Kromatografi kertas","Penyubliman","Filtrasi atau penyaringan"],answer:3,explanation:"Filtrasi menahan partikel pasir pada penyaring dan memungkinkan air melewatinya."}
-]},
-{grade:7,book:"Buku 1A",chapter:"Gerak Benda dan Gaya",items:[
-{q:"Jarak tempuh berbeda dari perpindahan karena jarak tempuh…",options:["Selalu nol untuk benda bergerak","Memperhitungkan panjang seluruh lintasan yang dilalui","Selalu menunjukkan arah gerak","Hanya dapat diukur dalam satuan waktu"],answer:1,explanation:"Jarak adalah panjang seluruh lintasan, sedangkan perpindahan adalah perubahan posisi dari titik awal ke titik akhir beserta arahnya."},
-{q:"Sebuah sepeda menempuh jarak 120 meter dalam 20 sekon. Kelajuan rata-ratanya adalah…",options:["6 m/s","4 m/s","10 m/s","24 m/s"],answer:0,explanation:"Kelajuan rata-rata = jarak ÷ waktu = 120 m ÷ 20 s = 6 m/s."},
-{q:"Besaran yang menyatakan perubahan kecepatan tiap satuan waktu adalah…",options:["Jarak","Massa","Percepatan","Gaya berat"],answer:2,explanation:"Percepatan menyatakan perubahan kecepatan terhadap waktu."},
-{q:"Benda dikatakan mengalami gerak lurus beraturan (GLB) ketika…",options:["Arah dan kecepatan selalu berubah","Benda selalu bergerak makin cepat","Benda berhenti di setiap detik","Benda bergerak lurus dengan kecepatan tetap"],answer:3,explanation:"Pada GLB, benda bergerak di lintasan lurus dengan kecepatan tetap."},
-{q:"Pada gerak lurus berubah beraturan, percepatan benda dianggap…",options:["Selalu nol","Tetap","Selalu tidak terhingga","Sama dengan jarak"],answer:1,explanation:"GLBB adalah gerak lurus dengan percepatan tetap, sehingga kecepatan berubah secara teratur."},
-{q:"Gaya dapat mengubah keadaan benda, misalnya…",options:["Mengubah kecepatan atau arah geraknya","Menghilangkan massa benda dalam semua keadaan","Memastikan benda selalu bergerak lurus","Menghapus pengaruh gravitasi"],answer:0,explanation:"Gaya dapat mengubah kecepatan, arah gerak, dan bentuk benda."},
-{q:"Buku yang diletakkan di atas meja tetap diam sampai ada gaya resultan yang mengubah keadaannya. Contoh ini berkaitan dengan…",options:["Hukum Newton III saja","Hukum pemantulan","Hukum Newton I tentang kelembaman","Hukum Pascal"],answer:2,explanation:"Hukum Newton I menjelaskan bahwa benda mempertahankan keadaan diam atau gerak lurus beraturan jika resultan gaya nol."},
-{q:"Jika gaya resultan pada benda bermassa tetap diperbesar, maka percepatannya akan…",options:["Selalu menjadi nol","Menjadi sama dengan massa","Berkurang dalam semua keadaan","Bertambah searah gaya resultan"],answer:3,explanation:"Menurut Hukum Newton II, percepatan sebanding dengan gaya resultan untuk massa tetap: F = m × a."},
-{q:"Gaya gesek antara ban dan jalan berguna karena membantu kendaraan…",options:["Menghilangkan massa ban","Mendapatkan traksi untuk bergerak dan mengerem","Bergerak tanpa gaya apa pun","Selalu mencapai kelajuan tak terbatas"],answer:1,explanation:"Gaya gesek antara ban dan jalan menyediakan traksi sehingga kendaraan dapat bergerak, berbelok, dan mengerem."},
-{q:"Ketika seseorang mendorong dinding, dinding memberikan gaya reaksi pada orang tersebut. Ini menggambarkan…",options:["Hukum Newton III","Hukum Newton I saja","Hukum Archimedes","Hukum kekekalan massa"],answer:0,explanation:"Hukum Newton III menyatakan bahwa gaya interaksi muncul berpasangan, sama besar dan berlawanan arah, pada benda yang berbeda."}
-]},
-{grade:8,book:"Buku 2A",chapter:"Pengenalan Sel",items:[
-{q:"Sel disebut unit dasar kehidupan karena…",options:["Semua sel berukuran sama","Sel hanya ditemukan pada hewan","Sel merupakan unit struktural dan fungsional dasar makhluk hidup","Sel tidak membutuhkan proses kimia"],answer:2,explanation:"Sel membentuk struktur makhluk hidup dan menjalankan fungsi kehidupan."},
-{q:"Alat yang digunakan untuk melihat struktur sel yang terlalu kecil bagi mata adalah…",options:["Teleskop","Mikroskop","Barometer","Dinamometer"],answer:1,explanation:"Mikroskop memperbesar objek kecil agar strukturnya dapat diamati."},
-{q:"Bagian sel yang berfungsi mengatur keluar masuknya banyak zat adalah…",options:["Membran sel","Dinding sel saja","Kloroplas","Kromosom di luar sel"],answer:0,explanation:"Membran sel membatasi sel dan mengatur pertukaran zat dengan lingkungannya."},
-{q:"Bagian sel yang menyimpan sebagian besar materi genetik pada sel eukariotik adalah…",options:["Vakuola","Membran sel","Dinding sel","Inti sel atau nukleus"],answer:3,explanation:"Pada sel eukariotik, sebagian besar DNA berada di dalam nukleus."},
-{q:"Organel yang menjadi tempat utama fotosintesis pada sel tumbuhan adalah…",options:["Mitokondria","Kloroplas","Ribosom","Lisosom"],answer:1,explanation:"Kloroplas mengandung klorofil dan menjadi tempat berlangsungnya fotosintesis pada sel tumbuhan fotosintetik."},
-{q:"Struktur yang umumnya ada pada sel tumbuhan dan tidak dimiliki sel hewan adalah…",options:["Sitoplasma","Membran sel","Dinding sel dari bahan utama selulosa","Materi genetik"],answer:2,explanation:"Sel tumbuhan umumnya memiliki dinding sel yang mengandung selulosa; sel hewan tidak memiliki dinding sel."},
-{q:"Cairan di dalam sel tempat berbagai organel berada disebut…",options:["Sitoplasma","Jaringan","Organ","Kutikula"],answer:0,explanation:"Sitoplasma adalah bagian sel di antara membran dan inti yang menjadi lingkungan bagi banyak organel."},
-{q:"Sel darah merah memiliki bentuk dan struktur khusus yang terutama mendukung fungsi…",options:["Membuat empedu","Mendeteksi cahaya","Menghasilkan enzim pencernaan","Mengangkut oksigen dalam darah"],answer:3,explanation:"Sel darah merah mengandung hemoglobin yang mengikat dan mengangkut oksigen."},
-{q:"Kumpulan sel sejenis yang bekerja sama menjalankan fungsi tertentu disebut…",options:["Organisme","Jaringan","Sistem organ","Populasi"],answer:1,explanation:"Jaringan merupakan kumpulan sel sejenis atau terkait yang bekerja bersama menjalankan fungsi tertentu."},
-{q:"Urutan organisasi kehidupan yang tepat dari tingkat sederhana ke lebih kompleks adalah…",options:["Organ → sel → jaringan → sistem organ","Jaringan → sel → organisme → organ","Sel → jaringan → organ → sistem organ","Sistem organ → organ → sel → jaringan"],answer:2,explanation:"Sel membentuk jaringan, jaringan menyusun organ, dan organ bekerja sama dalam sistem organ."}
-]},
-{grade:8,book:"Buku 2A",chapter:"Struktur dan Fungsi Tubuh Makhluk Hidup",items:[
-{q:"Zat makanan yang terutama menjadi sumber energi cepat bagi tubuh adalah…",options:["Karbohidrat","Vitamin","Mineral","Air"],answer:0,explanation:"Karbohidrat merupakan sumber energi utama yang dapat diolah tubuh menjadi glukosa."},
-{q:"Fungsi penting protein dalam tubuh adalah…",options:["Menggantikan seluruh kebutuhan air","Menjadi satu-satunya sumber vitamin","Membangun dan memperbaiki jaringan tubuh","Menghentikan semua reaksi enzim"],answer:2,explanation:"Protein dibutuhkan antara lain untuk pertumbuhan serta perbaikan jaringan dan pembentukan enzim."},
-{q:"Pencernaan kimiawi karbohidrat dapat mulai berlangsung di mulut dengan bantuan…",options:["Asam klorida","Enzim amilase dalam air liur","Empedu","Hemoglobin"],answer:1,explanation:"Amilase saliva memulai pemecahan pati menjadi molekul karbohidrat yang lebih sederhana."},
-{q:"Sebagian besar penyerapan hasil pencernaan makanan berlangsung di…",options:["Kerongkongan","Usus besar","Lambung","Usus halus"],answer:3,explanation:"Usus halus memiliki permukaan luas dengan vili dan mikrovili untuk menyerap sebagian besar nutrien."},
-{q:"Mengapa zat aditif tertentu ditambahkan ke dalam pangan sesuai kebutuhan dan aturan penggunaannya?",options:["Untuk tujuan seperti menjaga mutu, memperbaiki rasa, atau memberi warna","Agar nilai gizi semua makanan otomatis menjadi sama","Supaya makanan tidak perlu disimpan dengan benar","Untuk menggantikan seluruh zat gizi yang dibutuhkan tubuh"],answer:0,explanation:"Zat aditif digunakan untuk tujuan tertentu, misalnya sebagai pengawet, pewarna, atau penguat rasa, dan penggunaannya harus sesuai ketentuan keamanan pangan."},
-{q:"Komponen darah yang membawa oksigen terutama dengan bantuan hemoglobin adalah…",options:["Sel darah merah","Trombosit","Plasma saja","Sel saraf"],answer:0,explanation:"Hemoglobin di dalam sel darah merah mengikat oksigen untuk diangkut ke jaringan."},
-{q:"Pertukaran gas oksigen dan karbon dioksida pada paru-paru terutama terjadi di…",options:["Trakea","Laring","Diafragma","Alveolus"],answer:3,explanation:"Alveolus memiliki dinding tipis dan dikelilingi kapiler sehingga mendukung pertukaran gas."},
-{q:"Saat menarik napas normal, diafragma umumnya…",options:["Relaksasi dan naik sehingga rongga dada mengecil","Berkontraksi dan turun sehingga volume rongga dada meningkat","Menutup saluran pernapasan sepenuhnya","Menghentikan gerakan tulang rusuk"],answer:1,explanation:"Kontraksi diafragma membuatnya mendatar dan turun, meningkatkan volume rongga dada sehingga udara masuk."},
-{q:"Organ yang menyaring darah dan membentuk urine adalah…",options:["Lambung","Pankreas","Ginjal","Usus halus"],answer:2,explanation:"Ginjal menyaring darah, mengatur komposisi cairan, dan menghasilkan urine."},
-{q:"Pola makan seimbang paling tepat berarti…",options:["Mengonsumsi beragam pangan dengan jumlah sesuai kebutuhan tubuh","Menghindari semua lemak dalam setiap keadaan","Memakan satu jenis makanan saja","Melewatkan sarapan setiap hari"],answer:0,explanation:"Pola makan seimbang mencakup keragaman pangan dan jumlah yang sesuai kebutuhan energi serta zat gizi."}
-]},
-{grade:9,book:"Buku 3A",chapter:"Sistem Koordinasi dan Zat Adiktif",items:[
-{q:"Sistem saraf membantu tubuh terutama dengan cara…",options:["Menyimpan urine","Mencerna makanan di lambung","Menerima rangsang, mengolah informasi, lalu mengoordinasikan respons","Menghasilkan semua hormon tubuh"],answer:2,explanation:"Sistem saraf menerima rangsangan, memproses informasi, dan mengirim sinyal untuk mengatur respons tubuh."},
-{q:"Struktur yang menerima rangsangan seperti cahaya, suara, atau sentuhan disebut…",options:["Reseptor","Efektor","Antibodi","Alveolus"],answer:0,explanation:"Reseptor mendeteksi rangsangan tertentu dan mengubahnya menjadi sinyal yang dapat diproses tubuh."},
-{q:"Bagian sistem saraf pusat terdiri atas…",options:["Saraf sensorik dan kulit","Otak dan sumsum tulang belakang","Kelenjar keringat dan otot","Jantung dan pembuluh darah"],answer:1,explanation:"Sistem saraf pusat pada manusia terdiri atas otak dan sumsum tulang belakang."},
-{q:"Respons menarik tangan dengan cepat setelah menyentuh benda panas adalah contoh…",options:["Pencernaan kimiawi","Gerak sadar yang selalu lambat","Pembentukan antibodi","Gerak refleks"],answer:3,explanation:"Gerak refleks merupakan respons cepat melalui jalur saraf refleks, yang membantu melindungi tubuh dari bahaya."},
-{q:"Hormon berbeda dari impuls saraf karena hormon umumnya…",options:["Tidak memiliki pengaruh pada organ lain","Dikirim melalui darah dari sel atau kelenjar penghasilnya","Hanya bekerja di dalam tulang","Selalu menghasilkan respons seketika"],answer:1,explanation:"Hormon merupakan pembawa pesan kimia yang dibawa melalui darah menuju sel target; responsnya bisa lebih lambat dan bertahan lebih lama."},
-{q:"Nikotin pada produk tembakau termasuk zat yang…",options:["Dapat menyebabkan ketergantungan","Membantu paru-paru membersihkan semua racun","Tidak memengaruhi sistem saraf","Selalu meningkatkan kesehatan jantung"],answer:0,explanation:"Nikotin memengaruhi sistem saraf dan memiliki potensi ketergantungan."},
-{q:"Salah satu alasan alkohol berbahaya saat seseorang mengemudi adalah karena alkohol dapat…",options:["Meningkatkan ketepatan refleks dalam semua kondisi","Menghilangkan kebutuhan tidur","Mengganggu penilaian, koordinasi, dan waktu reaksi","Mengubah udara menjadi oksigen"],answer:2,explanation:"Alkohol dapat memperlambat waktu reaksi dan mengganggu koordinasi serta kemampuan mengambil keputusan."},
-{q:"Cara yang sehat untuk menolak ajakan menggunakan zat adiktif adalah…",options:["Mengikuti ajakan agar diterima kelompok","Mencoba sedikit tanpa mempertimbangkan risiko","Menyimpan ajakan tersebut dan mengabaikannya selalu","Menolak dengan tegas dan memilih kegiatan yang lebih aman"],answer:3,explanation:"Menolak secara tegas, menjauh dari situasi berisiko, dan meminta bantuan orang tepercaya merupakan strategi pencegahan yang lebih aman."},
-{q:"Kelenjar endokrin melepaskan hormon terutama ke…",options:["Ruang kosong di luar tubuh","Aliran darah","Permukaan tulang saja","Saluran pencernaan saja"],answer:1,explanation:"Kelenjar endokrin melepaskan hormon ke cairan jaringan dan umumnya ke aliran darah untuk mencapai sel target."},
-{q:"Ketika mendengar suara keras, tubuh dapat segera bereaksi karena informasi diteruskan melalui…",options:["Jalur saraf sensorik dan pusat pemrosesan saraf","Tulang tanpa peran sistem saraf","Ginjal menuju usus","Sel darah merah saja"],answer:0,explanation:"Informasi suara diterima reseptor pendengaran dan diteruskan melalui saraf ke pusat pemrosesan untuk menghasilkan respons."}
-]},
-{grade:9,book:"Buku 3A",chapter:"Homeostasis",items:[
-{q:"Homeostasis adalah kemampuan tubuh untuk…",options:["Menghentikan seluruh perubahan internal","Mempertahankan kondisi internal dalam kisaran yang sesuai","Menaikkan suhu tubuh tanpa batas","Menghindari semua rangsangan dari luar"],answer:1,explanation:"Homeostasis menjaga kondisi internal, seperti suhu, cairan, dan glukosa, dalam kisaran yang mendukung fungsi tubuh."},
-{q:"Ketika suhu lingkungan panas, keringat membantu mendinginkan tubuh melalui…",options:["Pembekuan darah","Peningkatan produksi tulang","Penguapan air dari permukaan kulit","Penghentian aliran darah"],answer:2,explanation:"Penguapan keringat memerlukan energi panas yang diambil dari permukaan kulit sehingga membantu mendinginkan tubuh."},
-{q:"Saat tubuh kedinginan, menggigil membantu menaikkan suhu karena…",options:["Otot berkontraksi berulang dan menghasilkan panas","Keringat menguap lebih cepat","Darah berhenti mengalir","Pencernaan berhenti secara permanen"],answer:0,explanation:"Kontraksi otot berulang saat menggigil menghasilkan panas yang membantu menaikkan suhu tubuh."},
-{q:"Saat tubuh terlalu panas, pembuluh darah dekat permukaan kulit dapat melebar. Proses ini disebut…",options:["Vasokonstriksi","Filtrasi","Osmosis","Vasodilatasi"],answer:3,explanation:"Vasodilatasi meningkatkan aliran darah ke kulit sehingga panas lebih mudah dilepas ke lingkungan."},
-{q:"Ketika tubuh kekurangan air, respons ginjal yang membantu menjaga keseimbangan cairan adalah…",options:["Mengurangi kehilangan air melalui urine","Menghentikan penyaringan darah secara permanen","Mengeluarkan semua air dari darah","Mengubah air menjadi oksigen"],answer:0,explanation:"Ginjal dapat mengatur jumlah air yang dikeluarkan melalui urine, sehingga membantu menjaga keseimbangan cairan tubuh."},
-{q:"Ketika kadar glukosa darah naik setelah makan, hormon yang membantu menurunkannya adalah…",options:["Insulin","Glukagon","Adrenalin saja","Tiroksin saja"],answer:0,explanation:"Insulin membantu sel mengambil glukosa dan mendorong penyimpanan glukosa sehingga kadar glukosa darah menurun."},
-{q:"Mengapa tubuh perlu menjaga kadar glukosa darah dalam kisaran yang sesuai?",options:["Agar sel memperoleh pasokan energi yang dibutuhkan","Agar tubuh tidak membutuhkan oksigen","Agar semua organ berhenti bekerja setelah makan","Agar darah tidak perlu mengangkut zat lain"],answer:0,explanation:"Glukosa digunakan oleh banyak sel sebagai sumber energi. Tubuh mengatur kadarnya agar fungsi sel tetap berjalan dengan baik."},
-{q:"Mekanisme umpan balik negatif bekerja dengan cara…",options:["Memperkuat perubahan tanpa batas","Membuat semua proses tubuh berhenti","Menjaga gangguan agar selalu meningkat","Mengurangi penyimpangan dari kondisi acuan"],answer:3,explanation:"Umpan balik negatif menentang perubahan awal sehingga membantu mengembalikan kondisi internal menuju kisaran normal."},
-{q:"Saat kekurangan air, tubuh umumnya menghemat air dengan menghasilkan urine yang…",options:["Lebih pekat dan volumenya cenderung lebih sedikit","Selalu lebih banyak dan sangat encer","Tidak mengandung air sama sekali","Berubah menjadi darah"],answer:0,explanation:"Peningkatan reabsorpsi air di ginjal membantu tubuh menghasilkan urine lebih pekat dan mengurangi kehilangan air."},
-{q:"Mengapa homeostasis penting bagi enzim dan sel tubuh?",options:["Agar kondisi internal selalu berubah ekstrem","Agar kondisi seperti suhu dan pH berada dalam kisaran yang sesuai untuk reaksi tubuh","Agar tubuh tidak membutuhkan energi","Agar semua enzim bekerja sama cepat dalam suhu berapa pun"],answer:1,explanation:"Banyak reaksi sel bergantung pada kondisi seperti suhu, pH, dan keseimbangan cairan yang relatif stabil."}
-]},
-{grade:9,book:"Buku 3A",chapter:"Sistem Reproduksi Manusia",items:[
-{q:"Organ reproduksi laki-laki yang menghasilkan sperma adalah…",options:["Kandung kemih","Prostat","Testis","Ureter"],answer:2,explanation:"Testis menghasilkan sperma dan juga menghasilkan hormon testosteron."},
-{q:"Sel telur pada manusia dihasilkan oleh…",options:["Ovarium","Rahim","Vagina","Tuba falopi"],answer:0,explanation:"Ovarium menghasilkan sel telur dan hormon reproduksi seperti estrogen serta progesteron."},
-{q:"Pembuahan pada manusia umumnya terjadi di…",options:["Serviks","Vagina","Kandung kemih","Tuba falopi"],answer:3,explanation:"Pembuahan biasanya berlangsung di tuba falopi ketika sperma bertemu sel telur."},
-{q:"Menstruasi terjadi ketika…",options:["Semua sel tubuh mati","Lapisan dinding rahim meluruh saat tidak terjadi kehamilan","Ovarium berhenti berfungsi selamanya","Sperma diproduksi di rahim"],answer:1,explanation:"Jika tidak terjadi kehamilan, perubahan hormon memicu peluruhan lapisan dalam rahim yang keluar sebagai darah menstruasi."},
-{q:"Masa pubertas ditandai dengan…",options:["Berhentinya seluruh pertumbuhan tubuh","Hilangnya kebutuhan nutrisi","Perubahan fisik dan pematangan fungsi reproduksi","Tidak adanya perubahan hormon"],answer:2,explanation:"Pubertas merupakan tahap perkembangan ketika perubahan hormon menimbulkan perubahan fisik dan pematangan fungsi reproduksi."},
-{q:"Plasenta selama kehamilan berfungsi terutama untuk…",options:["Menjadi tempat pertukaran zat antara darah ibu dan janin","Menghasilkan sperma","Menggantikan seluruh fungsi paru-paru ibu","Mencerna makanan ibu"],answer:0,explanation:"Plasenta memungkinkan pertukaran oksigen, nutrien, dan sisa metabolisme antara ibu dan janin tanpa mencampurkan langsung seluruh darah mereka."},
-{q:"Peran utama rahim dalam kehamilan adalah…",options:["Menghasilkan urine","Menyimpan empedu","Memompa darah ke paru-paru","Menjadi tempat implantasi dan perkembangan embrio/janin"],answer:3,explanation:"Embrio berimplantasi pada lapisan rahim, dan rahim menjadi tempat janin berkembang selama kehamilan."},
-{q:"Perubahan suara pada banyak anak laki-laki selama pubertas terutama berkaitan dengan…",options:["Mengecilnya tulang dada","Pertumbuhan laring dan perubahan pita suara","Berhentinya kerja paru-paru","Perubahan warna darah"],answer:1,explanation:"Pengaruh hormon pubertas membuat laring dan pita suara tumbuh sehingga suara menjadi lebih berat."},
-{q:"Kebiasaan yang mendukung kesehatan sistem reproduksi adalah…",options:["Mengabaikan kebersihan pribadi","Menggunakan obat tanpa petunjuk","Menjaga kebersihan organ, memahami perubahan tubuh, dan mencari informasi tepercaya","Mempercayai semua informasi anonim tanpa pemeriksaan"],answer:2,explanation:"Kebersihan, pemahaman perubahan tubuh, dan informasi kesehatan dari sumber tepercaya mendukung kesehatan reproduksi."},
-{q:"Mengapa pendidikan kesehatan reproduksi untuk remaja perlu disampaikan secara benar dan sesuai usia?",options:["Agar remaja dapat memahami perubahan tubuh dan membuat keputusan yang bertanggung jawab","Agar semua pertanyaan tentang kesehatan dilarang","Agar perubahan pubertas dapat dihentikan","Agar remaja tidak perlu berkonsultasi kepada tenaga kesehatan"],answer:0,explanation:"Informasi yang akurat dan sesuai usia membantu remaja memahami perkembangan, menjaga kesehatan, serta mengenali kapan memerlukan bantuan."}
-]},
-{grade:9,book:"Buku 3A",chapter:"Pewarisan Sifat",items:[
-{q:"Unit dasar pewarisan informasi biologis yang terdapat pada DNA disebut…",options:["Jaringan","Organ","Enzim","Gen"],answer:3,explanation:"Gen adalah bagian DNA yang membawa informasi biologis, misalnya untuk menghasilkan produk fungsional tertentu."},
-{q:"Struktur yang tersusun dari DNA dan protein serta membawa banyak gen disebut…",options:["Vakuola","Kromosom","Ribosom","Membran"],answer:1,explanation:"Kromosom merupakan struktur DNA dan protein yang membawa gen."},
-{q:"Bentuk alternatif suatu gen pada lokus yang sama disebut…",options:["Alel","Organel","Jaringan","Hormon"],answer:0,explanation:"Alel merupakan versi alternatif suatu gen yang menempati lokus yang sama pada kromosom homolog."},
-{q:"Dalam notasi sederhana, individu dengan pasangan alel Bb disebut…",options:["Homozigot dominan","Homozigot resesif","Heterozigot","Tanpa alel"],answer:2,explanation:"Bb memiliki dua alel berbeda, sehingga disebut heterozigot."},
-{q:"Dalam model pewarisan sederhana, alel dominan biasanya ditulis menggunakan…",options:["Angka saja","Huruf kapital","Tanda baca","Huruf kecil saja"],answer:1,explanation:"Dalam notasi Mendel sederhana, alel dominan sering dilambangkan huruf kapital, sementara alel resesif memakai huruf kecil."},
-{q:"Jika persilangan sederhana Bb × Bb dilakukan dengan dominansi penuh dan kedua induk menghasilkan gamet B atau b sama mungkin, peluang keturunan bb adalah…",options:["0%","25%","50%","75%"],answer:1,explanation:"Kemungkinan genotipe adalah BB, Bb, Bb, dan bb; satu dari empat kemungkinan adalah bb, yaitu 25%."},
-{q:"Istilah fenotipe mengacu pada…",options:["Ciri yang dapat diamati atau diukur sebagai hasil interaksi gen dan lingkungan","Urutan seluruh kromosom tanpa ciri yang tampak","Nama ilmiah untuk semua alel resesif","Jumlah sel pada organisme saja"],answer:0,explanation:"Fenotipe adalah karakteristik yang tampak atau terukur, dipengaruhi genotipe serta faktor lingkungan."},
-{q:"Jika suatu sifat sederhana hanya muncul pada individu aa, maka sifat tersebut pada model dominansi penuh disebut…",options:["Selalu terpaut kromosom Y","Dominan","Tidak diwariskan","Resesif"],answer:3,explanation:"Dalam model dominansi penuh, sifat resesif muncul pada homozigot resesif aa."},
-{q:"Perubahan urutan DNA yang dapat menghasilkan variasi genetik disebut…",options:["Osmosis","Mutasi","Evaporasi","Fotosintesis"],answer:1,explanation:"Mutasi adalah perubahan pada materi genetik yang dapat menimbulkan variasi; dampaknya bergantung pada perubahan dan konteksnya."},
-{q:"Pemanfaatan organisme atau bagian organisme untuk menghasilkan produk yang berguna termasuk bidang…",options:["Seismologi","Astronomi","Bioteknologi","Meteorologi"],answer:2,explanation:"Bioteknologi menggunakan organisme, sel, atau proses biologis untuk menghasilkan produk atau layanan, misalnya fermentasi."}
-]},
-{grade:9,book:"Buku 3A",chapter:"Tekanan",items:[
-{q:"Tekanan pada permukaan padat dihitung dengan membagi…",options:["Gaya tegak lurus permukaan dengan luas bidang tekan","Luas bidang tekan dengan massa jenis","Massa dengan volume","Jarak dengan waktu"],answer:0,explanation:"Tekanan padat dirumuskan P = F/A, yaitu gaya tegak lurus dibagi luas bidang tekan."},
-{q:"Sebuah gaya 100 N bekerja tegak lurus pada bidang seluas 0,5 m². Tekanannya adalah…",options:["50 Pa","100 Pa","200 Pa","500 Pa"],answer:2,explanation:"P = F/A = 100 N ÷ 0,5 m² = 200 N/m² atau 200 Pa."},
-{q:"Jika gaya yang sama bekerja pada luas bidang tekan yang lebih kecil, tekanan akan…",options:["Selalu tetap","Meningkat","Menjadi nol","Berubah menjadi massa"],answer:1,explanation:"Untuk gaya yang tetap, tekanan berbanding terbalik dengan luas bidang tekan."},
-{q:"Tekanan hidrostatis dalam zat cair diam dipengaruhi oleh…",options:["Warna wadah dan bentuk permukaan","Bau zat cair saja","Luas permukaan meja","Massa jenis zat cair, gravitasi, dan kedalaman"],answer:3,explanation:"Tekanan hidrostatis mengikuti P = ρgh, sehingga bergantung pada massa jenis, percepatan gravitasi, dan kedalaman."},
-{q:"Pada zat cair yang sama di tempat dengan gravitasi sama, tekanan hidrostatis umumnya lebih besar pada titik yang…",options:["Lebih dalam","Lebih dekat permukaan","Di luar zat cair","Memiliki warna berbeda"],answer:0,explanation:"Tekanan hidrostatis meningkat seiring bertambahnya kedalaman dalam cairan yang sama."},
-{q:"Hukum Pascal menyatakan bahwa tekanan yang diberikan pada fluida tertutup diteruskan…",options:["Hanya ke bawah","Tanpa diteruskan ke bagian lain","Sama besar ke segala arah dalam fluida","Hanya pada permukaan terbuka"],answer:2,explanation:"Menurut Hukum Pascal, perubahan tekanan pada fluida tertutup diteruskan tanpa berkurang ke segala arah."},
-{q:"Dongkrak hidrolik dapat mengangkat beban besar dengan gaya masukan lebih kecil karena…",options:["Tekanan hilang di dalam cairan","Gaya pada piston keluaran dapat lebih besar ketika luas pistonnya lebih besar","Massa beban menjadi nol","Cairan tidak meneruskan tekanan"],answer:1,explanation:"Tekanan diteruskan oleh fluida; piston keluaran yang luasnya lebih besar menghasilkan gaya lebih besar, dengan pertukaran jarak gerak."},
-{q:"Tekanan gas pada dinding wadah muncul terutama akibat…",options:["Partikel gas diam selamanya","Gas tidak memiliki massa","Partikel hanya tertarik ke dasar wadah","Tumbukan partikel gas terhadap dinding wadah"],answer:3,explanation:"Partikel gas bergerak dan bertumbukan dengan dinding wadah; perubahan momentum pada tumbukan menghasilkan tekanan."},
-{q:"Alat yang digunakan untuk mengukur tekanan atmosfer adalah…",options:["Barometer","Termometer","Amperemeter","Mikrometer sekrup"],answer:0,explanation:"Barometer digunakan untuk mengukur tekanan atmosfer."},
-{q:"Ketika bernapas, udara masuk ke paru-paru ketika tekanan di dalam paru-paru menjadi…",options:["Selalu lebih tinggi daripada tekanan luar","Sama dengan nol mutlak","Lebih rendah daripada tekanan udara luar","Tidak berhubungan dengan volume rongga dada"],answer:2,explanation:"Saat inspirasi, volume rongga dada dan paru-paru meningkat sehingga tekanan di dalamnya turun di bawah tekanan atmosfer dan udara masuk."}
-]}
+  {
+    "grade": 7,
+    "book": "Buku 1A",
+    "chapter": "Hakikat Ilmu Sains dan Metode Ilmiah",
+    "items": [
+      {
+        "q": "Apa yang menjadi dasar utama dalam penyusunan kesimpulan ilmiah?",
+        "options": [
+          "Bukti dan data hasil pengamatan",
+          "Pendapat yang paling populer",
+          "Dugaan yang tidak diuji",
+          "Keinginan agar hasil sesuai harapan"
+        ],
+        "answer": 0,
+        "explanation": "Kesimpulan ilmiah harus didukung bukti dan data yang diperoleh melalui pengamatan atau penyelidikan."
+      },
+      {
+        "q": "Cabang ilmu sains yang secara khusus mempelajari makhluk hidup adalah…",
+        "options": [
+          "Geologi",
+          "Biologi",
+          "Astronomi",
+          "Fisika"
+        ],
+        "answer": 1,
+        "explanation": "Biologi mempelajari makhluk hidup dan proses kehidupannya."
+      },
+      {
+        "q": "Seorang siswa mencatat bahwa daun tanaman tampak layu. Pernyataan tersebut termasuk…",
+        "options": [
+          "Hipotesis",
+          "Kesimpulan akhir",
+          "Observasi",
+          "Variabel kontrol"
+        ],
+        "answer": 2,
+        "explanation": "Observasi adalah informasi yang diperoleh secara langsung melalui indra atau alat; daun tampak layu merupakan hasil pengamatan."
+      },
+      {
+        "q": "Dalam metode ilmiah, hipotesis paling tepat dipahami sebagai…",
+        "options": [
+          "Daftar alat percobaan",
+          "Hasil akhir yang tidak boleh berubah",
+          "Data yang sudah terbukti benar",
+          "Dugaan sementara yang dapat diuji"
+        ],
+        "answer": 3,
+        "explanation": "Hipotesis merupakan jawaban sementara terhadap pertanyaan yang perlu diuji dengan bukti."
+      },
+      {
+        "q": "Peneliti mengubah banyaknya cahaya yang diterima tanaman dan mengukur pertumbuhannya. Banyaknya cahaya adalah variabel…",
+        "options": [
+          "Bebas",
+          "Terikat",
+          "Kontrol",
+          "Tetap yang tidak diubah"
+        ],
+        "answer": 0,
+        "explanation": "Variabel bebas adalah faktor yang sengaja diubah untuk melihat pengaruhnya."
+      },
+      {
+        "q": "Manakah contoh data kuantitatif?",
+        "options": [
+          "Permukaan batu terasa kasar",
+          "Air terlihat keruh",
+          "Panjang pensil 15 cm",
+          "Daun berwarna hijau"
+        ],
+        "answer": 2,
+        "explanation": "Data kuantitatif berupa angka hasil pengukuran atau perhitungan, seperti panjang 15 cm."
+      },
+      {
+        "q": "Satuan dasar SI untuk mengukur panjang adalah…",
+        "options": [
+          "Liter",
+          "Meter",
+          "Gram",
+          "Menit"
+        ],
+        "answer": 1,
+        "explanation": "Meter (m) merupakan satuan dasar SI untuk panjang."
+      },
+      {
+        "q": "Panjang sebuah benda adalah 0,75 meter. Nilai itu setara dengan…",
+        "options": [
+          "7,5 cm",
+          "75 cm",
+          "750 cm",
+          "0,075 cm"
+        ],
+        "answer": 1,
+        "explanation": "Satu meter sama dengan 100 sentimeter, jadi 0,75 m = 0,75 × 100 cm = 75 cm."
+      },
+      {
+        "q": "Untuk mengurangi kesalahan paralaks ketika membaca skala alat ukur, mata sebaiknya berada…",
+        "options": [
+          "Tepat sejajar dengan tanda skala yang dibaca",
+          "Jauh di atas skala",
+          "Di bawah skala",
+          "Miring dari samping"
+        ],
+        "answer": 0,
+        "explanation": "Posisi mata sejajar dengan tanda skala membantu menghindari perbedaan pembacaan akibat sudut pandang."
+      },
+      {
+        "q": "Jika bahan kimia tumpah di laboratorium, tindakan pertama yang tepat bagi siswa adalah…",
+        "options": [
+          "Membersihkannya dengan tangan kosong",
+          "Mencoba mencium atau menyentuhnya",
+          "Membiarkannya tanpa memberi tahu siapa pun",
+          "Segera menjauh bila berisiko dan melaporkannya kepada guru"
+        ],
+        "answer": 3,
+        "explanation": "Tumpahan bahan kimia perlu segera dilaporkan kepada guru dan ditangani sesuai prosedur keselamatan, bukan disentuh atau dibersihkan sembarangan."
+      },
+      {
+        "q": "Dalam percobaan pengaruh cahaya terhadap pertumbuhan tanaman, jenis tanah dan jumlah air dibuat sama. Kedua hal itu termasuk variabel…",
+        "options": [
+          "Bebas",
+          "Terikat",
+          "Kontrol",
+          "Acak"
+        ],
+        "answer": 2,
+        "explanation": "Variabel kontrol dijaga sama agar pengaruh cahaya dapat dibandingkan dengan lebih adil."
+      },
+      {
+        "q": "Alat yang tepat untuk mengukur suhu air saat percobaan adalah…",
+        "options": [
+          "Neraca",
+          "Termometer",
+          "Gelas ukur",
+          "Stopwatch"
+        ],
+        "answer": 1,
+        "explanation": "Termometer digunakan untuk mengukur suhu."
+      },
+      {
+        "q": "Mengapa percobaan sering perlu diulang?",
+        "options": [
+          "Agar hasil lebih dapat dipercaya dan mengurangi pengaruh kesalahan tak sengaja",
+          "Agar hasil pasti sesuai hipotesis",
+          "Supaya tidak perlu mencatat data",
+          "Untuk mengubah hasil pengamatan"
+        ],
+        "answer": 0,
+        "explanation": "Pengulangan membantu mengecek konsistensi hasil dan mengurangi pengaruh kesalahan kebetulan."
+      }
+    ]
+  },
+  {
+    "grade": 7,
+    "book": "Buku 1A",
+    "chapter": "Zat dan Perubahannya",
+    "items": [
+      {
+        "q": "Materi atau zat dapat didefinisikan sebagai sesuatu yang…",
+        "options": [
+          "Selalu bisa dilihat oleh mata",
+          "Memiliki massa dan menempati ruang",
+          "Hanya memiliki wujud padat",
+          "Tidak memiliki volume"
+        ],
+        "answer": 1,
+        "explanation": "Materi memiliki massa dan menempati ruang; materi dapat berwujud padat, cair, atau gas."
+      },
+      {
+        "q": "Mengapa benda padat umumnya mempertahankan bentuknya?",
+        "options": [
+          "Partikelnya berjauhan dan bebas bergerak ke segala arah",
+          "Partikelnya tidak bergerak sama sekali",
+          "Partikelnya berubah menjadi cair",
+          "Partikelnya tersusun rapat dan bergetar di sekitar posisi tetap"
+        ],
+        "answer": 3,
+        "explanation": "Partikel zat padat tersusun rapat dan hanya bergetar di sekitar posisi relatif tetap, sehingga bentuknya terjaga."
+      },
+      {
+        "q": "Sifat zat cair yang tepat adalah…",
+        "options": [
+          "Bentuk mengikuti wadah, volume relatif tetap",
+          "Bentuk dan volumenya selalu mengikuti wadah",
+          "Bentuk tetap, tetapi volume berubah mengikuti wadah",
+          "Partikelnya memenuhi seluruh ruang seperti gas"
+        ],
+        "answer": 0,
+        "explanation": "Zat cair memiliki volume relatif tetap tetapi bentuknya mengikuti wadah."
+      },
+      {
+        "q": "Apa yang terjadi pada partikel gas dibandingkan partikel zat padat?",
+        "options": [
+          "Partikel gas tersusun teratur dan tidak berpindah",
+          "Partikel gas kehilangan seluruh energinya",
+          "Partikel gas berjauhan dan bergerak bebas",
+          "Partikel gas terikat lebih kuat pada posisi tetap"
+        ],
+        "answer": 2,
+        "explanation": "Partikel gas berjauhan dan bergerak bebas, sehingga gas mengisi ruang yang ditempatinya."
+      },
+      {
+        "q": "Perubahan wujud dari es menjadi air disebut…",
+        "options": [
+          "Mengembun",
+          "Mencair",
+          "Menyublim",
+          "Membeku"
+        ],
+        "answer": 1,
+        "explanation": "Mencair adalah perubahan wujud dari padat menjadi cair."
+      },
+      {
+        "q": "Ketika air pada pakaian basah berubah menjadi uap air, proses itu disebut…",
+        "options": [
+          "Membeku",
+          "Mengembun",
+          "Deposisi",
+          "Menguap"
+        ],
+        "answer": 3,
+        "explanation": "Menguap adalah perubahan wujud dari cair menjadi gas."
+      },
+      {
+        "q": "Titik-titik air yang muncul di sisi luar gelas berisi es terbentuk terutama karena…",
+        "options": [
+          "Uap air di udara mengembun pada permukaan gelas yang dingin",
+          "Air di dalam gelas menembus dinding gelas",
+          "Gelas berubah menjadi air",
+          "Es berubah langsung menjadi gas"
+        ],
+        "answer": 0,
+        "explanation": "Uap air di udara kehilangan energi saat menyentuh permukaan dingin lalu mengembun menjadi cairan."
+      },
+      {
+        "q": "Manakah yang merupakan perubahan fisika?",
+        "options": [
+          "Kayu terbakar menjadi abu",
+          "Besi berkarat",
+          "Kertas dipotong menjadi bagian kecil",
+          "Susu menjadi asam akibat fermentasi"
+        ],
+        "answer": 2,
+        "explanation": "Memotong kertas mengubah ukuran dan bentuk tanpa menghasilkan zat baru."
+      },
+      {
+        "q": "Tanda yang paling kuat bahwa telah terjadi perubahan kimia adalah…",
+        "options": [
+          "Benda berubah posisi",
+          "Terbentuk zat baru dengan sifat berbeda",
+          "Benda berubah bentuk karena dipotong",
+          "Benda larut tanpa reaksi kimia"
+        ],
+        "answer": 1,
+        "explanation": "Perubahan kimia menghasilkan zat baru; perubahan warna, gas, atau endapan dapat menjadi petunjuk, bergantung pada prosesnya."
+      },
+      {
+        "q": "Metode yang sesuai untuk memisahkan pasir dari air adalah…",
+        "options": [
+          "Distilasi bertingkat",
+          "Kromatografi kertas",
+          "Penyubliman",
+          "Filtrasi atau penyaringan"
+        ],
+        "answer": 3,
+        "explanation": "Filtrasi menahan partikel pasir pada penyaring dan memungkinkan air melewatinya."
+      },
+      {
+        "q": "Perubahan wujud dari zat padat langsung menjadi gas tanpa melalui cair disebut…",
+        "options": [
+          "Membeku",
+          "Mengembun",
+          "Mencair",
+          "Menyublim"
+        ],
+        "answer": 3,
+        "explanation": "Menyublim adalah perubahan dari padat langsung menjadi gas."
+      },
+      {
+        "q": "Cara sederhana memisahkan garam terlarut dari air garam adalah…",
+        "options": [
+          "Penyaringan biasa",
+          "Penguapan air",
+          "Menggunakan magnet",
+          "Mengayak campuran"
+        ],
+        "answer": 1,
+        "explanation": "Ketika air menguap, garam tertinggal sebagai padatan."
+      },
+      {
+        "q": "Campuran air dan gula yang larut merata termasuk…",
+        "options": [
+          "Campuran homogen",
+          "Campuran heterogen",
+          "Zat tunggal berupa unsur",
+          "Senyawa yang terbentuk melalui pembakaran"
+        ],
+        "answer": 0,
+        "explanation": "Larutan gula tampak seragam karena gula terlarut merata di dalam air."
+      }
+    ]
+  },
+  {
+    "grade": 7,
+    "book": "Buku 1A",
+    "chapter": "Gerak Benda dan Gaya",
+    "items": [
+      {
+        "q": "Jarak tempuh berbeda dari perpindahan karena jarak tempuh…",
+        "options": [
+          "Selalu nol untuk benda bergerak",
+          "Memperhitungkan panjang seluruh lintasan yang dilalui",
+          "Selalu menunjukkan arah gerak",
+          "Hanya dapat diukur dalam satuan waktu"
+        ],
+        "answer": 1,
+        "explanation": "Jarak adalah panjang seluruh lintasan, sedangkan perpindahan adalah perubahan posisi dari titik awal ke titik akhir beserta arahnya."
+      },
+      {
+        "q": "Sebuah sepeda menempuh jarak 120 meter dalam 20 sekon. Kelajuan rata-ratanya adalah…",
+        "options": [
+          "6 m/s",
+          "4 m/s",
+          "10 m/s",
+          "24 m/s"
+        ],
+        "answer": 0,
+        "explanation": "Kelajuan rata-rata = jarak ÷ waktu = 120 m ÷ 20 s = 6 m/s."
+      },
+      {
+        "q": "Besaran yang menyatakan perubahan kecepatan tiap satuan waktu adalah…",
+        "options": [
+          "Jarak",
+          "Massa",
+          "Percepatan",
+          "Gaya berat"
+        ],
+        "answer": 2,
+        "explanation": "Percepatan menyatakan perubahan kecepatan terhadap waktu."
+      },
+      {
+        "q": "Benda dikatakan mengalami gerak lurus beraturan (GLB) ketika…",
+        "options": [
+          "Arah dan kecepatan selalu berubah",
+          "Benda selalu bergerak makin cepat",
+          "Benda berhenti di setiap detik",
+          "Benda bergerak lurus dengan kecepatan tetap"
+        ],
+        "answer": 3,
+        "explanation": "Pada GLB, benda bergerak di lintasan lurus dengan kecepatan tetap."
+      },
+      {
+        "q": "Pada gerak lurus berubah beraturan, percepatan benda dianggap…",
+        "options": [
+          "Selalu nol",
+          "Tetap",
+          "Selalu tidak terhingga",
+          "Sama dengan jarak"
+        ],
+        "answer": 1,
+        "explanation": "GLBB adalah gerak lurus dengan percepatan tetap, sehingga kecepatan berubah secara teratur."
+      },
+      {
+        "q": "Gaya dapat mengubah keadaan benda, misalnya…",
+        "options": [
+          "Mengubah kecepatan atau arah geraknya",
+          "Menghilangkan massa benda dalam semua keadaan",
+          "Memastikan benda selalu bergerak lurus",
+          "Menghapus pengaruh gravitasi"
+        ],
+        "answer": 0,
+        "explanation": "Gaya dapat mengubah kecepatan, arah gerak, dan bentuk benda."
+      },
+      {
+        "q": "Buku yang diletakkan di atas meja tetap diam sampai ada gaya resultan yang mengubah keadaannya. Contoh ini berkaitan dengan…",
+        "options": [
+          "Hukum Newton III saja",
+          "Hukum pemantulan",
+          "Hukum Newton I tentang kelembaman",
+          "Hukum Pascal"
+        ],
+        "answer": 2,
+        "explanation": "Hukum Newton I menjelaskan bahwa benda mempertahankan keadaan diam atau gerak lurus beraturan jika resultan gaya nol."
+      },
+      {
+        "q": "Jika gaya resultan pada benda bermassa tetap diperbesar, maka percepatannya akan…",
+        "options": [
+          "Selalu menjadi nol",
+          "Menjadi sama dengan massa",
+          "Berkurang dalam semua keadaan",
+          "Bertambah searah gaya resultan"
+        ],
+        "answer": 3,
+        "explanation": "Menurut Hukum Newton II, percepatan sebanding dengan gaya resultan untuk massa tetap: F = m × a."
+      },
+      {
+        "q": "Gaya gesek antara ban dan jalan berguna karena membantu kendaraan…",
+        "options": [
+          "Menghilangkan massa ban",
+          "Mendapatkan traksi untuk bergerak dan mengerem",
+          "Bergerak tanpa gaya apa pun",
+          "Selalu mencapai kelajuan tak terbatas"
+        ],
+        "answer": 1,
+        "explanation": "Gaya gesek antara ban dan jalan menyediakan traksi sehingga kendaraan dapat bergerak, berbelok, dan mengerem."
+      },
+      {
+        "q": "Ketika seseorang mendorong dinding, dinding memberikan gaya reaksi pada orang tersebut. Ini menggambarkan…",
+        "options": [
+          "Hukum Newton III",
+          "Hukum Newton I saja",
+          "Hukum Archimedes",
+          "Hukum kekekalan massa"
+        ],
+        "answer": 0,
+        "explanation": "Hukum Newton III menyatakan bahwa gaya interaksi muncul berpasangan, sama besar dan berlawanan arah, pada benda yang berbeda."
+      },
+      {
+        "q": "Sebuah benda bergerak dengan kelajuan tetap 4 m/s selama 5 sekon. Jarak yang ditempuh adalah…",
+        "options": [
+          "9 m",
+          "20 m",
+          "25 m",
+          "1,25 m"
+        ],
+        "answer": 1,
+        "explanation": "Jarak = kelajuan × waktu = 4 m/s × 5 s = 20 m."
+      },
+      {
+        "q": "Satuan gaya dalam Sistem Internasional adalah…",
+        "options": [
+          "Joule",
+          "Watt",
+          "Newton",
+          "Pascal"
+        ],
+        "answer": 2,
+        "explanation": "Gaya diukur dalam newton (N)."
+      },
+      {
+        "q": "Jika dua gaya sama besar bekerja pada satu garis lurus dengan arah berlawanan, resultan gayanya…",
+        "options": [
+          "Dua kali gaya yang lebih besar",
+          "Selalu mengarah ke kanan",
+          "Sama dengan jumlah kedua gaya",
+          "Nol"
+        ],
+        "answer": 3,
+        "explanation": "Dua gaya yang sama besar dan berlawanan arah saling meniadakan, sehingga resultannya nol."
+      },
+      {
+        "q": "Massa benda menyatakan…",
+        "options": [
+          "Banyaknya materi dalam benda",
+          "Tarikan gravitasi pada benda",
+          "Laju benda berpindah",
+          "Besarnya gaya gesek"
+        ],
+        "answer": 0,
+        "explanation": "Massa menyatakan banyaknya materi dan berbeda dari berat, yang merupakan gaya gravitasi."
+      }
+    ]
+  },
+  {
+    "grade": 8,
+    "book": "Buku 2A",
+    "chapter": "Pengenalan Sel",
+    "items": [
+      {
+        "q": "Sel disebut unit dasar kehidupan karena…",
+        "options": [
+          "Semua sel berukuran sama",
+          "Sel hanya ditemukan pada hewan",
+          "Sel merupakan unit struktural dan fungsional dasar makhluk hidup",
+          "Sel tidak membutuhkan proses kimia"
+        ],
+        "answer": 2,
+        "explanation": "Sel membentuk struktur makhluk hidup dan menjalankan fungsi kehidupan."
+      },
+      {
+        "q": "Alat yang digunakan untuk melihat struktur sel yang terlalu kecil bagi mata adalah…",
+        "options": [
+          "Teleskop",
+          "Mikroskop",
+          "Barometer",
+          "Dinamometer"
+        ],
+        "answer": 1,
+        "explanation": "Mikroskop memperbesar objek kecil agar strukturnya dapat diamati."
+      },
+      {
+        "q": "Bagian sel yang berfungsi mengatur keluar masuknya banyak zat adalah…",
+        "options": [
+          "Membran sel",
+          "Dinding sel saja",
+          "Kloroplas",
+          "Kromosom di luar sel"
+        ],
+        "answer": 0,
+        "explanation": "Membran sel membatasi sel dan mengatur pertukaran zat dengan lingkungannya."
+      },
+      {
+        "q": "Bagian sel yang menyimpan sebagian besar materi genetik pada sel eukariotik adalah…",
+        "options": [
+          "Vakuola",
+          "Membran sel",
+          "Dinding sel",
+          "Inti sel atau nukleus"
+        ],
+        "answer": 3,
+        "explanation": "Pada sel eukariotik, sebagian besar DNA berada di dalam nukleus."
+      },
+      {
+        "q": "Organel yang menjadi tempat utama fotosintesis pada sel tumbuhan adalah…",
+        "options": [
+          "Mitokondria",
+          "Kloroplas",
+          "Ribosom",
+          "Lisosom"
+        ],
+        "answer": 1,
+        "explanation": "Kloroplas mengandung klorofil dan menjadi tempat berlangsungnya fotosintesis pada sel tumbuhan fotosintetik."
+      },
+      {
+        "q": "Struktur yang umumnya ada pada sel tumbuhan dan tidak dimiliki sel hewan adalah…",
+        "options": [
+          "Sitoplasma",
+          "Membran sel",
+          "Dinding sel dari bahan utama selulosa",
+          "Materi genetik"
+        ],
+        "answer": 2,
+        "explanation": "Sel tumbuhan umumnya memiliki dinding sel yang mengandung selulosa; sel hewan tidak memiliki dinding sel."
+      },
+      {
+        "q": "Cairan di dalam sel tempat berbagai organel berada disebut…",
+        "options": [
+          "Sitoplasma",
+          "Jaringan",
+          "Organ",
+          "Kutikula"
+        ],
+        "answer": 0,
+        "explanation": "Sitoplasma adalah bagian sel di antara membran dan inti yang menjadi lingkungan bagi banyak organel."
+      },
+      {
+        "q": "Sel darah merah memiliki bentuk dan struktur khusus yang terutama mendukung fungsi…",
+        "options": [
+          "Membuat empedu",
+          "Mendeteksi cahaya",
+          "Menghasilkan enzim pencernaan",
+          "Mengangkut oksigen dalam darah"
+        ],
+        "answer": 3,
+        "explanation": "Sel darah merah mengandung hemoglobin yang mengikat dan mengangkut oksigen."
+      },
+      {
+        "q": "Kumpulan sel sejenis yang bekerja sama menjalankan fungsi tertentu disebut…",
+        "options": [
+          "Organisme",
+          "Jaringan",
+          "Sistem organ",
+          "Populasi"
+        ],
+        "answer": 1,
+        "explanation": "Jaringan merupakan kumpulan sel sejenis atau terkait yang bekerja bersama menjalankan fungsi tertentu."
+      },
+      {
+        "q": "Urutan organisasi kehidupan yang tepat dari tingkat sederhana ke lebih kompleks adalah…",
+        "options": [
+          "Organ → sel → jaringan → sistem organ",
+          "Jaringan → sel → organisme → organ",
+          "Sel → jaringan → organ → sistem organ",
+          "Sistem organ → organ → sel → jaringan"
+        ],
+        "answer": 2,
+        "explanation": "Sel membentuk jaringan, jaringan menyusun organ, dan organ bekerja sama dalam sistem organ."
+      },
+      {
+        "q": "Organel yang berperan penting dalam melepaskan energi dari makanan melalui respirasi sel adalah…",
+        "options": [
+          "Vakuola",
+          "Mitokondria",
+          "Dinding sel",
+          "Klorofil"
+        ],
+        "answer": 1,
+        "explanation": "Mitokondria menjadi tempat penting berlangsungnya tahap respirasi sel yang menghasilkan energi bagi aktivitas sel."
+      },
+      {
+        "q": "Vakuola besar pada banyak sel tumbuhan membantu terutama dalam…",
+        "options": [
+          "Mengatur cahaya yang masuk ke mata",
+          "Memompa darah",
+          "Menyimpan zat dan menjaga tekanan/turgor sel",
+          "Membentuk tulang"
+        ],
+        "answer": 2,
+        "explanation": "Vakuola dapat menyimpan air dan zat terlarut serta membantu menjaga kekakuan sel tumbuhan."
+      },
+      {
+        "q": "Dinding sel tumbuhan berguna terutama untuk…",
+        "options": [
+          "Mengatur detak jantung",
+          "Mencerna makanan di lambung",
+          "Menghantarkan impuls saraf",
+          "Memberi bentuk dan dukungan pada sel"
+        ],
+        "answer": 3,
+        "explanation": "Dinding sel yang kaku membantu mempertahankan bentuk serta mendukung sel tumbuhan."
+      },
+      {
+        "q": "Organisme yang tubuhnya hanya terdiri dari satu sel disebut organisme…",
+        "options": [
+          "Uniseluler",
+          "Multiseluler",
+          "Tidak hidup",
+          "Berorgan"
+        ],
+        "answer": 0,
+        "explanation": "Organisme uniseluler, seperti Amoeba, tersusun dari satu sel yang menjalankan fungsi kehidupan."
+      },
+      {
+        "q": "Bentuk sel saraf yang memiliki juluran panjang membantu sel itu…",
+        "options": [
+          "Menyimpan udara",
+          "Menghantarkan pesan ke bagian tubuh lain",
+          "Menyerap mineral dari tanah saja",
+          "Melakukan fotosintesis"
+        ],
+        "answer": 1,
+        "explanation": "Juluran sel saraf membantu menerima dan meneruskan sinyal ke sel lain."
+      },
+      {
+        "q": "Pada mikroskop cahaya, saat baru mulai mengamati preparat, sebaiknya menggunakan…",
+        "options": [
+          "Lensa objektif dengan perbesaran paling tinggi",
+          "Pengatur fokus kasar sambil memakai perbesaran tinggi",
+          "Lensa objektif dengan perbesaran rendah terlebih dahulu",
+          "Lensa tanpa cahaya"
+        ],
+        "answer": 2,
+        "explanation": "Perbesaran rendah memudahkan menemukan objek dan membantu mengurangi risiko lensa menyentuh preparat."
+      },
+      {
+        "q": "Bagian sel yang membatasi sel dan mengatur pertukaran zat dengan lingkungan adalah…",
+        "options": [
+          "Membran sel",
+          "Kromosom",
+          "Nukleolus",
+          "Kloroplas"
+        ],
+        "answer": 0,
+        "explanation": "Membran sel menjadi pembatas selektif yang membantu mengatur keluar-masuk zat."
+      },
+      {
+        "q": "Sel tumbuhan yang melakukan fotosintesis memerlukan cahaya dan organel…",
+        "options": [
+          "Lisosom",
+          "Sentriol",
+          "Ribosom saja",
+          "Kloroplas"
+        ],
+        "answer": 3,
+        "explanation": "Kloroplas mengandung klorofil yang menyerap energi cahaya untuk fotosintesis."
+      },
+      {
+        "q": "Mengapa sel otot memiliki bentuk dan susunan yang mendukung kontraksi?",
+        "options": [
+          "Agar dapat membuat sel menjadi batu",
+          "Agar dapat membantu menghasilkan gerakan",
+          "Agar dapat menggantikan fungsi semua organ",
+          "Agar tidak memerlukan energi"
+        ],
+        "answer": 1,
+        "explanation": "Sel otot terspesialisasi untuk berkontraksi dan membantu menggerakkan bagian tubuh."
+      },
+      {
+        "q": "Makhluk hidup multiseluler memiliki banyak sel yang dapat…",
+        "options": [
+          "Melakukan fungsi yang sama saja tanpa perbedaan",
+          "Tidak bekerja sama",
+          "Mengalami spesialisasi untuk menjalankan fungsi berbeda",
+          "Hidup terpisah dari seluruh sistem tubuh"
+        ],
+        "answer": 2,
+        "explanation": "Banyak sel mengalami spesialisasi dan bekerja sama dalam jaringan dan organ."
+      }
+    ]
+  },
+  {
+    "grade": 8,
+    "book": "Buku 2A",
+    "chapter": "Struktur dan Fungsi Tubuh Makhluk Hidup",
+    "items": [
+      {
+        "q": "Zat makanan yang terutama menjadi sumber energi cepat bagi tubuh adalah…",
+        "options": [
+          "Karbohidrat",
+          "Vitamin",
+          "Mineral",
+          "Air"
+        ],
+        "answer": 0,
+        "explanation": "Karbohidrat merupakan sumber energi utama yang dapat diolah tubuh menjadi glukosa."
+      },
+      {
+        "q": "Fungsi penting protein dalam tubuh adalah…",
+        "options": [
+          "Menggantikan seluruh kebutuhan air",
+          "Menjadi satu-satunya sumber vitamin",
+          "Membangun dan memperbaiki jaringan tubuh",
+          "Menghentikan semua reaksi enzim"
+        ],
+        "answer": 2,
+        "explanation": "Protein dibutuhkan antara lain untuk pertumbuhan serta perbaikan jaringan dan pembentukan enzim."
+      },
+      {
+        "q": "Pencernaan kimiawi karbohidrat dapat mulai berlangsung di mulut dengan bantuan…",
+        "options": [
+          "Asam klorida",
+          "Enzim amilase dalam air liur",
+          "Empedu",
+          "Hemoglobin"
+        ],
+        "answer": 1,
+        "explanation": "Amilase saliva memulai pemecahan pati menjadi molekul karbohidrat yang lebih sederhana."
+      },
+      {
+        "q": "Sebagian besar penyerapan hasil pencernaan makanan berlangsung di…",
+        "options": [
+          "Kerongkongan",
+          "Usus besar",
+          "Lambung",
+          "Usus halus"
+        ],
+        "answer": 3,
+        "explanation": "Usus halus memiliki permukaan luas dengan vili dan mikrovili untuk menyerap sebagian besar nutrien."
+      },
+      {
+        "q": "Mengapa zat aditif tertentu ditambahkan ke dalam pangan sesuai kebutuhan dan aturan penggunaannya?",
+        "options": [
+          "Untuk tujuan seperti menjaga mutu, memperbaiki rasa, atau memberi warna",
+          "Agar nilai gizi semua makanan otomatis menjadi sama",
+          "Supaya makanan tidak perlu disimpan dengan benar",
+          "Untuk menggantikan seluruh zat gizi yang dibutuhkan tubuh"
+        ],
+        "answer": 0,
+        "explanation": "Zat aditif digunakan untuk tujuan tertentu, misalnya sebagai pengawet, pewarna, atau penguat rasa, dan penggunaannya harus sesuai ketentuan keamanan pangan."
+      },
+      {
+        "q": "Komponen darah yang membawa oksigen terutama dengan bantuan hemoglobin adalah…",
+        "options": [
+          "Sel darah merah",
+          "Trombosit",
+          "Plasma saja",
+          "Sel saraf"
+        ],
+        "answer": 0,
+        "explanation": "Hemoglobin di dalam sel darah merah mengikat oksigen untuk diangkut ke jaringan."
+      },
+      {
+        "q": "Pertukaran gas oksigen dan karbon dioksida pada paru-paru terutama terjadi di…",
+        "options": [
+          "Trakea",
+          "Laring",
+          "Diafragma",
+          "Alveolus"
+        ],
+        "answer": 3,
+        "explanation": "Alveolus memiliki dinding tipis dan dikelilingi kapiler sehingga mendukung pertukaran gas."
+      },
+      {
+        "q": "Saat menarik napas normal, diafragma umumnya…",
+        "options": [
+          "Relaksasi dan naik sehingga rongga dada mengecil",
+          "Berkontraksi dan turun sehingga volume rongga dada meningkat",
+          "Menutup saluran pernapasan sepenuhnya",
+          "Menghentikan gerakan tulang rusuk"
+        ],
+        "answer": 1,
+        "explanation": "Kontraksi diafragma membuatnya mendatar dan turun, meningkatkan volume rongga dada sehingga udara masuk."
+      },
+      {
+        "q": "Organ yang menyaring darah dan membentuk urine adalah…",
+        "options": [
+          "Lambung",
+          "Pankreas",
+          "Ginjal",
+          "Usus halus"
+        ],
+        "answer": 2,
+        "explanation": "Ginjal menyaring darah, mengatur komposisi cairan, dan menghasilkan urine."
+      },
+      {
+        "q": "Pola makan seimbang paling tepat berarti…",
+        "options": [
+          "Mengonsumsi beragam pangan dengan jumlah sesuai kebutuhan tubuh",
+          "Menghindari semua lemak dalam setiap keadaan",
+          "Memakan satu jenis makanan saja",
+          "Melewatkan sarapan setiap hari"
+        ],
+        "answer": 0,
+        "explanation": "Pola makan seimbang mencakup keragaman pangan dan jumlah yang sesuai kebutuhan energi serta zat gizi."
+      },
+      {
+        "q": "Zat gizi yang berfungsi sebagai cadangan energi dan membantu penyerapan vitamin tertentu adalah…",
+        "options": [
+          "Lemak",
+          "Air",
+          "Mineral",
+          "Serat saja"
+        ],
+        "answer": 0,
+        "explanation": "Lemak menyediakan energi cadangan dan membantu penyerapan vitamin yang larut dalam lemak."
+      },
+      {
+        "q": "Vili pada dinding usus halus membantu pencernaan karena…",
+        "options": [
+          "Menghasilkan udara untuk paru-paru",
+          "Memperluas permukaan penyerapan nutrien",
+          "Memompa darah ke seluruh tubuh",
+          "Menghentikan gerakan makanan"
+        ],
+        "answer": 1,
+        "explanation": "Vili memperluas luas permukaan usus halus sehingga penyerapan hasil pencernaan lebih efektif."
+      },
+      {
+        "q": "Salah satu fungsi utama usus besar adalah…",
+        "options": [
+          "Menghasilkan empedu",
+          "Menukar oksigen dengan karbon dioksida",
+          "Menyerap kembali air dan membantu pembentukan feses",
+          "Menghasilkan urine"
+        ],
+        "answer": 2,
+        "explanation": "Usus besar menyerap air dan elektrolit yang tersisa serta membantu membentuk feses."
+      },
+      {
+        "q": "Empedu diproduksi oleh organ…",
+        "options": [
+          "Pankreas",
+          "Lambung",
+          "Ginjal",
+          "Hati"
+        ],
+        "answer": 3,
+        "explanation": "Hati menghasilkan empedu yang membantu proses pencernaan lemak."
+      },
+      {
+        "q": "Fungsi utama jantung dalam sistem peredaran darah adalah…",
+        "options": [
+          "Memompa darah",
+          "Menyaring udara yang dihirup",
+          "Mencerna protein",
+          "Menyimpan urine"
+        ],
+        "answer": 0,
+        "explanation": "Jantung memompa darah agar oksigen dan zat lain dapat diangkut ke seluruh tubuh."
+      },
+      {
+        "q": "Pembuluh darah yang membawa darah menjauhi jantung disebut…",
+        "options": [
+          "Kapiler saja",
+          "Vena",
+          "Arteri",
+          "Alveolus"
+        ],
+        "answer": 2,
+        "explanation": "Arteri membawa darah menjauhi jantung; jenis darah yang dibawa bergantung pada sirkulasi yang dilalui."
+      },
+      {
+        "q": "Rambut hidung dan lendir membantu sistem pernapasan dengan cara…",
+        "options": [
+          "Membuat makanan lebih manis",
+          "Menangkap sebagian debu dan partikel dari udara",
+          "Memompa darah",
+          "Menyaring urine"
+        ],
+        "answer": 1,
+        "explanation": "Rambut hidung dan lendir menangkap sebagian partikel sehingga membantu menyaring udara yang masuk."
+      },
+      {
+        "q": "Saat menghembuskan napas normal, diafragma umumnya…",
+        "options": [
+          "Berkontraksi dan turun",
+          "Membentuk sel darah merah",
+          "Tidak pernah berubah posisi",
+          "Relaksasi dan bergerak naik"
+        ],
+        "answer": 3,
+        "explanation": "Diafragma relaksasi dan naik, sehingga volume rongga dada berkurang dan udara keluar dari paru-paru."
+      },
+      {
+        "q": "Selain ginjal, organ yang mengeluarkan karbon dioksida sebagai sisa respirasi adalah…",
+        "options": [
+          "Paru-paru",
+          "Usus halus",
+          "Tulang",
+          "Kantung empedu"
+        ],
+        "answer": 0,
+        "explanation": "Karbon dioksida dibawa darah ke paru-paru lalu dikeluarkan saat menghembuskan napas."
+      },
+      {
+        "q": "Kebiasaan yang mendukung kesehatan sistem pernapasan adalah…",
+        "options": [
+          "Menghirup asap rokok dengan sengaja",
+          "Membakar sampah di ruang tertutup",
+          "Menghindari asap rokok dan menjaga udara tetap bersih",
+          "Tidak pernah beraktivitas fisik"
+        ],
+        "answer": 2,
+        "explanation": "Mengurangi paparan asap dan polutan membantu menjaga kesehatan saluran pernapasan."
+      }
+    ]
+  },
+  {
+    "grade": 9,
+    "book": "Buku 3A",
+    "chapter": "Sistem Koordinasi dan Zat Adiktif",
+    "items": [
+      {
+        "q": "Sistem saraf membantu tubuh terutama dengan cara…",
+        "options": [
+          "Menyimpan urine",
+          "Mencerna makanan di lambung",
+          "Menerima rangsang, mengolah informasi, lalu mengoordinasikan respons",
+          "Menghasilkan semua hormon tubuh"
+        ],
+        "answer": 2,
+        "explanation": "Sistem saraf menerima rangsangan, memproses informasi, dan mengirim sinyal untuk mengatur respons tubuh."
+      },
+      {
+        "q": "Respons menarik tangan dengan cepat setelah menyentuh benda panas adalah contoh…",
+        "options": [
+          "Pencernaan kimiawi",
+          "Gerak sadar yang selalu lambat",
+          "Pembentukan antibodi",
+          "Gerak refleks"
+        ],
+        "answer": 3,
+        "explanation": "Gerak refleks merupakan respons cepat melalui jalur saraf refleks, yang membantu melindungi tubuh dari bahaya."
+      },
+      {
+        "q": "Nikotin pada produk tembakau termasuk zat yang…",
+        "options": [
+          "Dapat menyebabkan ketergantungan",
+          "Membantu paru-paru membersihkan semua racun",
+          "Tidak memengaruhi sistem saraf",
+          "Selalu meningkatkan kesehatan jantung"
+        ],
+        "answer": 0,
+        "explanation": "Nikotin memengaruhi sistem saraf dan memiliki potensi ketergantungan."
+      },
+      {
+        "q": "Cara yang sehat untuk menolak ajakan menggunakan zat adiktif adalah…",
+        "options": [
+          "Mengikuti ajakan agar diterima kelompok",
+          "Mencoba sedikit tanpa mempertimbangkan risiko",
+          "Menyimpan ajakan tersebut dan mengabaikannya selalu",
+          "Menolak dengan tegas dan memilih kegiatan yang lebih aman"
+        ],
+        "answer": 3,
+        "explanation": "Menolak secara tegas, menjauh dari situasi berisiko, dan meminta bantuan orang tepercaya merupakan strategi pencegahan yang lebih aman."
+      }
+    ]
+  },
+  {
+    "grade": 9,
+    "book": "Buku 3A",
+    "chapter": "Homeostasis",
+    "items": [
+      {
+        "q": "Homeostasis adalah kemampuan tubuh untuk…",
+        "options": [
+          "Menghentikan seluruh perubahan internal",
+          "Mempertahankan kondisi internal dalam kisaran yang sesuai",
+          "Menaikkan suhu tubuh tanpa batas",
+          "Menghindari semua rangsangan dari luar"
+        ],
+        "answer": 1,
+        "explanation": "Homeostasis menjaga kondisi internal, seperti suhu, cairan, dan glukosa, dalam kisaran yang mendukung fungsi tubuh."
+      },
+      {
+        "q": "Ketika suhu lingkungan panas, keringat membantu mendinginkan tubuh melalui…",
+        "options": [
+          "Pembekuan darah",
+          "Peningkatan produksi tulang",
+          "Penguapan air dari permukaan kulit",
+          "Penghentian aliran darah"
+        ],
+        "answer": 2,
+        "explanation": "Penguapan keringat memerlukan energi panas yang diambil dari permukaan kulit sehingga membantu mendinginkan tubuh."
+      },
+      {
+        "q": "Ketika tubuh kekurangan air, respons ginjal yang membantu menjaga keseimbangan cairan adalah…",
+        "options": [
+          "Mengurangi kehilangan air melalui urine",
+          "Menghentikan penyaringan darah secara permanen",
+          "Mengeluarkan semua air dari darah",
+          "Mengubah air menjadi oksigen"
+        ],
+        "answer": 0,
+        "explanation": "Ginjal dapat mengatur jumlah air yang dikeluarkan melalui urine, sehingga membantu menjaga keseimbangan cairan tubuh."
+      },
+      {
+        "q": "Mengapa tubuh perlu menjaga kadar glukosa darah dalam kisaran yang sesuai?",
+        "options": [
+          "Agar sel memperoleh pasokan energi yang dibutuhkan",
+          "Agar tubuh tidak membutuhkan oksigen",
+          "Agar semua organ berhenti bekerja setelah makan",
+          "Agar darah tidak perlu mengangkut zat lain"
+        ],
+        "answer": 0,
+        "explanation": "Glukosa digunakan oleh banyak sel sebagai sumber energi. Tubuh mengatur kadarnya agar fungsi sel tetap berjalan dengan baik."
+      }
+    ]
+  },
+  {
+    "grade": 9,
+    "book": "Buku 3A",
+    "chapter": "Sistem Reproduksi Manusia",
+    "items": [
+      {
+        "q": "Organ reproduksi laki-laki yang menghasilkan sperma adalah…",
+        "options": [
+          "Kandung kemih",
+          "Prostat",
+          "Testis",
+          "Ureter"
+        ],
+        "answer": 2,
+        "explanation": "Testis menghasilkan sperma dan juga menghasilkan hormon testosteron."
+      },
+      {
+        "q": "Sel telur pada manusia dihasilkan oleh…",
+        "options": [
+          "Ovarium",
+          "Rahim",
+          "Vagina",
+          "Tuba falopi"
+        ],
+        "answer": 0,
+        "explanation": "Ovarium menghasilkan sel telur dan hormon reproduksi seperti estrogen serta progesteron."
+      },
+      {
+        "q": "Menstruasi terjadi ketika…",
+        "options": [
+          "Semua sel tubuh mati",
+          "Lapisan dinding rahim meluruh saat tidak terjadi kehamilan",
+          "Ovarium berhenti berfungsi selamanya",
+          "Sperma diproduksi di rahim"
+        ],
+        "answer": 1,
+        "explanation": "Jika tidak terjadi kehamilan, perubahan hormon memicu peluruhan lapisan dalam rahim yang keluar sebagai darah menstruasi."
+      },
+      {
+        "q": "Kebiasaan yang mendukung kesehatan sistem reproduksi adalah…",
+        "options": [
+          "Mengabaikan kebersihan pribadi",
+          "Menggunakan obat tanpa petunjuk",
+          "Menjaga kebersihan organ, memahami perubahan tubuh, dan mencari informasi tepercaya",
+          "Mempercayai semua informasi anonim tanpa pemeriksaan"
+        ],
+        "answer": 2,
+        "explanation": "Kebersihan, pemahaman perubahan tubuh, dan informasi kesehatan dari sumber tepercaya mendukung kesehatan reproduksi."
+      }
+    ]
+  },
+  {
+    "grade": 9,
+    "book": "Buku 3A",
+    "chapter": "Pewarisan Sifat",
+    "items": [
+      {
+        "q": "Unit dasar pewarisan informasi biologis yang terdapat pada DNA disebut…",
+        "options": [
+          "Jaringan",
+          "Organ",
+          "Enzim",
+          "Gen"
+        ],
+        "answer": 3,
+        "explanation": "Gen adalah bagian DNA yang membawa informasi biologis, misalnya untuk menghasilkan produk fungsional tertentu."
+      },
+      {
+        "q": "Struktur yang tersusun dari DNA dan protein serta membawa banyak gen disebut…",
+        "options": [
+          "Vakuola",
+          "Kromosom",
+          "Ribosom",
+          "Membran"
+        ],
+        "answer": 1,
+        "explanation": "Kromosom merupakan struktur DNA dan protein yang membawa gen."
+      },
+      {
+        "q": "Dalam notasi sederhana, individu dengan pasangan alel Bb disebut…",
+        "options": [
+          "Homozigot dominan",
+          "Homozigot resesif",
+          "Heterozigot",
+          "Tanpa alel"
+        ],
+        "answer": 2,
+        "explanation": "Bb memiliki dua alel berbeda, sehingga disebut heterozigot."
+      },
+      {
+        "q": "Jika persilangan sederhana Bb × Bb dilakukan dengan dominansi penuh dan kedua induk menghasilkan gamet B atau b sama mungkin, peluang keturunan bb adalah…",
+        "options": [
+          "0%",
+          "25%",
+          "50%",
+          "75%"
+        ],
+        "answer": 1,
+        "explanation": "Kemungkinan genotipe adalah BB, Bb, Bb, dan bb; satu dari empat kemungkinan adalah bb, yaitu 25%."
+      }
+    ]
+  },
+  {
+    "grade": 9,
+    "book": "Buku 3A",
+    "chapter": "Tekanan",
+    "items": [
+      {
+        "q": "Tekanan pada permukaan padat dihitung dengan membagi…",
+        "options": [
+          "Gaya tegak lurus permukaan dengan luas bidang tekan",
+          "Luas bidang tekan dengan massa jenis",
+          "Massa dengan volume",
+          "Jarak dengan waktu"
+        ],
+        "answer": 0,
+        "explanation": "Tekanan padat dirumuskan P = F/A, yaitu gaya tegak lurus dibagi luas bidang tekan."
+      },
+      {
+        "q": "Sebuah gaya 100 N bekerja tegak lurus pada bidang seluas 0,5 m². Tekanannya adalah…",
+        "options": [
+          "50 Pa",
+          "100 Pa",
+          "200 Pa",
+          "500 Pa"
+        ],
+        "answer": 2,
+        "explanation": "P = F/A = 100 N ÷ 0,5 m² = 200 N/m² atau 200 Pa."
+      },
+      {
+        "q": "Tekanan hidrostatis dalam zat cair diam dipengaruhi oleh…",
+        "options": [
+          "Warna wadah dan bentuk permukaan",
+          "Bau zat cair saja",
+          "Luas permukaan meja",
+          "Massa jenis zat cair, gravitasi, dan kedalaman"
+        ],
+        "answer": 3,
+        "explanation": "Tekanan hidrostatis mengikuti P = ρgh, sehingga bergantung pada massa jenis, percepatan gravitasi, dan kedalaman."
+      },
+      {
+        "q": "Hukum Pascal menyatakan bahwa tekanan yang diberikan pada fluida tertutup diteruskan…",
+        "options": [
+          "Hanya ke bawah",
+          "Tanpa diteruskan ke bagian lain",
+          "Sama besar ke segala arah dalam fluida",
+          "Hanya pada permukaan terbuka"
+        ],
+        "answer": 2,
+        "explanation": "Menurut Hukum Pascal, perubahan tekanan pada fluida tertutup diteruskan tanpa berkurang ke segala arah."
+      }
+    ]
+  }
 ];
 const chapterInfo=[];
 materials.forEach(function(m){chapterInfo.push({name:m.chapter,grade:m.grade,book:m.book,count:m.items.length})});
 const questionBank=[];
 materials.forEach(function(m,mi){m.items.forEach(function(q,qi){questionBank.push({id:"m"+mi+"q"+qi,grade:m.grade,book:m.book,chapter:m.chapter,question:q.q,options:q.options,answer:q.answer,explanation:q.explanation})})});
-const SESSION_KEY="kuis_ipa_smp_session_v1";
+const SESSION_KEY="kuis_ipa_smp_session_v2";
 const state={view:"home",deck:[],index:0,reviewMode:false,results:[]};
-function saveSession(){try{localStorage.setItem(SESSION_KEY,JSON.stringify({version:1,view:state.view,deck:state.deck,index:state.index,reviewMode:state.reviewMode,results:state.results,savedAt:Date.now()}))}catch(e){console.warn("Sesi tidak dapat disimpan ke localStorage.",e)}}
+function saveSession(){try{localStorage.setItem(SESSION_KEY,JSON.stringify({version:2,view:state.view,deck:state.deck,index:state.index,reviewMode:state.reviewMode,results:state.results,savedAt:Date.now()}))}catch(e){console.warn("Sesi tidak dapat disimpan ke localStorage.",e)}}
 function syncResumeButton(){const button=document.getElementById("resumeBtn");if(!button)return;button.classList.toggle("hidden",!(state.deck.length>0&&state.view==="home"))}
-function restoreSession(){try{const raw=localStorage.getItem(SESSION_KEY);if(!raw){syncResumeButton();return}const saved=JSON.parse(raw);if(!saved||saved.version!==1||!Array.isArray(saved.deck)||!saved.deck.every(e=>e&&e.question&&Array.isArray(e.options))){localStorage.removeItem(SESSION_KEY);syncResumeButton();return}state.view=["home","quiz","result","reviewResult"].includes(saved.view)?saved.view:"home";state.deck=saved.deck;state.index=Math.max(0,Math.min(Number(saved.index)||0,Math.max(0,state.deck.length-1)));state.reviewMode=!!saved.reviewMode;state.results=Array.isArray(saved.results)?saved.results:[];document.getElementById("homeView").style.display=state.view==="home"?"block":"none";document.getElementById("quizView").style.display=state.view==="quiz"?"flex":"none";document.getElementById("resultView").style.display=["result","reviewResult"].includes(state.view)?"block":"none";document.body.classList.toggle("quiz-active",state.view==="quiz");if(state.view==="quiz"&&state.deck.length){renderQuestion()}else if(state.view==="result"){renderResults()}else if(state.view==="reviewResult"){showHomeAfterReview()}syncResumeButton()}catch(e){console.warn("Sesi tersimpan tidak dapat dipulihkan.",e);syncResumeButton()}}
+function restoreSession(){try{const raw=localStorage.getItem(SESSION_KEY);if(!raw){syncResumeButton();return}const saved=JSON.parse(raw);if(!saved||saved.version!==2||!Array.isArray(saved.deck)||!saved.deck.every(e=>e&&e.question&&Array.isArray(e.options))){localStorage.removeItem(SESSION_KEY);syncResumeButton();return}state.view=["home","quiz","result","reviewResult"].includes(saved.view)?saved.view:"home";state.deck=saved.deck;state.index=Math.max(0,Math.min(Number(saved.index)||0,Math.max(0,state.deck.length-1)));state.reviewMode=!!saved.reviewMode;state.results=Array.isArray(saved.results)?saved.results:[];document.getElementById("homeView").style.display=state.view==="home"?"block":"none";document.getElementById("quizView").style.display=state.view==="quiz"?"flex":"none";document.getElementById("resultView").style.display=["result","reviewResult"].includes(state.view)?"block":"none";document.body.classList.toggle("quiz-active",state.view==="quiz");if(state.view==="quiz"&&state.deck.length){renderQuestion()}else if(state.view==="result"){renderResults()}else if(state.view==="reviewResult"){showHomeAfterReview()}syncResumeButton()}catch(e){console.warn("Sesi tersimpan tidak dapat dipulihkan.",e);syncResumeButton()}}
 function resumeSession(){if(!state.deck.length)return;state.view="quiz";document.getElementById("homeView").style.display="none";document.getElementById("resultView").style.display="none";document.getElementById("quizView").style.display="flex";document.body.classList.add("quiz-active");saveSession();syncResumeButton();renderQuestion();window.scrollTo(0,0)}
 function shuffle(list){const out=list.slice();for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const temp=out[i];out[i]=out[j];out[j]=temp}return out}
 function gradeClass(grade){return grade===7?"g7":grade===8?"g8":"g9"}
 function gradeName(grade){return "Kelas "+grade}
-function buildMaterials(){const grid=document.getElementById("materialGrid");grid.innerHTML=materials.map(function(m,i){return '<div class="material-row"><span class="material-number">'+String(i+1).padStart(2,"0")+'</span><span class="material-text"><strong>'+m.chapter+'</strong><small>'+gradeName(m.grade)+' · '+m.book+'</small></span><span class="material-count">10 soal</span></div>'}).join("")}
+function buildMaterials(){const grid=document.getElementById("materialGrid");grid.innerHTML=materials.map(function(m,i){return '<div class="material-row"><span class="material-number">'+String(i+1).padStart(2,"0")+'</span><span class="material-text"><strong>'+m.chapter+'</strong><small>'+gradeName(m.grade)+' · '+m.book+'</small></span><span class="material-count">'+m.items.length+' soal</span></div>'}).join("")}
 function startQuiz(mode){
  state.reviewMode=mode==="wrong";
  let chosen=questionBank.slice();
@@ -448,6 +1498,8 @@ function scrollToMaterials(){document.getElementById("materialsPanel").scrollInt
 function validateQuestionBank(){
  const expected=100;
  if(questionBank.length!==expected)throw new Error("Jumlah soal harus tepat 100, saat ini: "+questionBank.length);
+ const targetCounts={7:40,8:40,9:20};
+ [7,8,9].forEach(function(grade){const actual=questionBank.filter(function(q){return q.grade===grade}).length;if(actual!==targetCounts[grade])throw new Error("Komposisi kelas "+grade+" harus "+targetCounts[grade]+" soal, saat ini: "+actual)});
  questionBank.forEach(function(q,i){if(q.options.length!==4||q.answer<0||q.answer>3)throw new Error("Format soal bermasalah pada "+q.id)});
 }
 buildMaterials();validateQuestionBank();restoreSession();
