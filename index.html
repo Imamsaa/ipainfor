@@ -73,6 +73,62 @@
 .three-scene-loading b{display:block;color:var(--cyan);margin-bottom:5px}
 @media(max-width:520px){.three-lab-viewport{height:265px}.three-lab-hud span{font-size:8px;padding:6px}.three-lab-hud button{font-size:9px;padding:6px}}
 
+
+/* Layout refinement: 3D workbench becomes the main attraction */
+.vlab-layout{grid-template-columns:minmax(0,1fr);gap:15px}
+.vlab-bench{grid-column:1;grid-row:1;min-width:0}
+.vlab-guide{grid-column:1;grid-row:2;position:static;top:auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px;padding:17px}
+.vlab-guide>.eyebrow:first-child{grid-column:1;grid-row:1}
+.vlab-guide>h3{grid-column:1;grid-row:2;margin:0}
+.vlab-guide>.lab-objective{grid-column:1;grid-row:3;margin:0}
+.vlab-guide>.eyebrow:nth-of-type(2){grid-column:2;grid-row:1}
+.vlab-guide>.lab-steps{grid-column:2;grid-row:2/span 2;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:0}
+.vlab-guide .lab-step{align-items:flex-start;gap:6px}
+.vlab-guide .lab-step span{width:22px;height:22px}
+.vlab-guide .lab-step b{font-size:10px;line-height:1.4}
+.vlab-guide .guide-note{grid-column:1;grid-row:4}
+.vlab-guide details{grid-column:2;grid-row:4;align-self:start;margin-top:0!important}
+.vlab-workspace{grid-template-columns:minmax(0,1.85fr) minmax(300px,1fr);align-items:stretch}
+.vlab-scene{min-height:0;padding:20px;border-right:1px solid #284562;border-bottom:0}
+.three-lab-viewport{height:clamp(450px,62vh,740px);min-height:450px;border-radius:18px}
+.three-scene-footer{font-size:10px;padding-top:10px}
+.vlab-controls{padding:20px}
+.vlab-controls h3{font-size:17px;margin-bottom:7px}
+.vlab-controls>p{font-size:12px;line-height:1.6;margin-bottom:20px}
+.control-row{margin:17px 0}
+.control-row>label,.control-label{font-size:12px}
+.control-row select,.vlab-select{padding:11px 12px;font-size:12px}
+.lab-btn{padding:11px 13px;font-size:12px}
+.lab-output{padding:17px 19px}
+.lab-result-card{padding:15px}
+.vlab-intro{margin-bottom:17px}
+@media(max-width:1000px){
+ .vlab-workspace{grid-template-columns:minmax(0,1.4fr) minmax(270px,1fr)}
+ .vlab-scene{padding:14px}
+ .vlab-controls{padding:15px}
+ .three-lab-viewport{height:clamp(430px,59vh,620px);min-height:430px}
+}
+@media(max-width:820px){
+ .vlab-workspace{grid-template-columns:minmax(0,1fr)}
+ .vlab-scene{border-right:0;border-bottom:1px solid #284562;min-height:0;padding:15px}
+ .three-lab-viewport{height:clamp(340px,55vh,500px);min-height:340px}
+ .vlab-controls{padding:18px}
+ .vlab-guide{grid-template-columns:1fr 1fr}
+ .vlab-guide>.eyebrow:first-child,.vlab-guide>h3,.vlab-guide>.lab-objective{grid-column:1;grid-row:auto}
+ .vlab-guide>.eyebrow:nth-of-type(2),.vlab-guide>.lab-steps{grid-column:2;grid-row:auto}
+ .vlab-guide .guide-note,.vlab-guide details{grid-column:span 2;grid-row:auto}
+ .vlab-guide>.lab-steps{grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:520px){
+ .three-lab-viewport{height:clamp(300px,48vh,410px);min-height:300px}
+ .vlab-scene{padding:12px}
+ .vlab-controls{padding:14px}
+ .vlab-guide{display:block}
+ .vlab-guide>.lab-steps{display:grid;grid-template-columns:1fr 1fr;margin:12px 0}
+ .vlab-guide>.guide-note,.vlab-guide details{display:block;margin-top:12px!important}
+ .vlab-footer{flex-direction:row;flex-wrap:wrap}
+}
+
 </style>
 </head>
 <body>
