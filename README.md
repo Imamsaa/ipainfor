@@ -22,6 +22,14 @@ Ada tepat **100 soal pilihan ganda** yang dibagi merata menjadi 10 soal untuk se
 
 Label kelas mengikuti pengelompokan buku/materi yang dibahas sebelumnya: Buku 1A untuk kelas 7, Buku 2A untuk kelas 8, dan Buku 3A untuk kelas 9.
 
+## Penyimpanan sesi dan tampilan kuis
+
+- Sesi kuis, urutan soal yang diacak, pilihan jawaban, status jawaban sudah diperiksa, posisi soal aktif, dan hasil disimpan pada `localStorage` browser.
+- Jika halaman tidak sengaja di-refresh, sesi yang sedang berjalan dipulihkan pada soal yang sama.
+- Jika pengguna kembali ke beranda sebelum selesai, tombol **Lanjutkan sesi** dapat membuka kembali sesi tersimpan.
+- Sesi disimpan secara lokal pada browser/perangkat yang sama. Data tidak otomatis tersinkron antarperangkat atau antarbrowser; menghapus data situs/browser dapat menghapus sesi.
+- Saat mode kuis aktif, halaman dirancang agar soal dan pilihan pas dalam tinggi layar tanpa menggulir seluruh halaman. Ukuran font pilihan jawaban juga diperbesar dan tata letak menyesuaikan layar kecil.
+
 ## Fitur
 
 - Urutan 100 soal diacak setiap kali sesi baru dimulai.
