@@ -225,6 +225,60 @@ body.image-lightbox-open{overflow:hidden}
 body.presenter .ppt-slide-main{height:calc(100vh - 152px)}
 body.presenter .ppt-original-stage{height:min(74vh,880px);min-height:400px}
 
+
+/* Clean presentation-first entry: no landing page before the first source PPT slide */
+.app{display:block!important;min-height:100vh;grid-template-columns:minmax(0,1fr)!important}
+.main{width:100%;min-width:0;min-height:100vh}
+.sidebar{position:fixed!important;left:-310px!important;top:10px!important;bottom:10px!important;width:286px!important;height:auto!important;max-height:calc(100dvh - 20px)!important;padding:15px 12px!important;border:1px solid #dce8ee!important;border-radius:16px!important;box-shadow:0 20px 70px #17264038!important;z-index:1002!important;transition:left .2s ease!important}
+.sidebar.open{left:10px!important}
+.sidebar-backdrop{position:fixed;inset:0;width:100%;height:100%;padding:0;border:0;background:#1e2b43a6;backdrop-filter:blur(2px);z-index:1001;cursor:default}
+.sidebar-backdrop[hidden]{display:none!important}
+.mobile-menu{display:inline-grid!important;place-items:center;width:32px;height:32px;padding:0}
+.topbar{height:44px!important;min-height:44px!important;padding:0 12px!important;background:#fffaf0f2!important;border-bottom:1px solid #e8ddc9!important;backdrop-filter:blur(8px)!important;z-index:30!important}
+.top-left{gap:0!important}
+.crumb{display:none!important}
+.top-meta{gap:7px!important}
+body.ppt-mode .topbar{height:39px!important;min-height:39px!important;padding:0 10px!important;background:transparent!important;border-bottom:0!important;backdrop-filter:none!important}
+body.ppt-mode .top-meta{gap:0!important}
+body.ppt-mode #slideTotal,body.ppt-mode .progress-track,body.ppt-mode #notesToggle{display:none!important}
+body.ppt-mode #presentBtn{display:grid;place-items:center;width:33px;height:31px;padding:0;font-size:0;min-width:0;border-radius:9px}
+body.ppt-mode #presentBtn:before{content:"⛶";font-size:18px;line-height:1}
+body.ppt-mode #presentBtn:hover:before{content:"⛶"}
+body.ppt-mode .content{max-width:none!important;margin:0!important;padding:0 8px 6px!important;height:calc(100dvh - 39px)!important;min-height:0!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+body.ppt-mode .slide-shell{flex:1 1 auto!important;min-height:0!important;height:auto!important;border-radius:11px!important;box-shadow:0 4px 20px #53627b0b!important}
+body.ppt-mode .slide-topline{height:4px!important}
+body.ppt-mode .slide-meta{display:none!important}
+body.ppt-mode .ppt-slide-main{flex:1 1 auto!important;min-height:0!important;height:auto!important;padding:3px!important;justify-content:stretch!important}
+body.ppt-mode .ppt-original-viewer{width:100%!important;max-width:none!important;min-height:0!important;height:100%!important;flex:1 1 auto!important;gap:4px!important}
+body.ppt-mode .ppt-original-stage{height:100%!important;min-height:0!important;max-height:none!important;flex:1 1 auto!important;border-radius:7px!important;background:#f4f0e6}
+body.ppt-mode .ppt-original-image{object-fit:contain!important}
+body.ppt-mode .ppt-original-caption{padding:0 3px!important;font-size:8px!important;min-height:13px!important}
+body.ppt-mode .ppt-original-caption a{font-size:8px!important}
+body.ppt-mode .ppt-navigation-footer{flex:0 0 auto!important;min-height:42px!important;padding:5px 2px 0!important;gap:10px!important}
+body.ppt-mode .ppt-navigation-footer .footer-hint{display:none!important}
+body.ppt-mode .ppt-navigation-status{min-width:150px!important;gap:7px!important}
+body.ppt-mode .ppt-progress{width:70px!important}
+body.ppt-mode .ppt-navigation-footer .slide-actions .btn{min-width:105px!important;padding:8px 11px!important}
+body.ppt-mode .ppt-image-error{font-size:12px!important}
+body.ppt-mode.presenter .content,body.presenter.ppt-mode .content{height:calc(100dvh - 39px)!important}
+body.presenter.ppt-mode .ppt-original-stage{height:100%!important;min-height:0!important;max-height:none!important}
+body.ppt-mode .teacher-notes{display:none!important}
+@media(max-width:780px){
+ .sidebar{left:-290px!important;width:min(270px,calc(100vw - 24px))!important;top:7px!important;bottom:7px!important;max-height:calc(100dvh - 14px)!important}
+ .sidebar.open{left:7px!important}
+ .topbar{height:42px!important;min-height:42px!important;padding:0 8px!important}
+ body.ppt-mode .topbar{height:34px!important;min-height:34px!important;padding:0 6px!important}
+ body.ppt-mode .content{height:calc(100dvh - 34px)!important;padding:0 4px 4px!important}
+ body.ppt-mode .ppt-original-stage{height:100%!important;min-height:0!important}
+ body.ppt-mode .ppt-slide-main{padding:2px!important}
+ body.ppt-mode .ppt-navigation-footer{min-height:43px!important;padding:4px 2px 0!important}
+ body.ppt-mode .ppt-navigation-status{min-width:0!important;width:100%!important;gap:6px!important}
+ body.ppt-mode .ppt-progress{flex:1!important;width:auto!important;max-width:110px}
+ body.ppt-mode .ppt-navigation-footer{flex-wrap:wrap!important;row-gap:5px!important}
+ body.ppt-mode .ppt-navigation-footer .slide-actions{width:100%!important;margin:0!important}
+ body.ppt-mode .ppt-navigation-footer .slide-actions .btn{flex:1!important;min-width:0!important}
+}
+
 </style>
 </head>
 <body>
@@ -232,13 +286,14 @@ body.presenter .ppt-original-stage{height:min(74vh,880px);min-height:400px}
 <aside class="sidebar" id="sidebar">
  <div class="brand"><div class="brand-mark">✦</div><div><strong>Jelajah IPA</strong><small>MEDIA PRESENTASI SMP</small></div></div>
  <div class="side-caption">RUANG MENGAJAR</div>
- <button class="chapter-link active" id="homeLink" onclick="goWelcome()"><span class="chapter-num">⌂</span><span class="chapter-name">Beranda presentasi</span><span class="chapter-status">›</span></button>
+ <button class="chapter-link active" id="homeLink" onclick="goWelcome()"><span class="chapter-num">▶</span><span class="chapter-name">Slide PPT pertama</span><span class="chapter-status">›</span></button>
  <label class="side-search"><span>⌕</span><input id="chapterSearch" placeholder="Cari bab..." oninput="filterChapters(this.value)" aria-label="Cari bab"></label>
  <div class="book-block"><div class="book-title">BUKU 1A · IPA DASAR</div><div id="nav1"></div></div>
  <div class="book-block"><div class="book-title">BUKU 2A · BIOLOGI</div><div id="nav2"></div></div>
  <div class="book-block"><div class="book-title">BUKU 3A · SISTEM & FISIKA</div><div id="nav3"></div></div>
  <div class="side-foot">Media untuk guru dan siswa.<br><b>Amati · Diskusikan · Pahami</b><br><br>Gunakan tombol presentasi untuk mode layar penuh.</div>
 </aside>
+<button type="button" id="sidebarBackdrop" class="sidebar-backdrop" hidden aria-label="Tutup navigasi" onclick="closeSidebar()"></button>
 <main class="main">
 <header class="topbar">
  <div class="top-left"><button class="btn btn-soft mobile-menu" id="menuBtn" onclick="toggleSidebar()" aria-label="Buka daftar bab">☰</button><div class="crumb" id="crumb">Jelajah IPA / Pembuka</div></div>
@@ -513,7 +568,7 @@ const SLIDESHARE_MATERIAL_URL="https://www.slideshare.net/slideshow/hakikat-ilmu
 const SLIDESHARE_SOURCE_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373#26";
 
 let deck=[];
-function buildDeck(){deck=[{type:"welcome"}];chapters.forEach(ch=>{["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));if(ch.id==="1a1"){deck.push({type:"activity",id:ch.id});for(let part=0;part<28;part++)deck.push({type:"pptSlide",id:ch.id,part:part});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}))}else{deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})}})}
+function buildDeck(){deck=[];chapters.forEach(ch=>{if(ch.id==="1a1"){for(let part=0;part<28;part++)deck.push({type:"pptSlide",id:ch.id,part:part});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}));return}["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})})}
 const state={index:0,notes:false,completed:readCompleted(),quizAnswers:{},sourceQuizAnswers:{}};
 function readCompleted(){try{const x=JSON.parse(localStorage.getItem("jelajah_ipa_presentation_done")||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
 function saveCompleted(){try{localStorage.setItem("jelajah_ipa_presentation_done",JSON.stringify(state.completed))}catch(e){}}
@@ -521,7 +576,7 @@ function $(s){return document.querySelector(s)}
 function currentSlide(){return deck[state.index]}
 function currentChapter(){const sl=currentSlide();return sl&&sl.id?chapters.find(x=>x.id===sl.id):null}
 function goWelcome(){state.index=0;state.notes=false;render();closeSidebar()}
-function goChapter(id){const idx=deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
+function goChapter(id){const idx=id==="1a1"?deck.findIndex(s=>s.id===id&&s.type==="pptSlide"&&s.part===0):deck.findIndex(s=>s.id===id&&s.type==="cover");if(idx>=0){state.index=idx;render()}closeSidebar()}
 function nextSlide(){if(state.index<deck.length-1){state.index++;render()}else showToast("Kamu sudah berada di slide terakhir.")}
 function prevSlide(){if(state.index>0){state.index--;render()}}
 function goToChapterSlide(id,type,part){const ix=deck.findIndex(s=>s.id===id&&s.type===type&&(!["details","sourceQuiz","pptSlide"].includes(type)||s.part===Number(part)));if(ix>=0){state.index=ix;render()}}
@@ -629,7 +684,7 @@ function answerSourceQuiz(button){
  render();
 }
 function retrySourceQuiz(part){delete state.sourceQuizAnswers[part];render()}
-function goToReferenceMaterial(){goToChapterSlide("1a1","slideshare")}
+function goToReferenceMaterial(){goToChapterSlide("1a1","pptSlide",0)}
 function goToNextSourceQuiz(){
  const sl=currentSlide();
  if(sl&&sl.type==="sourceQuiz"&&sl.part<SOURCE_QUIZ.length-1)goToChapterSlide("1a1","sourceQuiz",sl.part+1);
@@ -638,6 +693,8 @@ function goToNextSourceQuiz(){
 
 function render(){
  const sl=currentSlide(),ch=currentChapter();
+ document.body.classList.toggle("ppt-mode",sl.type==="pptSlide");
+ document.body.classList.toggle("quiz-mode",sl.type==="sourceQuiz");
  $("#content").innerHTML=sl.type==="welcome"?welcomeHTML():chapterSlideHTML(ch,sl.type);
  $("#crumb").textContent=ch?bookName(ch.book)+" / Bab "+ch.n+" · "+capped(ch.short):"Jelajah IPA / Pembuka";
  $("#slideTotal").textContent=(state.index+1)+" / "+deck.length+" SLIDE";
@@ -666,8 +723,8 @@ function togglePresentation(){
  if(active&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{});
  else if(!active&&document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});
 }
-function toggleSidebar(){$("#sidebar").classList.toggle("open")}
-function closeSidebar(){if(window.innerWidth<=780)$("#sidebar").classList.remove("open")}
+function toggleSidebar(){const side=$("#sidebar"),backdrop=$("#sidebarBackdrop"),opening=!side.classList.contains("open");side.classList.toggle("open",opening);document.body.classList.toggle("sidebar-open",opening);if(backdrop)backdrop.hidden=!opening}
+function closeSidebar(){const side=$("#sidebar"),backdrop=$("#sidebarBackdrop");if(side)side.classList.remove("open");document.body.classList.remove("sidebar-open");if(backdrop)backdrop.hidden=true}
 function showToast(text){const t=$("#toast");t.textContent=text;t.classList.add("show");clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>t.classList.remove("show"),2100)}
 document.addEventListener("keydown",e=>{
  if(e.target&&(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"))return;
@@ -712,6 +769,7 @@ function closeImageLightbox(){
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){const modal=$("#imageLightbox");if(modal&&!modal.hidden){closeImageLightbox();return}}});
 
 buildDeck();
+state.index=0;
 render();
 </script>
 
