@@ -69,7 +69,7 @@
 .three-scene-footer b{color:#aeeede}.vlab-2d-fallback{margin-top:12px;border:1px solid #2b4664;border-radius:12px;background:#0a1a30;overflow:hidden}
 .vlab-2d-fallback summary{padding:11px 13px;cursor:pointer;color:#a8c4db;font-size:10px;font-weight:850;letter-spacing:.6px}
 .vlab-2d-fallback[open] #labVisualFallback{padding:12px;border-top:1px solid #29435f}
-.three-scene-loading{height:100%;display:grid;place-items:center;text-align:center;padding:20px;color:#b5cde2;font-size:12px}
+.three-scene-loading{position:absolute;inset:0;z-index:1;display:grid;place-items:center;text-align:center;padding:20px;color:#b5cde2;font-size:12px;background:#0a192de8;pointer-events:none}
 .three-scene-loading b{display:block;color:var(--cyan);margin-bottom:5px}
 @media(max-width:520px){.three-lab-viewport{height:265px}.three-lab-hud span{font-size:8px;padding:6px}.three-lab-hud button{font-size:9px;padding:6px}}
 
@@ -368,7 +368,7 @@ function gameHTML(c){return virtualLabHTML(c)}
 
 
 function prevByPage(){prev(state.page)}function nextByPage(){next(state.page)}
-function render(){const c=chapters.find(x=>x.id===state.page);$('#crumb').textContent=c?'Jelajah IPA / Buku '+c.book.toUpperCase()+' / Bab '+c.n:'Jelajah IPA / Beranda';$('#content').innerHTML=c?chapterPage(c):home();$('#xpPill').textContent='✦ '+state.xp+' XP';nav()}
+function render(){const c=chapters.find(x=>x.id===state.page);$('#crumb').textContent=c?'Jelajah IPA / Buku '+c.book.toUpperCase()+' / Bab '+c.n:'Jelajah IPA / Beranda';$('#content').innerHTML=c?chapterPage(c):home();$('#xpPill').textContent='✦ '+state.xp+' XP';nav();if(c&&window.renderScience3D){const root=document.querySelector('[data-lab-root="'+c.id+'"]');if(root)window.renderScience3D(c.id,labData(c.id),root.querySelector('#threeScene'))}}
 
 function labPreview(id){var c=chapters.find(function(x){return x.id===id}),root=document.querySelector('[data-lab-root="'+id+'"]');if(!c||!root)return;var d=labData(id),disp=root.querySelector('#labVisualFallback');if(disp)disp.innerHTML=labSceneHTML(id,d);var report=root.querySelector('#labReport');if(report)report.innerHTML=labReportHTML(c,d);root.querySelectorAll('[data-value]').forEach(function(el){var key=el.getAttribute('data-value');if(d[key]!==undefined)el.textContent=d[key]});root.querySelectorAll('[data-key]').forEach(function(el){var key=el.getAttribute('data-key');if(d[key]!==undefined&&document.activeElement!==el)el.value=d[key]});var stamp=document.querySelector('.vlab-stamp b');if(stamp)stamp.textContent=d.logs.length;if(window.renderScience3D){var view=root.querySelector('#threeScene');if(view)window.renderScience3D(id,d,view)}if(id==='3a1'){var safe=root.querySelector('#safe-decision');if(safe)safe.textContent=d.safeDecision||'Pilih respons untuk melihat konsekuensinya.'}}
 
@@ -412,7 +412,7 @@ function updateCamera(r){r.camera.position.set(r.target.x+Math.sin(r.theta)*Math
 function resetView(r){r.theta=Math.PI/4;r.phi=1.02;r.radius=7.8;r.target.set(0,0,0);updateCamera(r)}
 function disposeRuntime(r){r.disposed=true;if(r.observer)r.observer.disconnect();r.renderer.dispose();r.renderer.domElement.remove();r.root.clear();if(active.runtime===r)active.runtime=null}
 window.resetScience3DView=()=>{if(active.runtime)resetView(active.runtime)};
-function cleanRoot(r){r.animators=[];while(r.root.children.length){const o=r.root.children.pop();o.traverse(n=>{if(n.geometry)n.geometry.dispose();if(n.material){if(Array.isArray(n.material))n.material.forEach(m=>m.dispose());else n.material.dispose()}})}}
+function cleanRoot(r){r.animators=[];while(r.root.children.length){const o=r.root.children[r.root.children.length-1];r.root.remove(o);o.traverse(n=>{if(n.geometry)n.geometry.dispose();if(n.material){if(Array.isArray(n.material))n.material.forEach(m=>m.dispose());else n.material.dispose()}})}}
 function mesh(r,geometry,material,x=0,y=0,z=0,opt={}){const o=new THREE.Mesh(geometry,material);o.position.set(x,y,z);if(opt.rx)o.rotation.x=opt.rx;if(opt.ry)o.rotation.y=opt.ry;if(opt.rz)o.rotation.z=opt.rz;if(opt.s)o.scale.set(opt.s[0],opt.s[1],opt.s[2]);if(opt.name)o.name=opt.name;if(opt.action)o.userData.labAction=opt.action;if(opt.choice!==undefined)o.userData.choice=opt.choice;r.root.add(o);return o}
 function box(r,x,y,z,w,h,d,color,opt={}){return mesh(r,new THREE.BoxGeometry(w,h,d),M(color,opt.roughness===undefined?.48:opt.roughness,opt.metalness===undefined?.1:opt.metalness,!!opt.transparent,opt.opacity===undefined?1:opt.opacity,opt.emissive),x,y,z,opt)}
 function sphere(r,x,y,z,sx,sy,sz,color,opt={}){return mesh(r,new THREE.SphereGeometry(1,opt.seg||24,opt.seg||16),M(color,opt.roughness===undefined?.38:opt.roughness,opt.metalness===undefined?.1:opt.metalness,!!opt.transparent,opt.opacity===undefined?1:opt.opacity,opt.emissive),x,y,z,{...opt,s:[sx,sy,sz]})}
