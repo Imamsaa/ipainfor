@@ -181,6 +181,26 @@ body.image-lightbox-open{overflow:hidden}
  .image-lightbox-footer{align-items:flex-start;flex-direction:column;padding:10px 13px;gap:8px}
 }
 
+
+.slideshare-main{justify-content:flex-start!important;padding-top:17px}
+.slideshare-main h2{font-size:clamp(23px,3vw,34px);margin:9px 0 7px}
+.slideshare-main .slide-subline{margin-bottom:15px}
+.slideshare-frame-wrap{width:100%;position:relative;aspect-ratio:16/9;min-height:340px;max-height:64vh;border:1px solid #dce3e4;border-radius:14px;background:#e9eff1;overflow:hidden}
+.slideshare-frame{display:block;width:100%;height:100%;border:0;background:#fff}
+.slideshare-sourcebar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:11px;border:1px solid #e0e8df;background:#f7fbf6;border-radius:11px;padding:11px 13px}
+.slideshare-sourcebar div{min-width:0}.slideshare-sourcebar b{display:block;font-size:11px;color:#344962}.slideshare-sourcebar small{display:block;margin-top:4px;color:#8290a0;font-size:9px;line-height:1.5}
+.slideshare-sourcebar .btn{flex-shrink:0;white-space:nowrap}
+.slideshare-fallback{margin-top:8px;padding:10px 12px;border:1px dashed #decda8;background:#fff9ec;border-radius:9px;font-size:10px;line-height:1.6;color:#8b7b61}
+.slideshare-fallback b{color:#876a3e}
+.source-quiz-main{justify-content:center!important}
+.source-quiz-progress{height:7px;margin:13px 0 18px;border-radius:99px;background:#e9e2d5;overflow:hidden}
+.source-quiz-progress span{display:block;height:100%;background:linear-gradient(90deg,#43c0b0,#a4d978);border-radius:99px;transition:width .2s}
+.source-quiz-score{display:flex;justify-content:space-between;align-items:center;margin-top:11px;padding:9px 11px;border:1px solid #e5dece;background:#fffaf0;border-radius:9px;font-size:10px;color:#8290a0}
+.source-quiz-score b{font-size:13px;color:#3aa493}
+.quiz-feedback.bad{margin-bottom:5px}
+@media(max-width:780px){.slideshare-frame-wrap{min-height:300px;max-height:none;aspect-ratio:4/3}.slideshare-sourcebar{align-items:flex-start;flex-direction:column}.slideshare-sourcebar .btn{width:100%;text-align:center}}
+@media(max-width:480px){.slideshare-frame-wrap{min-height:240px;aspect-ratio:3/4}.slideshare-main{padding-top:15px}.slideshare-sourcebar{padding:10px}.slideshare-fallback{font-size:9px}.source-quiz-main{padding-left:10px;padding-right:10px}}
+
 </style>
 </head>
 <body>
@@ -464,6 +484,10 @@ const SOURCE_QUIZ=[
  {q:"Kesimpulan laporan percobaan seharusnya didasarkan pada…",options:["Tujuan percobaan dan pola data yang diperoleh","Pendapat awal tanpa memeriksa data","Hasil yang paling sesuai dengan dugaan saja","Data yang dipilih tanpa menjelaskan alasannya"],correct:0,explain:"Pada materi SlideShare, kesimpulan harus menjawab tujuan yang dirumuskan dan berdasarkan pola yang terlihat pada data atau grafik."}
 ];
 
+
+const SLIDESHARE_MATERIAL_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373";
+const SLIDESHARE_SOURCE_URL="https://www.slideshare.net/slideshow/hakikat-ilmu-sains-dan-metode-ilmiahpptx/259870373#26";
+
 let deck=[];
 function buildDeck(){deck=[{type:"welcome"}];chapters.forEach(ch=>{["cover","concept","explore"].forEach(type=>deck.push({type:type,id:ch.id}));ch.sections.forEach((section,part)=>deck.push({type:"details",id:ch.id,part:part}));if(ch.id==="1a1"){deck.push({type:"activity",id:ch.id});deck.push({type:"slideshare",id:ch.id});SOURCE_QUIZ.forEach((q,part)=>deck.push({type:"sourceQuiz",id:ch.id,part:part}))}else{deck.push({type:"activity",id:ch.id});deck.push({type:"quiz",id:ch.id})}})}
 const state={index:0,notes:false,completed:readCompleted(),quizAnswers:{},sourceQuizAnswers:{}};
@@ -516,6 +540,10 @@ function chapterSlideHTML(c,type){
   body=detailsSlideHTML(c,sl.part);
  }else if(type==="activity"){
   body='<div class="slide-main"><span class="eyebrow">DISKUSI · BERPIKIR · BERBAGI</span><h2>Coba pikirkan bersama</h2><p class="slide-subline">Berikan waktu kepada siswa untuk berpikir mandiri, berdiskusi berpasangan, lalu menjelaskan alasannya berdasarkan konsep dan bukti.</p><div class="application-layout"><section class="mission-board"><span class="mission-title">MISI KELAS</span><h3>'+c.activity+'</h3><p>Diskusikan menggunakan konsep yang baru dipelajari.</p><div class="mission-steps">'+c.steps.map((s,i)=>'<div class="mission-step"><span>'+(i+1)+'</span><div>'+s+'</div></div>').join("")+'</div></section><section class="prompt-board"><span class="prompt-label">PANDUAN DISKUSI</span><h3>Apa bukti atau alasanmu?</h3><p>Tidak cukup hanya menjawab. Jelaskan proses berpikirmu dan dengarkan ide teman.</p><button class="reveal-btn" onclick="revealActivity(this)">Tampilkan panduan jawaban ↗</button><div class="reveal-answer" hidden>'+c.reveal+'</div></section></div></div>';
+ }else if(type==="slideshare"){
+  body='<div class="slide-main slideshare-main"><span class="eyebrow">MATERI ASLI DARI SLIDESHARE</span><h2>Hakikat Ilmu Sains dan Metode Ilmiah</h2><p class="slide-subline">Presentasi rujukan terdiri dari 28 slide: cabang sains, laboratorium dan keselamatan kerja, merancang percobaan, pengukuran, serta pelaporan hasil percobaan.</p><div class="slideshare-frame-wrap"><iframe class="slideshare-frame" src="'+SLIDESHARE_MATERIAL_URL+'" title="Hakikat Ilmu Sains dan Metode Ilmiah — SlideShare" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="slideshare-sourcebar"><div><b>Materi rujukan</b><small>Diunggah oleh deanIrvanda1 di SlideShare. Konten dimuat dari situs sumber, bukan disalin ke repository.</small></div><a class="btn btn-primary" href="'+SLIDESHARE_SOURCE_URL+'" target="_blank" rel="noopener noreferrer">Buka presentasi ↗</a></div><div class="slideshare-fallback"><b>Jika pemutar tidak tampil di dalam kotak:</b> buka presentasi melalui tombol di atas. SlideShare dapat membatasi pemuatan halaman biasa di dalam iframe; pemutar resmi di dalam web memerlukan kode Embed dari tombol Share → Embed pada halaman SlideShare.</div></div>';
+ }else if(type==="sourceQuiz"){
+  body=sourceQuizSlideHTML(c,sl.part);
  }else if(type==="quiz"){
   body='<div class="slide-main"><div class="quiz-card"><span class="quiz-label">✦ CEK PEMAHAMAN</span><h2>'+c.quiz.q+'</h2><div class="quiz-options">'+c.quiz.options.map((opt,i)=>'<button class="quiz-option" data-chapter="'+c.id+'" data-choice="'+i+'" onclick="answerQuiz(this)"><span class="quiz-letter">'+String.fromCharCode(65+i)+'</span><span>'+opt+'</span></button>').join("")+'</div><div class="quiz-feedback" id="quizFeedback">Pilih satu jawaban. Setelah menjawab, baca penjelasannya bersama kelas.</div><div class="intro-badges"><button class="btn btn-soft" onclick="goToChapterSlide(\''+c.id+'\',\'concept\')">↺ Ulangi konsep</button><button class="btn btn-primary" onclick="nextChapterOrFinish(\''+c.id+'\')">Lanjut ke bab berikutnya →</button></div></div></div>';
  }
@@ -528,6 +556,36 @@ function slideFooterHTML(c,type,partIndex){
  const usesPart=["details","sourceQuiz"].includes(type);
  const activePart=list.findIndex(s=>s.type===type&&(!usesPart||s.part===partIndex));
  return '<div class="slide-footer"><div class="slide-indicators">'+list.map(function(s,i){const title=s.type==="details"?"Pendalaman "+(s.part+1):s.type==="sourceQuiz"?"Kuis soal "+(s.part+1):(labels[s.type]||s.type);return '<button class="slide-dot '+(i===activePart?'active':'')+'" title="'+title+'" aria-label="'+title+'" data-id="'+c.id+'" data-type="'+s.type+'" data-part="'+(s.part===undefined?'':s.part)+'" onclick="goToChapterSlide(this.dataset.id,this.dataset.type,this.dataset.part)"></button>'}).join("")+'</div><span class="footer-hint">Gunakan ← → atau spasi untuk berpindah slide</span><div class="slide-actions"><button class="btn btn-soft" onclick="prevSlide()" '+(state.index===0?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="nextSlide()">'+(state.index===deck.length-1?'Selesai ✓':'Berikutnya →')+'</button></div></div>';
+}
+
+
+function sourceQuizSlideHTML(c,part){
+ const q=SOURCE_QUIZ[part],selected=state.sourceQuizAnswers[part],answered=selected!==undefined;
+ const score=SOURCE_QUIZ.reduce((n,item,i)=>n+(state.sourceQuizAnswers[i]===item.correct?1:0),0);
+ const opts=q.options.map(function(opt,i){
+  const cls=answered&&i===q.correct?' correct':answered&&i===selected&&selected!==q.correct?' wrong':'';
+  return '<button class="quiz-option'+cls+'" data-part="'+part+'" data-choice="'+i+'" onclick="answerSourceQuiz(this)" '+(answered?'disabled':'')+'><span class="quiz-letter">'+String.fromCharCode(65+i)+'</span><span>'+opt+'</span></button>';
+ }).join("");
+ let feedback=answered?'<div class="quiz-feedback '+(selected===q.correct?'good':'bad')+'">'+(selected===q.correct?'Tepat! ':'Belum tepat. ')+q.explain+'</div>':'<div class="quiz-feedback" id="sourceQuizFeedback">Pilih satu jawaban, lalu baca penjelasan dan lanjutkan ke soal berikutnya.</div>';
+ let retry=answered&&selected!==q.correct?'<button class="btn btn-soft" onclick="retrySourceQuiz('+part+')">↺ Coba lagi</button>':'';
+ const allCorrect=SOURCE_QUIZ.every((item,i)=>state.sourceQuizAnswers[i]===item.correct);
+ let completion=allCorrect?'<div class="quiz-feedback good">Keren! Semua soal dari materi SlideShare sudah benar. Bab ini ditandai selesai.</div>':'';
+ return '<div class="slide-main source-quiz-main"><div class="quiz-card"><span class="quiz-label">✦ KUIS DARI MATERI · SOAL '+(part+1)+'/'+SOURCE_QUIZ.length+'</span><div class="source-quiz-progress"><span style="width:'+((part+1)/SOURCE_QUIZ.length*100)+'%"></span></div><h2>'+q.q+'</h2><div class="quiz-options">'+opts+'</div>'+feedback+retry+completion+'<div class="source-quiz-score"><span>Skor saat ini</span><b>'+score+' / '+SOURCE_QUIZ.length+'</b></div><div class="intro-badges"><button class="btn btn-soft" onclick="goToReferenceMaterial()">↶ Kembali ke materi</button>'+(part<SOURCE_QUIZ.length-1?'<button class="btn btn-primary" onclick="goToNextSourceQuiz()">Soal berikutnya →</button>':'<button class="btn btn-primary" onclick="goToNextSourceQuiz()">Lanjut ke bab berikutnya →</button>')+'</div></div></div>';
+}
+function answerSourceQuiz(button){
+ const part=Number(button.dataset.part),choice=Number(button.dataset.choice),q=SOURCE_QUIZ[part];
+ if(!q)return;
+ state.sourceQuizAnswers[part]=choice;
+ const allCorrect=SOURCE_QUIZ.every((item,i)=>state.sourceQuizAnswers[i]===item.correct);
+ if(allCorrect&&!state.completed.includes("1a1")){state.completed.push("1a1");saveCompleted();showToast("Bab selesai! Skor 5/5 ✓");renderNav()}
+ render();
+}
+function retrySourceQuiz(part){delete state.sourceQuizAnswers[part];render()}
+function goToReferenceMaterial(){goToChapterSlide("1a1","slideshare")}
+function goToNextSourceQuiz(){
+ const sl=currentSlide();
+ if(sl&&sl.type==="sourceQuiz"&&sl.part<SOURCE_QUIZ.length-1)goToChapterSlide("1a1","sourceQuiz",sl.part+1);
+ else nextChapterOrFinish("1a1");
 }
 
 function render(){
