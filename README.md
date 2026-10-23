@@ -41,3 +41,15 @@ Unduh ZIP repository, ekstrak, lalu buka `index.html` di Chrome, Edge, atau Fire
 ## Catatan
 
 Bank soal ini merupakan latihan pilihan ganda yang dirancang berdasarkan cakupan daftar isi yang dibahas. Guru tetap dapat meninjau istilah, kedalaman, dan pemetaan kelas sebelum dipakai sebagai penilaian resmi.
+
+
+## Batas kesesuaian materi
+
+Bank soal ditujukan untuk siswa SMP pada Kurikulum Merdeka (IPA Fase D). Soal harus mengukur materi yang tercantum pada daftar isi dan yang sudah diajarkan, bukan pengetahuan tambahan yang belum dipelajari.
+
+- Utamakan bahasa sederhana, konsep inti, contoh sehari-hari, dan penerapan satu langkah.
+- Hindari detail mekanisme tingkat lanjut, istilah yang belum dikenalkan, rumus panjang, serta perhitungan bertahap yang belum diajarkan.
+- Setiap soal harus sesuai dengan bab dan label kelasnya; opsi pengecoh tetap masuk akal, tetapi tidak mengandalkan jebakan bahasa.
+- Pembahasan harus singkat, membantu belajar, dan menggunakan istilah yang sesuai dengan materi siswa.
+- Pemetaan per kelas mengikuti daftar isi/bahan ajar sekolah yang diberikan guru. Capaian Pembelajaran IPA Fase D secara nasional mencakup kelas VII–IX, sedangkan urutan dan kedalaman per kelas ditetapkan melalui perencanaan pembelajaran sekolah.
+- Sebelum dipakai sebagai penilaian resmi, guru meninjau kesesuaian soal dengan materi yang sudah disampaikan di kelas.
